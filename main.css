@@ -6,20 +6,60 @@
 
 .block_card {
     border-style: inset;
-    border-color: brown;
+    border-color: coral;
     border-width: 2px;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .block-header-div {
     margin-left: 30px;
-    display: inline;
-    text-decoration-line: underline;
-    text-decoration-style: wavy;
-    text-decoration-color: blue;
 }
 
 .block-header-txt {
     color: red;
+    font-size: 30px;
+}
+
+.table-date {
+    width: 100%;
+    padding-right: 10px;
+}
+
+.table-date-title {
+    text-align: right;
+    width: 250px;
     font-size: 20px;
 }
 
+.table-date-txt {
+    border: 1px solid grey;
+    text-align: left;
+    width: 250px;
+    font-size: 20px;
+}
+
+.block-date {
+    border: 1px solid grey;
+    margin-top: 10px; 
+    margin-left: 30px; 
+    margin-right: 30px;
+    padding-bottom: 20px;
+}
+
+.block-date p {
+    font-size: 24px;
+    margin-left: 50px;
+    font-style: italic;
+    text-decoration-line:underline
+}
+
+.table-date-att {
+    width: 25px;
+    height: 25px;
+}
+
+.table-date-att img {
+    height: 20px;
+    width: 20px;
+}
