@@ -1,0 +1,30 @@
+.body-main {
+    margin-top: 100px; 
+    margin-left: 200px; 
+    margin-right: 200px;
+}
+
+.table-date {
+    width: 100%;
+    padding-right: 10px;
+}
+
+caption {
+    color: blue;
+    font-size: 30px;
+}
+
+th {
+    border: 1px solid grey;
+    text-align: left;
+    width: 250px;
+    font-size: 20px;
+    text-align: center
+}
+
+td {
+    border: 1px solid grey;
+    text-align: left;
+    width: 250px;
+    font-size: 20px;
+}
