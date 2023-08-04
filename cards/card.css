@@ -1,0 +1,66 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 20px;
+}
+
+body {
+    background: rgb(247, 223, 180);
+}
+
+.card {
+    background: rgb(255, 255, 255, 0.8);
+    border: 2px solid black;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+.card .date {
+    display: flex;
+}
+
+table {
+    width: 100%;
+    table-layout: fixed;
+}
+
+table td {
+    padding: 10px;
+}
+
+table p {
+    padding: 5px;
+    margin: 0;
+    border: 1px solid black;
+    background: white;
+
+}
+
+.lable {
+    text-align: right;
+    font-weight: bold;
+}
+
+.date_table {
+    text-align: left;
+}
+
+h3, h2, h1, h4{
+    text-align: center;
+}
+
+h2 {
+    font-size: 25px;
+}
+
+h3 {
+    font-size: 22px;
+    text-decoration: underline;
+}
+
+.map {
+    display: block;
+    margin-left: 30px;
+    border: 1px solid blue;
+    border-radius: 5px;
+}
