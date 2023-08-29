@@ -10,6 +10,7 @@
     <title>Карточка экскурсии ЕТ-456456</title>
 </head>
 <body>
+    <div class="info-block"></div>
     <div class="header">
         <div class="navigation">
             <span>Главная</span>
@@ -108,7 +109,7 @@
                     <td>Автобус</td>
                     <td>10000</td>
                     <td>+</td>
-                    <td><button>Показать больше</button></td>
+                    <td><span class="show-bus">Показать больше</span></td>
                 </tr>
             </table>
         </div> 
@@ -158,16 +159,6 @@
         <button>Сохранить на компьютер</button>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script>
-        $('.display-note').click(function() {
-            if($('.notes').hasClass('display-none')){
-                $('.notes').removeClass('display-none')
-                $('.state-note-show').addClass('state-note-hide')
-            } else {
-                $('.notes').addClass('display-none')
-                $('.state-note-show').removeClass('state-note-hide')
-            }
-        })
-    </script>
+    <script src="/Guided_Tours/js/card.js"></script>
 </body>
 </html>

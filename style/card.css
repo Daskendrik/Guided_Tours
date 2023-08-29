@@ -5,6 +5,8 @@
 
 body {
     background: rgb(247, 223, 180);
+    z-index: -1;
+    position:relative;
 }
 
 .header {
@@ -43,6 +45,8 @@ body {
     border-radius: 30px;
     margin: 20px;
     padding: 10px 20px 10px 20px;
+    z-index: 0;
+    position:relative;
 }
 
 .card .date .form-applet{
@@ -122,6 +126,10 @@ h3 {
     background-color: rgb(253, 158, 79);
 }
 
+.list-applet .show-bus {
+    cursor: pointer;
+}
+
 .notes {
     position: fixed;
     width: 20vw;
@@ -187,4 +195,24 @@ h3 {
     border: 2px solid rgb(241, 158, 2);
     border-radius: 10px;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.info-block {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    overflow: auto;
+    position:relative;
+    z-index: 10;
+}
+
+.buscard {
+    margin: 20%;
+    background: white;
+    border: 3px solid black;
+    position: fixed;
+    z-index: 11;
+    padding: 1%;
 }
