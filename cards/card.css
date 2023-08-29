@@ -7,6 +7,18 @@ body {
     background: rgb(247, 223, 180);
 }
 
+.header {
+    background: rgb(255, 255, 255, 0.8);
+    border: 2px solid black;
+    border-radius: 30px;
+    margin: 20px;
+    padding: 10px 20px 10px 20px;
+}
+
+.content {
+    margin-bottom: 5%;
+}
+
 .card {
     background: rgb(255, 255, 255, 0.8);
     border: 2px solid black;
@@ -15,20 +27,20 @@ body {
     padding: 10px 20px 10px 20px;
 }
 
-.card .date {
+.card .date .form-applet{
     display: flex;
 }
 
-table {
+.form-applet table {
     width: 100%;
     table-layout: fixed;
 }
 
-table td {
+.form-applet table td {
     padding: 10px;
 }
 
-table p {
+.form-applet table p {
     padding: 5px;
     margin: 0;
     border: 1px solid black;
@@ -63,6 +75,37 @@ h3 {
     margin-left: 30px;
     border: 1px solid blue;
     border-radius: 5px;
+}
+
+.list-applet thead {
+    border-bottom: 2px solid black;
+    border-top: 2px solid black;
+    background-color: rgb(253, 158, 79);
+}
+
+.list-applet td {
+    border-left: 2px solid black;
+    text-align: center;
+}
+
+.list-applet td:first-child {
+    border-left: none;
+}
+
+.list-applet tr:nth-child(even) {
+    background-color: white;
+}
+
+.list-applet tr:hover {
+    background-color: rgb(252, 192, 143);
+}
+
+.list-applet tr:first-child:hover {
+    background-color: none;
+}
+
+.list-applet thead:hover {
+    background-color: rgb(253, 158, 79) !important;
 }
 
 .footer {
