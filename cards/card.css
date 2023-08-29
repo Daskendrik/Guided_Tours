@@ -7,6 +7,20 @@ body {
     background: rgb(247, 223, 180);
 }
 
+.notes {
+    position: fixed;
+    width: 20vw;
+    height: 100%;
+    background: white;
+    bottom: 0;
+    left: 0;
+    border: 0;
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
+    font-size: clamp(13px, 1vh + 0.5vw, 30px); 
+}
+
 .header {
     background: rgb(255, 255, 255, 0.8);
     border: 2px solid black;
@@ -14,6 +28,19 @@ body {
     margin: 20px;
     padding: 10px 20px 10px 20px;
 }
+
+ .navigation {
+    text-align: center;
+ }
+
+ .navigation span{
+    margin: 5px 20px 5px 20px;
+ }
+
+ .navigation span:hover{
+    text-decoration: underline;
+    cursor: pointer;
+ }
 
 .content {
     margin-bottom: 5%;
@@ -100,13 +127,11 @@ h3 {
     background-color: rgb(252, 192, 143);
 }
 
-.list-applet tr:first-child:hover {
-    background-color: none;
+.list-applet thead tr:hover {
+    background-color: rgb(253, 158, 79);
 }
 
-.list-applet thead:hover {
-    background-color: rgb(253, 158, 79) !important;
-}
+
 
 .footer {
     position: fixed;
