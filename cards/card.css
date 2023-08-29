@@ -7,20 +7,6 @@ body {
     background: rgb(247, 223, 180);
 }
 
-.notes {
-    position: fixed;
-    width: 20vw;
-    height: 100%;
-    background: white;
-    bottom: 0;
-    left: 0;
-    border: 0;
-    border: 2px solid black;
-    text-align: center;
-    padding: 10px;
-    font-size: clamp(13px, 1vh + 0.5vw, 30px); 
-}
-
 .header {
     background: rgb(255, 255, 255, 0.8);
     border: 2px solid black;
@@ -131,7 +117,52 @@ h3 {
     background-color: rgb(253, 158, 79);
 }
 
+.notes {
+    position: fixed;
+    width: 20vw;
+    height: 100%;
+    background: white;
+    bottom: 0;
+    left: 0;
+    border: 0;
+    border: 2px solid black;
+    text-align: center;
+    padding: 10px;
+    font-size: clamp(13px, 1vh + 0.5vw, 30px); 
+}
 
+.display-none {
+    display: none;
+}
+
+.state-note-show {
+    position: fixed;
+    /* left: 20vw; */
+    left: 0vw;
+    top: 45%;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+}
+
+.state-note-hide {
+    position: fixed;
+    left: 20vw;
+    top: 45%;
+    border-bottom-right-radius: 20px;
+    cursor: pointer;
+}
+
+
+
+.display-note {
+    writing-mode: vertical-rl;
+    background: rgb(241, 101, 101);
+    padding: 8px 0 8px 0;
+    /* height: 70px; */
+    width: 30px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+}
 
 .footer {
     position: fixed;

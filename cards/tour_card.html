@@ -118,14 +118,31 @@
         </div> 
     </div>
     
-    <div class="notes">
+    <div class="notes display-none">
         <p>Заметки</p>
         <textarea name="" id="" cols="29" rows="25"></textarea>
+    </div>
+    <div class="state-note-show">
+        <div class="display-note">
+            Заметки
+        </div>
     </div>
     <div class="footer">
         <button>Редактировать</button>
         <button>Сохранить</button>
         <button>Сохранить на компьютер</button>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+        $('.display-note').click(function() {
+            if($('.notes').hasClass('display-none')){
+                $('.notes').removeClass('display-none')
+                $('.state-note-show').addClass('state-note-hide')
+            } else {
+                $('.notes').addClass('display-none')
+                $('.state-note-show').removeClass('state-note-hide')
+            }
+        })
+    </script>
 </body>
 </html>
