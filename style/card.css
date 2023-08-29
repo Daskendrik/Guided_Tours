@@ -20,7 +20,12 @@ body {
  }
 
  .navigation span{
-    margin: 5px 20px 5px 20px;
+    border: 2px solid black;
+    padding: 5px 20px 5px 20px;
+ }
+
+ .navigation span:hover{
+    background: rgb(236, 186, 48);
  }
 
  .navigation span:hover{
