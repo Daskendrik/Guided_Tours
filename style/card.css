@@ -26,13 +26,11 @@ body {
     padding: 5px 20px 5px 20px;
  }
 
- .navigation span:hover{
+ .btn:hover{
     background: rgb(236, 186, 48);
- }
-
- .navigation span:hover{
     text-decoration: underline;
     cursor: pointer;
+    transition: all .5s
  }
 
 .content {
@@ -190,7 +188,9 @@ h3 {
     font-size: clamp(13px, 1vh + 0.5vw, 30px);
 }
 
-.footer button {
+
+.btn {
+    background-color: rgb(255, 252, 240);
     border: none;
     border: 2px solid rgb(241, 158, 2);
     border-radius: 10px;
