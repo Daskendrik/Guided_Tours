@@ -26,12 +26,29 @@ body {
     padding: 5px 20px 5px 20px;
  }
 
+.btn {
+    background-color: rgb(255, 252, 240);
+    border: none;
+    border: 2px solid rgb(241, 158, 2);
+    border-radius: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    cursor: pointer;
+}
+
  .btn:hover{
     background: rgb(236, 186, 48);
     text-decoration: underline;
-    cursor: pointer;
     transition: all .5s
  }
+
+.btn-list {
+    color: rgb(0, 38, 255);
+    cursor: pointer;
+}
+
+.btn-list:hover {
+    text-decoration: underline;
+}
 
 .content {
     margin-bottom: 5%;
@@ -124,10 +141,6 @@ h3 {
     background-color: rgb(253, 158, 79);
 }
 
-.list-applet .show-bus {
-    cursor: pointer;
-}
-
 .notes {
     position: fixed;
     width: 20vw;
@@ -148,7 +161,6 @@ h3 {
 
 .state-note-show {
     position: fixed;
-    /* left: 20vw; */
     left: 0vw;
     top: 45%;
     border-bottom-right-radius: 20px;
@@ -189,13 +201,7 @@ h3 {
 }
 
 
-.btn {
-    background-color: rgb(255, 252, 240);
-    border: none;
-    border: 2px solid rgb(241, 158, 2);
-    border-radius: 10px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
+
 
 .info-block {
     width: 100%;
