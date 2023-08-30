@@ -175,8 +175,6 @@ h3 {
     cursor: pointer;
 }
 
-
-
 .display-note {
     writing-mode: vertical-rl;
     background: rgb(241, 101, 101);
@@ -199,9 +197,6 @@ h3 {
     padding: 10px;
     font-size: clamp(13px, 1vh + 0.5vw, 30px);
 }
-
-
-
 
 .info-block {
     width: 100%;
