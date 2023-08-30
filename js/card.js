@@ -15,6 +15,7 @@ $('.show-bus').click(function(){
         <div class="date form-applet">
             <div>
             <span class ='btn btn-close-buscard'>Закрыть</span>
+            <span class ='btn btn-close-buscard'>Перейти</span>
             </div>
             <table>
                 <tr>
