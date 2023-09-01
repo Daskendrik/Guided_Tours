@@ -1,177 +1,191 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="widtd=device-widtd, initial-scale=1.0" />
     <!-- подключила бутстрап (временное решение) -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <link rel="shortcut icon" href="/image/icon-notes.ico">
-    <link rel="stylesheet" href="/style/card.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link rel="shortcut icon" href="/image/icon-notes.ico" />
+    <link rel="stylesheet" href="/style/card.css" />
     <title>Карточка экскурсии ЕТ-456456</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="info-block"></div>
     <div class="header">
-        <div class="navigation">
-            <span class="btn">Главная</span>
-            <span class="btn">Туры</span>
-            <span class="btn">Музеи</span>
-            <span class="btn">Рестораны</span>
-            <span class="btn">Автобусы</span>
-        </div>
+      <div class="navigation">
+        <span class="btn">Главная</span>
+        <span class="btn">Туры</span>
+        <span class="btn">Музеи</span>
+        <span class="btn">Рестораны</span>
+        <span class="btn">Автобусы</span>
+      </div>
     </div>
+    <div id="header-root"></div>
     <div class="content">
-        <div class="card">
-            <h2>Экскурсия номер 5486</h2>
+      <div class="card">
+        <h2>Экскурсия номер 5486</h2>
+      </div>
+      <div class="card">
+        <h3>Основаня информация</h3>
+        <div class="date form-applet">
+          <table>
+            <tr>
+              <td class="lable" colspan="3">Название тура</td>
+              <td class="date_table" colspan="2">
+                <p>Что то про Казань, например</p>
+              </td>
+            </tr>
+            <tr>
+              <td class="lable">Гид:</td>
+              <td class="date_table"><p>Иванова Аня Ивановна</p></td>
+              <td class="lable">Телефон:</td>
+              <td class="date_table"><p>8(984) 458-95-87</p></td>
+              <td class="lable">Коментарий:</td>
+              <td class="date_table">
+                <textarea name="" id="" cols="20" rows="3">
+Перезвонить</textarea
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="lable">Заказчик:</td>
+              <td class="date_table"><p>Иванов Петр Иванович</p></td>
+              <td class="lable">Телефон:</td>
+              <td class="date_table"><p>8(984) 458-95-87</p></td>
+              <td class="lable">Коментарий:</td>
+              <td class="date_table">
+                <textarea name="" id="" cols="20" rows="3">
+Уточнить сколько детей</textarea
+                >
+              </td>
+            </tr>
+            <tr>
+              <td class="lable">Общая стоимость:</td>
+              <td class="date_table"><p>56000</p></td>
+              <td class="lable">Стоимость со взрослого:</td>
+              <td class="date_table"><p>10000</p></td>
+              <td class="lable">Стоимость с ребенка:</td>
+              <td class="date_table"><p>8000</p></td>
+            </tr>
+            <tr>
+              <td class="lable">Кол-во взрослых:</td>
+              <td class="date_table"><p>4</p></td>
+              <td class="lable">Кол-во детей:</td>
+              <td class="date_table"><p>2</p></td>
+              <td class="lable">Всего:</td>
+              <td class="date_table"><p>6</p></td>
+            </tr>
+          </table>
         </div>
-        <div class="card">
-            <h3>Основаня информация</h3>
-            <div class="date form-applet">
-                <table>
-                    <tr>
-                        <td class="lable" colspan="3">Название тура</td>
-                        <td class="date_table" colspan="2"><p>Что то про Казань, например</p></td>
-                    </tr>
-                    <tr>
-                        <td class="lable">Гид:</td>
-                        <td class="date_table"><p>Иванова Аня Ивановна</p></td>
-                        <td class="lable">Телефон:</td>
-                        <td class="date_table"><p>8(984) 458-95-87</p></td>
-                        <td class="lable">Коментарий:</td>
-                        <td class="date_table"><textarea name="" id="" cols="20" rows="3">Перезвонить</textarea></td>
-                    </tr>
-                    <tr>
-                        <td class="lable">Заказчик:</td>
-                        <td class="date_table"><p>Иванов Петр Иванович</p></td>
-                        <td class="lable">Телефон:</td>
-                        <td class="date_table"><p>8(984) 458-95-87</p></td>
-                        <td class="lable">Коментарий:</td>
-                        <td class="date_table"><textarea name="" id="" cols="20" rows="3">Уточнить сколько детей</textarea></td>
-                    </tr>
-                    <tr>
-                        <td class="lable">Общая стоимость:</td>
-                        <td class="date_table"><p>56000</p></td>
-                        <td class="lable">Стоимость со взрослого:</td>
-                        <td class="date_table"><p>10000</p></td>
-                        <td class="lable">Стоимость с ребенка:</td>
-                        <td class="date_table"><p>8000</p></td>
-                    </tr>
-                    <tr>
-                        <td class="lable">Кол-во взрослых:</td>
-                        <td class="date_table"><p>4</p></td>
-                        <td class="lable">Кол-во детей:</td>
-                        <td class="date_table"><p>2</p></td>
-                        <td class="lable">Всего:</td>
-                        <td class="date_table"><p>6</p></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
-        <div class="card">
-            <h3>Программа тура</h3>
-            <table class="list-applet">
-                <thead>
-                    <td>День</td>
-                    <td>Время</td>
-                    <td>Событие</td>
-                    <td>Коментарий</td>
-                </thead>
-                <tr>
-                    <td>1</td>
-                    <td>10.00</td>
-                    <td>Сбор группы</td>
-                    <td>Согласовать место</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>10.15</td>
-                    <td>Отъезд в город Казань</td>
-                    <td>Согласовать автобус</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>12.00</td>
-                    <td>Приезд в город Казань</td>
-                    <td></td>
-                </tr>
-            </table>
-        </div>
-        <div class="card">
-            <h3>Бюджет</h3>
-            <table class="list-applet">
-                <thead>
-                    <td>Объект</td>
-                    <td>Имя</td>
-                    <td>Стоимость</td>
-                    <td>Согласовано</td>
-                    <td>Подробнее</td>
-                    <td>Коментарий</td>
-                </thead>
-                <tr>
-                    <td>Автобус</td>
-                    <td><span class="show-bus btn-list">а458ук</span></td>
-                    <td>10000</td>
-                    <td>+</td>
-                    <td><span class="btn-list">Открыть расчет</span></td>
-                    <td>Лалала</td>
-                </tr>
-                <tr>
-                    <td>Ресторан</td>
-                    <td><span class="show-bus btn-list">Море у Моря</span></td>
-                    <td>10000</td>
-                    <td>+</td>
-                    <td><span class="btn-list">Открыть расчет</span></td>
-                    <td>Лалала</td>
-                </tr>
-            </table>
-        </div> 
-        <div class="card">
-            <h3>Согласования</h3>
-            <table class="list-applet">
-                <thead>
-                    <td>Объект</td>
-                    <td>Дата</td>
-                    <td>Согласовано</td>
-                    <td>Коментарий</td>
-                </thead>
-                <tr>
-                    <td>Автобус</td>
-                    <td>24.09 - 27.09</td>
-                    <td>+</td>
-                    <td>на 20 человек</td>
-                </tr>
-                <tr>
-                    <td>Ресторан</td>
-                    <td>24.09 15.00</td>
-                    <td>+</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>Отель</td>
-                    <td>24.09 - 27.09</td>
-                    <td>-</td>
-                    <td>Уточнить Номера</td>
-                </tr>
-            </table>
-        </div> 
+      </div>
+      <div class="card">
+        <h3>Программа тура</h3>
+        <table class="list-applet">
+          <thead>
+            <td>День</td>
+            <td>Время</td>
+            <td>Событие</td>
+            <td>Коментарий</td>
+          </thead>
+          <tr>
+            <td>1</td>
+            <td>10.00</td>
+            <td>Сбор группы</td>
+            <td>Согласовать место</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>10.15</td>
+            <td>Отъезд в город Казань</td>
+            <td>Согласовать автобус</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>12.00</td>
+            <td>Приезд в город Казань</td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Бюджет</h3>
+        <table class="list-applet">
+          <thead>
+            <td>Объект</td>
+            <td>Имя</td>
+            <td>Стоимость</td>
+            <td>Согласовано</td>
+            <td>Подробнее</td>
+            <td>Коментарий</td>
+          </thead>
+          <tr>
+            <td>Автобус</td>
+            <td><span class="show-bus btn-list">а458ук</span></td>
+            <td>10000</td>
+            <td>+</td>
+            <td><span class="btn-list">Открыть расчет</span></td>
+            <td>Лалала</td>
+          </tr>
+          <tr>
+            <td>Ресторан</td>
+            <td><span class="show-bus btn-list">Море у Моря</span></td>
+            <td>10000</td>
+            <td>+</td>
+            <td><span class="btn-list">Открыть расчет</span></td>
+            <td>Лалала</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>Согласования</h3>
+        <table class="list-applet">
+          <thead>
+            <td>Объект</td>
+            <td>Дата</td>
+            <td>Согласовано</td>
+            <td>Коментарий</td>
+          </thead>
+          <tr>
+            <td>Автобус</td>
+            <td>24.09 - 27.09</td>
+            <td>+</td>
+            <td>на 20 человек</td>
+          </tr>
+          <tr>
+            <td>Ресторан</td>
+            <td>24.09 15.00</td>
+            <td>+</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Отель</td>
+            <td>24.09 - 27.09</td>
+            <td>-</td>
+            <td>Уточнить Номера</td>
+          </tr>
+        </table>
+      </div>
     </div>
-    
+
     <div class="notes display-none">
-        <p>Заметки</p>
-        <textarea name="" id="" cols="29" rows="25"></textarea>
+      <p>Заметки</p>
+      <textarea name="" id="" cols="29" rows="25"></textarea>
     </div>
     <div class="state-note-show">
-        <div class="display-note">
-            Заметки
-        </div>
+      <div class="display-note">Заметки</div>
     </div>
     <div class="footer">
-        <span class="btn">Редактировать</span>
-        <span class="btn">Сохранить</span>
-        <span class="btn">Сохранить на компьютер</span>
+      <span class="btn">Редактировать</span>
+      <span class="btn">Сохранить</span>
+      <span class="btn">Сохранить на компьютер</span>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="/js/card.js"></script>
-</body>
+  </body>
 </html>
