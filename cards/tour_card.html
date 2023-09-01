@@ -11,8 +11,8 @@
       integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
       crossorigin="anonymous"
     />
-    <link rel="shortcut icon" href="/image/icon-notes.ico" />
-    <link rel="stylesheet" href="/style/card.css" />
+    <link rel="shortcut icon" href="../image/icon-notes.ico" />
+    <link rel="stylesheet" href="../style/card.css" />
     <title>Карточка экскурсии ЕТ-456456</title>
   </head>
   <body>
@@ -49,8 +49,8 @@
               <td class="lable">Коментарий:</td>
               <td class="date_table">
                 <textarea name="" id="" cols="20" rows="3">
-Перезвонить</textarea
-                >
+                    Перезвонить
+                </textarea>
               </td>
             </tr>
             <tr>
@@ -61,8 +61,8 @@
               <td class="lable">Коментарий:</td>
               <td class="date_table">
                 <textarea name="" id="" cols="20" rows="3">
-Уточнить сколько детей</textarea
-                >
+                    Уточнить сколько детей
+                </textarea>
               </td>
             </tr>
             <tr>
@@ -185,7 +185,16 @@
       <span class="btn">Сохранить</span>
       <span class="btn">Сохранить на компьютер</span>
     </div>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-    <script src="/js/card.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="../js/card.js"></script>
+    <script>
+      const header = React.createElement('h1', null, 'Это хедер');
+
+      const container = document.getElementById('header-root');
+      const root = ReactDOM.createRoot(container);
+      root.render(header);
+    </script>
   </body>
 </html>
