@@ -1,0 +1,23 @@
+.list_applet {
+  text-align: center;
+  background-color: blueviolet;
+}
+
+.header {
+  background-color: red;
+}
+
+.list_applet_table {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.list_applet_table table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.list_applet_table table td:nth-child(odd) {
+  background-color: aqua;
+}
