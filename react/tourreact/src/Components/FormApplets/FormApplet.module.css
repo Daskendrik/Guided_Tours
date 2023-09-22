@@ -1,27 +1,28 @@
-.list_applet {
+.form_applet {
   text-align: center;
   background-color: blueviolet;
+  margin: 20px 0 0 0;
 }
 
 .header {
   background-color: red;
 }
 
-.list_applet_table {
+.form_applet_table {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.list_applet_table table {
+.form_applet_table table {
   width: 100%;
   table-layout: fixed;
 }
 
-.list_applet_table table td:nth-child(odd) {
+.form_applet_table table td:nth-child(odd) {
   text-align: right;
 }
 
-.list_applet_table table td:nth-child(even) {
+.form_applet_table table td:nth-child(even) {
   text-align: left;
 }

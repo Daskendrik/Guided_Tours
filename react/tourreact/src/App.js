@@ -1,4 +1,5 @@
 import './App.css';
+import FormApplet from './Components/FormApplets/FormApplet';
 import ListApplet from './Components/ListApplets/ListApplet';
 
 function App() {
@@ -6,6 +7,7 @@ function App() {
     <div className="App">
       <h3>Home</h3>
       <ListApplet />
+      <FormApplet />
     </div>
   );
 }
