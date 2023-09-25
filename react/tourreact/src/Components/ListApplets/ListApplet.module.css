@@ -24,12 +24,9 @@
 .list_applet_table table {
   width: 100%;
   table-layout: fixed;
+  border-collapse: collapse;
 }
 
-.list_applet_table table td:nth-child(odd) {
-  text-align: right;
-}
-
-.list_applet_table table td:nth-child(even) {
-  text-align: left;
+.list_applet_table table td {
+  border: 1px solid black;
 }

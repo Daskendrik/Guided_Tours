@@ -7,6 +7,12 @@ const ListApplet = () => {
         <div className={styles.list_applet_table}>
           <form>
             <table>
+              <thead>
+                <td>Number</td>
+                <td>Name</td>
+                <td>Date</td>
+                <td>OK</td>
+              </thead>
               <tbody>
                 <tr>
                   <td>1</td>
