@@ -1,15 +1,19 @@
 .list_applet {
   text-align: center;
-  background-color: rgb(236, 170, 129, 0.4);
+
   margin: 20px 0 0 0;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .header {
+  background-color: rgb(236, 170, 129, 0.4);
   border: 2px solid red;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
+  font-size: 24px;
+  display: flex;
+  padding: 5px 15px 5px 15px;
 }
 
 .list_applet_table {
@@ -21,6 +25,19 @@
   border-left: 2px solid red;
 }
 
+.title {
+  font-size: 26px;
+  display: inline-block;
+  width: 50%;
+  text-align: left;
+}
+
+.button {
+  display: inline-block;
+  width: 50%;
+  text-align: right;
+}
+
 .list_applet_table table {
   width: 100%;
   table-layout: fixed;
@@ -29,4 +46,8 @@
 
 .list_applet_table table td {
   border: 1px solid black;
+}
+
+.list_applet_table table thead {
+  background-color: aliceblue;
 }

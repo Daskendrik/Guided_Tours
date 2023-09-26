@@ -3,7 +3,10 @@ const ListApplet = () => {
   return (
     <>
       <div className={styles.list_applet}>
-        <div className={styles.header}>Titile and button</div>
+        <div className={styles.header}>
+          <div className={styles.title}>Title</div>
+          <div className={styles.button}>Buttons</div>
+        </div>
         <div className={styles.list_applet_table}>
           <form>
             <table>
