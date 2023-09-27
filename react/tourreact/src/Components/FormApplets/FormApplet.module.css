@@ -1,12 +1,12 @@
 .form_applet {
   text-align: center;
-  background-color: rgb(236, 170, 129, 0.4);
   margin: 20px 0 0 0;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
 }
 
 .header {
+  background-color: rgb(236, 170, 129, 0.4);
   border: 2px solid red;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
