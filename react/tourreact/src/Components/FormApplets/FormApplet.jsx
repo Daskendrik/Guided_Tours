@@ -1,6 +1,20 @@
 import styles from './FormApplet.module.css';
 const FormApplet = (props) => {
-  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing'] } = props;
+  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'] } =
+    props;
+  const numRow = Math.ceil(UIForm.length / 3);
+  const arrRow = [];
+  let colNum = 1;
+  for (let i = 1; i <= numRow; i++) {
+    let arr = [];
+    for (colNum; colNum / i <= 3; colNum++) {
+      if (UIForm[colNum - 1]) {
+        arr.push(UIForm[colNum - 1]);
+      }
+    }
+    arrRow.push(arr);
+  }
+  console.log(arrRow);
   return (
     <>
       <div className={styles.form_applet}>
@@ -12,49 +26,20 @@ const FormApplet = (props) => {
           <form>
             <table>
               <tbody>
-                {UIForm.map((col) => {
+                {arrRow.map((row) => {
                   return (
-                    <>
-                      <td>{col}</td> <input type="text"></input>
-                    </>
+                    <tr>
+                      {row.map((td) => {
+                        return (
+                          <>
+                            <td>{td}</td>
+                            <input type="text"></input>
+                          </>
+                        );
+                      })}
+                    </tr>
                   );
                 })}
-                <tr>
-                  <td>
-                    <label>Город:</label>
-                  </td>
-                  <td>
-                    <input type="text"></input>
-                  </td>
-                  <td>
-                    <label>Город:</label>
-                  </td>
-                  <td>
-                    <input type="text" value="Москва"></input>
-                  </td>
-                  <td>Адрес:</td>
-                  <td>
-                    <input type="text" value="Какой то там"></input>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <label>Город:</label>
-                  </td>
-                  <td>
-                    <input type="text" value="Москва"></input>
-                  </td>
-                  <td>
-                    <label>Город:</label>
-                  </td>
-                  <td>
-                    <input type="text" value="Москва"></input>
-                  </td>
-                  <td>Адрес:</td>
-                  <td>
-                    <input type="text" value="Какой то там"></input>
-                  </td>
-                </tr>
               </tbody>
             </table>
           </form>
