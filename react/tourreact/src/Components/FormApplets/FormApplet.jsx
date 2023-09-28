@@ -1,5 +1,6 @@
 import styles from './FormApplet.module.css';
-const FormApplet = () => {
+const FormApplet = (props) => {
+  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing'] } = props;
   return (
     <>
       <div className={styles.form_applet}>
@@ -11,6 +12,13 @@ const FormApplet = () => {
           <form>
             <table>
               <tbody>
+                {UIForm.map((col) => {
+                  return (
+                    <>
+                      <td>{col}</td> <input type="text"></input>
+                    </>
+                  );
+                })}
                 <tr>
                   <td>
                     <label>Город:</label>
