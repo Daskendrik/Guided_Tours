@@ -1,3 +1,13 @@
+// Формирование данных для страницы музея
+import { v4 as uuidv4 } from 'uuid';
+
+function NewColumnData(nameColumn, name, type) {
+  this.nameColumn = nameColumn;
+  this.name = name;
+  this.type = type;
+  this.id = uuidv4();
+}
+
 const UIForm = [
   'Название',
   'Город',
@@ -8,16 +18,14 @@ const UIForm = [
   'Коментарий',
 ];
 
-const UIFormData = {
-  Name: ['Коломенское', 'text'],
-  City: ['Москва', 'text'],
-  Adress: ['Адрес', 'textarea'],
-  Phone: ['Телефон', 'tel'],
-  Cost: ['Стоимость', 'textarea'],
-  Weekend: ['Выходной', 'text'],
-  Comments: ['Коментарий', 'textarea'],
-};
-const UIFormMap = ['Адрес'];
-const UIListUIWorkTime = ['День', 'Время работы'];
+// const UIFormData = [
+//   { Name: 'Коломенское', type: 'text' },
+//   { City: 'Москва', type: 'text' },
+//   { Adress: 'Адрес', type: 'textarea' },
+//   { Phone: 'Телефон', type: 'tel' },
+//   { Cost: 'Стоимость', type: 'textarea' },
+//   { Weekend: 'Выходной', type: 'text' },
+//   { Comments: 'Коментарий', type: 'textarea' },
+// ];
 
-export { UIForm, UIFormMap, UIListUIWorkTime, UIFormData };
+export { UIForm };

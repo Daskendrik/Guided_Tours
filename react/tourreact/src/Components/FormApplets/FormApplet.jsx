@@ -1,15 +1,19 @@
 import styles from './FormApplet.module.css';
 const FormApplet = (props) => {
-  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'] } =
-    props;
-  const numRow = Math.ceil(UIForm.length / 3);
+  const {
+    UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'],
+    UIFormData,
+  } = props;
+  const numRow = Math.ceil(UIFormData.length / 3);
+  console.log(numRow);
   const arrRow = [];
   let colNum = 1;
   for (let i = 1; i <= numRow; i++) {
     let arr = [];
     for (colNum; colNum / i <= 3; colNum++) {
-      if (UIForm[colNum - 1]) {
-        arr.push(UIForm[colNum - 1]);
+      if (UIFormData[colNum - 1]) {
+        arr.push(UIFormData[colNum - 1]);
+        console.log(arr);
       }
     }
     arrRow.push(arr);
@@ -26,13 +30,13 @@ const FormApplet = (props) => {
           <form>
             <table>
               <tbody>
-                {arrRow.map((row) => {
+                {arrRow.map((row, index) => {
                   return (
-                    <tr>
-                      {row.map((td) => {
+                    <tr key={index}>
+                      {row.map((td, index) => {
                         return (
                           <>
-                            <td>{td}</td>
+                            <td key={index}>{td}</td>
                             <input type="text"></input>
                           </>
                         );
