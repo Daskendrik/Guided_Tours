@@ -58,7 +58,7 @@ const FormApplet = (props) => {
                           <>
                             <td>{col.Lable}</td>
                             <td>
-                              <input value={col.Velue} type={col.type}></input>
+                              <input value={col.Velue} type={col.Type}></input>
                             </td>
                           </>
                         );
