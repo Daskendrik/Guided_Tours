@@ -44,6 +44,10 @@
   table-layout: fixed;
 }
 
+.form_applet_table td {
+  padding: 10px;
+}
+
 .form_applet_table table td:nth-child(odd) {
   text-align: right;
 }

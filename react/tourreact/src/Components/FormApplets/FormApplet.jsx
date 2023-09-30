@@ -1,9 +1,12 @@
 import styles from './FormApplet.module.css';
+import { v4 as uuidv4 } from 'uuid';
+
 const FormApplet = (props) => {
-  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'] } =
-    props;
+  const {
+    UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'],
+    UIBtn = [{ title: 'Кнопка', function: '', ud: uuidv4() }],
+  } = props;
   const numRow = Math.ceil(UIForm.length / 3);
-  console.log(numRow);
   const arrRow = [];
   let colNum = 1;
   for (let i = 1; i <= numRow; i++) {
@@ -11,18 +14,20 @@ const FormApplet = (props) => {
     for (colNum; colNum / i <= 3; colNum++) {
       if (UIForm[colNum - 1]) {
         arr.push(UIForm[colNum - 1]);
-        console.log(arr);
       }
     }
     arrRow.push(arr);
   }
-  console.log(arrRow);
   return (
     <>
       <div className={styles.form_applet}>
         <div className={styles.header}>
-          <div className={styles.title}>Title</div>
-          <div className={styles.button}>Buttons</div>
+          <div className={styles.title}>Информация</div>
+          <div className={styles.button}>
+            {UIBtn.map((btn) => {
+              return <button key={btn.id}>{btn.title}</button>;
+            })}
+          </div>
         </div>
         <div className={styles.form_applet_table}>
           <form>
@@ -35,7 +40,9 @@ const FormApplet = (props) => {
                         return (
                           <>
                             <td key={index}>{td}</td>
-                            <input type="text"></input>
+                            <td>
+                              <input type="text"></input>
+                            </td>
                           </>
                         );
                       })}
