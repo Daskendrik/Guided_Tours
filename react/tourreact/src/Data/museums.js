@@ -16,6 +16,7 @@ const UIBtn = [
   { title: 'Сохранить', function: '', ud: uuidv4() },
 ];
 
+
 // const UIFormData = [
 //   { Name: 'Коломенское', type: 'text' },
 //   { City: 'Москва', type: 'text' },

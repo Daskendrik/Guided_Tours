@@ -6,8 +6,46 @@ import { useState } from 'react';
 
 const Museum = () => {
   const [data, setData] = useState(null);
+  const [numCol, setNumCol] = useState(2);
+  const [arrColum, setArrColum] = useState([
+    {
+      Lable: 'Название',
+      Velue: 'Коломенское',
+      Type: 'text',
+    },
+    {
+      Lable: 'Город',
+      Velue: 'Москва',
+      Type: 'text',
+    },
+    {
+      Lable: 'Адрес',
+      Velue: 'Москва, Коломенское',
+      Type: 'textarea',
+    },
+    {
+      Lable: 'Телефон',
+      Velue: '89264932179',
+      Type: 'tel',
+    },
+    {
+      Lable: 'Стоимость',
+      Velue: 'Тут много чего будет написано',
+      Type: 'textarea',
+    },
+    {
+      Lable: 'Выходной',
+      Velue: 'СБ,ВСК',
+      Type: 'text',
+    },
+    {
+      Lable: 'Коментарий',
+      Velue: 'Тут много чего будет написано',
+      Type: 'textarea',
+    },
+  ]);
   useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos/1')
+    fetch('https://my-json-server.typicode.com/Daskendrik/demo_data/db')
       .then((response) => response.json())
       .then((json) => setData(json))
       .catch((error) => console.log(error))
@@ -15,10 +53,25 @@ const Museum = () => {
   }, []);
 
   console.log(data);
+  // if (data && arrColum === '' && numCol === '') {
+  //   const museum = data.museums[0];
+  //   console.log(museum);
+  //   setNumCol(museum.Colums.length);
+  //   console.log(numCol);
+  //   setArrColum(museum.Colums);
+  //   console.log(arrColum);
+  // } else {
+
+  // }
 
   return (
     <>
-      <FormApplet UIForm={UIForm} UIBtn={UIBtn} />
+      <FormApplet
+        UIForm={UIForm}
+        UIBtn={UIBtn}
+        numCol={numCol}
+        arrColum={arrColum}
+      />
       <ListApplet />
     </>
   );
