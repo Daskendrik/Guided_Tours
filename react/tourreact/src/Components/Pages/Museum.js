@@ -6,7 +6,7 @@ import ListApplet from '../ListApplets/ListApplet';
 import { useState } from 'react';
 
 const Museum = () => {
-  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const [arrColum, setArrColum] = useState([
     {
       Lable: 'Название',
@@ -59,15 +59,20 @@ const Museum = () => {
           'https://my-json-server.typicode.com/Daskendrik/demo_data/db'
         );
         const museum = await res.json();
-        setData(museum);
+        console.log(museum);
+        setArrColum(museum.museums[0].Colums);
       } catch (error) {
         console.log(error);
       }
       console.log('finish');
+      setIsLoading(false);
     }
     fetchData();
   }, []);
-  console.log(data);
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
 
   return (
     <>
