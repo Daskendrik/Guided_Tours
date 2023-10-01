@@ -3,37 +3,26 @@ import { v4 as uuidv4 } from 'uuid';
 
 const FormApplet = (props) => {
   const {
-    UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'],
-    UIBtn = [{ title: 'Кнопка', function: '', ud: uuidv4() }],
-    numCol,
-    arrColum,
+    UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
+    arrColum = [
+      {
+        Lable: 'Стоимость',
+        Velue: 'Тут много чего будет написано',
+        Type: 'textarea',
+        id: uuidv4(),
+      },
+    ],
   } = props;
-  const numRow = Math.ceil(numCol / 3);
   const arrRow = [];
-  const arrRow1 = [];
-  console.log(arrColum);
-  console.log(numRow);
 
   function createArrayOfRow(arr) {
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
-      arrRow1.push(chunk);
+      arrRow.push(chunk);
     }
   }
 
   createArrayOfRow(arrColum);
-  console.log(arrRow1);
-
-  // let colNum = 1;
-  // for (let i = 1; i <= numRow; i++) {
-  //   let arr = [];
-  //   for (colNum; colNum / i <= 3; colNum++) {
-  //     if (UIForm[colNum - 1]) {
-  //       arr.push(UIForm[colNum - 1]);
-  //     }
-  //   }
-  //   arrRow.push(arr);
-  // }
 
   return (
     <>
@@ -50,38 +39,27 @@ const FormApplet = (props) => {
           <form>
             <table>
               <tbody>
-                {arrRow1.map((row) => {
+                {arrRow.map((row, index) => {
                   return (
-                    <tr>
+                    <tr key={index}>
                       {row.map((col) => {
                         return (
-                          <>
-                            <td>{col.Lable}</td>
-                            <td>
-                              <input value={col.Velue} type={col.Type}></input>
-                            </td>
-                          </>
+                          <td key={col.id}>
+                            <div className={styles.form_td_div_lable}>
+                              {col.Lable}
+                            </div>
+                            <div className={styles.form_td_div_value}>
+                              <input
+                                defaultValue={col.Velue}
+                                type={col.Type}
+                              ></input>
+                            </div>
+                          </td>
                         );
                       })}
                     </tr>
                   );
                 })}
-                {/* {arrRow.map((row, index) => {
-                  return (
-                    <tr key={index}>
-                      {row.map((td, index) => {
-                        return (
-                          <>
-                            <td key={index}>{td}</td>
-                            <td>
-                              <input type="text"></input>
-                            </td>
-                          </>
-                        );
-                      })}
-                    </tr>
-                  );
-                })} */}
               </tbody>
             </table>
           </form>

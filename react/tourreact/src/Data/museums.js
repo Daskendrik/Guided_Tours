@@ -12,10 +12,9 @@ const UIForm = [
 ];
 
 const UIBtn = [
-  { title: 'Изменить', function: '', ud: uuidv4() },
-  { title: 'Сохранить', function: '', ud: uuidv4() },
+  { title: 'Изменить', function: '', id: uuidv4() },
+  { title: 'Сохранить', function: '', id: uuidv4() },
 ];
-
 
 // const UIFormData = [
 //   { Name: 'Коломенское', type: 'text' },

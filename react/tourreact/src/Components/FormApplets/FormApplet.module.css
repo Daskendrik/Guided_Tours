@@ -48,15 +48,29 @@
   padding: 10px;
 }
 
-.form_applet_table table td:nth-child(odd) {
+/* .form_applet_table table td:nth-child(odd) {
   text-align: right;
 }
 
 .form_applet_table table td:nth-child(even) {
   text-align: left;
-}
+} */
 
 .form_applet_table input {
   font-size: 16px;
   width: 100%;
+}
+
+.form_td_div_lable {
+  display: inline-block;
+  padding: 2%;
+  text-align: right;
+  width: 46%;
+}
+
+.form_td_div_value {
+  display: inline-block;
+  padding: 2%;
+  text-align: left;
+  width: 46%;
 }
