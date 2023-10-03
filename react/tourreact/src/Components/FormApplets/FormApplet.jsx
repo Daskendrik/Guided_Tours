@@ -1,5 +1,6 @@
 import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
+import FormColum from './FormColum';
 
 const FormApplet = (props) => {
   const {
@@ -49,10 +50,11 @@ const FormApplet = (props) => {
                               {col.Lable}
                             </div>
                             <div className={styles.form_td_div_value}>
-                              <input
+                              <FormColum type={col.Type} velue={col.Velue} />
+                              {/* <input
                                 defaultValue={col.Velue}
                                 type={col.Type}
-                              ></input>
+                              ></input> */}
                             </div>
                           </td>
                         );
