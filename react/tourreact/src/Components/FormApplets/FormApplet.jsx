@@ -1,28 +1,41 @@
 import styles from './FormApplet.module.css';
+import { v4 as uuidv4 } from 'uuid';
+import FormColum from './FormColum';
+import StandartBtn from '../Buttons/StandartBtn';
+
 const FormApplet = (props) => {
-  const { UIForm = ['Name', 'City', 'Phone', 'Some', 'Thing', 'One', 'more'] } =
-    props;
-  const numRow = Math.ceil(UIForm.length / 3);
-  console.log(numRow);
+  const {
+    UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
+    arrColum = [
+      {
+        Lable: 'Стоимость',
+        Velue: 'Тут много чего будет написано',
+        Type: 'textarea',
+        id: uuidv4(),
+      },
+    ],
+  } = props;
   const arrRow = [];
-  let colNum = 1;
-  for (let i = 1; i <= numRow; i++) {
-    let arr = [];
-    for (colNum; colNum / i <= 3; colNum++) {
-      if (UIForm[colNum - 1]) {
-        arr.push(UIForm[colNum - 1]);
-        console.log(arr);
-      }
+
+  function createArrayOfRow(arr) {
+    for (let i = 0; i < arr.length; i += 3) {
+      const chunk = arr.slice(i, i + 3);
+      arrRow.push(chunk);
     }
-    arrRow.push(arr);
   }
-  console.log(arrRow);
+
+  createArrayOfRow(arrColum);
+
   return (
     <>
       <div className={styles.form_applet}>
         <div className={styles.header}>
-          <div className={styles.title}>Title</div>
-          <div className={styles.button}>Buttons</div>
+          <div className={styles.title}>Информация</div>
+          <div className={styles.button}>
+            {UIBtn.map((btn) => {
+              return <StandartBtn key={btn.id} title={btn.title} />;
+            })}
+          </div>
         </div>
         <div className={styles.form_applet_table}>
           <form>
@@ -31,12 +44,18 @@ const FormApplet = (props) => {
                 {arrRow.map((row, index) => {
                   return (
                     <tr key={index}>
-                      {row.map((td, index) => {
+                      {row.map((col) => {
                         return (
-                          <>
-                            <td key={index}>{td}</td>
-                            <input type="text"></input>
-                          </>
+                          <td key={col.id}>
+                            <div className={styles.colume_div}>
+                              <div className={styles.form_td_div_lable}>
+                                {col.Lable}
+                              </div>
+                              <div className={styles.form_td_div_value}>
+                                <FormColum type={col.Type} velue={col.Velue} />
+                              </div>
+                            </div>
+                          </td>
                         );
                       })}
                     </tr>

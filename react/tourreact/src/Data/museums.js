@@ -1,13 +1,6 @@
 // Формирование данных для страницы музея
 import { v4 as uuidv4 } from 'uuid';
 
-function NewColumnData(nameColumn, name, type) {
-  this.nameColumn = nameColumn;
-  this.name = name;
-  this.type = type;
-  this.id = uuidv4();
-}
-
 const UIForm = [
   'Название',
   'Город',
@@ -16,6 +9,11 @@ const UIForm = [
   'Стоимость',
   'Выходной',
   'Коментарий',
+];
+
+const UIBtn = [
+  { title: 'Изменить', function: '', id: uuidv4() },
+  { title: 'Сохранить', function: '', id: uuidv4() },
 ];
 
 // const UIFormData = [
@@ -28,4 +26,4 @@ const UIForm = [
 //   { Comments: 'Коментарий', type: 'textarea' },
 // ];
 
-export { UIForm };
+export { UIForm, UIBtn };

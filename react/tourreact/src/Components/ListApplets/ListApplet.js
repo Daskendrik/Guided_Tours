@@ -11,10 +11,12 @@ const ListApplet = () => {
           <form>
             <table>
               <thead>
-                <td>Number</td>
-                <td>Name</td>
-                <td>Date</td>
-                <td>OK</td>
+                <tr>
+                  <td>Number</td>
+                  <td>Name</td>
+                  <td>Date</td>
+                  <td>OK</td>
+                </tr>
               </thead>
               <tbody>
                 <tr>

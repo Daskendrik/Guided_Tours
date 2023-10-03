@@ -1,0 +1,28 @@
+[
+  {
+    "Name": "Kolomenskoe",
+    "ID": "1",
+    "Colums": [
+      { "Lable": "Название", "Velue": "Коломенское", "Type": "text" },
+      { "Lable": "Город", "Velue": "Москва", "Type": "text" },
+      { "Lable": "Адрес", "Velue": "Москва, Коломенское", "Type": "textarea" },
+      { "Lable": "Телефон", "Velue": "89264932179", "Type": "tel" },
+      {
+        "Lable": "Стоимость",
+        "Velue": "Тут много чего будет написано",
+        "Type": "textarea"
+      },
+      { "Lable": "Выходной", "Velue": "СБ,ВСК", "Type": "text" },
+      {
+        "Lable": "Коментарий",
+        "Velue": "Тут много чего будет написано",
+        "Type": "textarea"
+      },
+      {
+        "Lable": "Коментарий",
+        "Velue": "Тут много чего будет написано",
+        "Type": "textarea"
+      }
+    ]
+  }
+]
