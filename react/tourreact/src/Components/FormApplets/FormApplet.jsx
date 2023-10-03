@@ -1,6 +1,7 @@
 import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import FormColum from './FormColum';
+import StandartBtn from '../Buttons/StandartBtn';
 
 const FormApplet = (props) => {
   const {
@@ -32,7 +33,7 @@ const FormApplet = (props) => {
           <div className={styles.title}>Информация</div>
           <div className={styles.button}>
             {UIBtn.map((btn) => {
-              return <button key={btn.id}>{btn.title}</button>;
+              return <StandartBtn key={btn.id} title={btn.title} />;
             })}
           </div>
         </div>
@@ -51,10 +52,6 @@ const FormApplet = (props) => {
                             </div>
                             <div className={styles.form_td_div_value}>
                               <FormColum type={col.Type} velue={col.Velue} />
-                              {/* <input
-                                defaultValue={col.Velue}
-                                type={col.Type}
-                              ></input> */}
                             </div>
                           </td>
                         );
