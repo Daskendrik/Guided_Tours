@@ -20,6 +20,7 @@
   display: inline-block;
   width: 50%;
   text-align: left;
+  margin: auto;
 }
 
 .button {
@@ -62,11 +63,16 @@ textarea {
   width: 100%;
 }
 
+.colume_div {
+  display: flex;
+}
+
 .form_td_div_lable {
   display: inline-block;
   padding: 2%;
   text-align: right;
   width: 46%;
+  margin: auto;
 }
 
 .form_td_div_value {
@@ -74,4 +80,5 @@ textarea {
   padding: 2%;
   text-align: left;
   width: 46%;
+  margin: auto;
 }

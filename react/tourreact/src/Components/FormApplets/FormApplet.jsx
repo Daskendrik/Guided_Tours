@@ -47,11 +47,13 @@ const FormApplet = (props) => {
                       {row.map((col) => {
                         return (
                           <td key={col.id}>
-                            <div className={styles.form_td_div_lable}>
-                              {col.Lable}
-                            </div>
-                            <div className={styles.form_td_div_value}>
-                              <FormColum type={col.Type} velue={col.Velue} />
+                            <div className={styles.colume_div}>
+                              <div className={styles.form_td_div_lable}>
+                                {col.Lable}
+                              </div>
+                              <div className={styles.form_td_div_value}>
+                                <FormColum type={col.Type} velue={col.Velue} />
+                              </div>
                             </div>
                           </td>
                         );
