@@ -1,5 +1,9 @@
 import styles from './ListApplet.module.css';
-const ListApplet = () => {
+const ListApplet = (props) => {
+  const { arrListColum } = props;
+  const header = arrListColum.find((data) => data.element === 'Header');
+  const body = arrListColum.find((data) => data.element === 'Body');
+  console.log(body);
   return (
     <>
       <div className={styles.list_applet}>
@@ -12,14 +16,13 @@ const ListApplet = () => {
             <table>
               <thead>
                 <tr>
-                  <td>Number</td>
-                  <td>Name</td>
-                  <td>Date</td>
-                  <td>OK</td>
+                  {header.nameColumn.map((col) => {
+                    return <td key={col.id}>{col.title}</td>;
+                  })}
                 </tr>
               </thead>
               <tbody>
-                <tr>
+                {/* <tr>
                   <td>1</td>
                   <td>2</td>
                   <td>2</td>
@@ -30,7 +33,7 @@ const ListApplet = () => {
                   <td>2</td>
                   <td>2</td>
                   <td>2</td>
-                </tr>
+                </tr> */}
               </tbody>
             </table>
           </form>
