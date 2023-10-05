@@ -61,7 +61,14 @@ const Museum = () => {
         { title: 'Размер группы', id: 'members' },
       ],
     },
-    { element: 'Body', elements: [['123', '333', '12.12', '12']] },
+    {
+      element: 'Body',
+      elements: [
+        { number: '123', name: '123', date: '123', members: '10', id: 1 },
+        { number: '123', name: '123', date: '123', members: '10', id: 2 },
+        { number: '123', name: '123', date: '123', members: '10', id: 3 },
+      ],
+    },
   ]);
 
   useEffect(() => {
@@ -89,7 +96,7 @@ const Museum = () => {
   return (
     <>
       <FormApplet UIBtn={UIBtn} arrColum={arrColum} />
-      <ListApplet />
+      <ListApplet arrListColum={arrListColum} />
     </>
   );
 };
