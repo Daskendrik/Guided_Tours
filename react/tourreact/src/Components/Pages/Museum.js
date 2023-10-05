@@ -53,47 +53,15 @@ const Museum = () => {
   ]);
   const [arrListColum, setListColum] = useState([
     {
-      Lable: 'Название',
-      Velue: 'Заглушка',
-      Type: 'text',
-      id: uuidv4(),
+      element: 'Header',
+      nameColumn: [
+        { title: 'Номер тура', id: 'number' },
+        { title: 'Название тура', id: 'name' },
+        { title: 'Дата посещения', id: 'date' },
+        { title: 'Размер группы', id: 'members' },
+      ],
     },
-    {
-      Lable: 'Город',
-      Velue: 'Москва',
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Адрес',
-      Velue: 'Москва, Коломенское',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Телефон',
-      Velue: '89264932179',
-      Type: 'tel',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Стоимость',
-      Velue: 'Тут много чего будет написано',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Выходной',
-      Velue: 'СБ,ВСК',
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Коментарий',
-      Velue: 'Тут много чего будет написано',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
+    { element: 'Body', elements: [['123', '333', '12.12', '12']] },
   ]);
 
   useEffect(() => {
