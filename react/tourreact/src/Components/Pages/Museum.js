@@ -64,9 +64,9 @@ const Museum = () => {
     {
       element: 'Body',
       elements: [
-        { number: '123', name: '123', date: '123', members: '10', id: 1 },
-        { number: '123', name: '123', date: '123', members: '10', id: 2 },
-        { number: '123', name: '123', date: '123', members: '10', id: 3 },
+        ['123', '123', '123', '10', 1],
+        ['123', '123', '123', '10', 1],
+        ['123', '123', '123', '10', 1],
       ],
     },
   ]);
