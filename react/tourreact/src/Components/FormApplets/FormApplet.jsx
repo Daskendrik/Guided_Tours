@@ -14,6 +14,7 @@ const FormApplet = (props) => {
         id: uuidv4(),
       },
     ],
+    title,
   } = props;
   const arrRow = [];
 
@@ -30,7 +31,7 @@ const FormApplet = (props) => {
     <>
       <div className={styles.form_applet}>
         <div className={styles.header}>
-          <div className={styles.title}>Информация</div>
+          <div className={styles.title}>{title}</div>
           <div className={styles.button}>
             {UIBtn.map((btn) => {
               return <StandartBtn key={btn.id} title={btn.title} />;
