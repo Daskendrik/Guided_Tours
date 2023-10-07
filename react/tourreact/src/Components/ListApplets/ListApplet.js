@@ -1,6 +1,6 @@
 import styles from './ListApplet.module.css';
 const ListApplet = (props) => {
-  const { arrListColum } = props;
+  const { arrListColum, title } = props;
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
   console.log(body);
@@ -8,7 +8,7 @@ const ListApplet = (props) => {
     <>
       <div className={styles.list_applet}>
         <div className={styles.header}>
-          <div className={styles.title}>Title</div>
+          <div className={styles.title}>{title}</div>
           <div className={styles.button}>Buttons</div>
         </div>
         <div className={styles.list_applet_table}>

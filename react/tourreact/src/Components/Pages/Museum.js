@@ -95,8 +95,11 @@ const Museum = () => {
 
   return (
     <>
-      <FormApplet UIBtn={UIBtn} arrColum={arrColum} />
-      <ListApplet arrListColum={arrListColum} />
+      <FormApplet UIBtn={UIBtn} arrColum={arrColum} title="Информация" />
+      <ListApplet
+        arrListColum={arrListColum}
+        title="Ближайшее посещение групп"
+      />
     </>
   );
 };
