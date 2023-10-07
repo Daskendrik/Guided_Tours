@@ -52,3 +52,7 @@
 .list_applet_table table thead {
   background-color: aliceblue;
 }
+
+.list_applet_table table tbody tr:hover {
+  background-color: rgb(243, 210, 120);
+}

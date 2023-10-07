@@ -8,13 +8,13 @@ const FormApplet = (props) => {
     UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
     arrColum = [
       {
-        Lable: 'Стоимость',
-        Velue: 'Тут много чего будет написано',
+        Lable: 'Test',
+        Velue: 'Test',
         Type: 'textarea',
         id: uuidv4(),
       },
     ],
-    title,
+    title = 'Test',
   } = props;
   const arrRow = [];
 

@@ -1,6 +1,26 @@
+import StandartBtn from '../Buttons/StandartBtn';
 import styles from './ListApplet.module.css';
 const ListApplet = (props) => {
-  const { arrListColum, title } = props;
+  const {
+    arrListColum = [
+      {
+        element: 'Header',
+        nameColumn: [
+          { title: 'Test', id: 'number' },
+          { title: 'Test', id: 'name' },
+        ],
+      },
+      {
+        element: 'Body',
+        elements: [
+          ['1234', '123'],
+          ['12345', '123'],
+          ['123567', '123'],
+        ],
+      },
+    ],
+    title = 'Test',
+  } = props;
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
   console.log(body);
@@ -9,7 +29,9 @@ const ListApplet = (props) => {
       <div className={styles.list_applet}>
         <div className={styles.header}>
           <div className={styles.title}>{title}</div>
-          <div className={styles.button}>Buttons</div>
+          <div className={styles.button}>
+            <StandartBtn title="Test" />
+          </div>
         </div>
         <div className={styles.list_applet_table}>
           <form>
