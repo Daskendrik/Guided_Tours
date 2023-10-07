@@ -22,6 +22,15 @@ const ListApplet = (props) => {
                 </tr>
               </thead>
               <tbody>
+                {body.elements.map((row) => {
+                  return (
+                    <tr>
+                      {row.map((col) => {
+                        return <td>{col}</td>;
+                      })}
+                    </tr>
+                  );
+                })}
                 {/* <tr>
                   <td>1</td>
                   <td>2</td>
