@@ -51,6 +51,25 @@ const Museum = () => {
       id: uuidv4(),
     },
   ]);
+  const [arrListColum, setListColum] = useState([
+    {
+      element: 'Header',
+      nameColumn: [
+        { title: 'Номер тура', id: 'number' },
+        { title: 'Название тура', id: 'name' },
+        { title: 'Дата посещения', id: 'date' },
+        { title: 'Размер группы', id: 'members' },
+      ],
+    },
+    {
+      element: 'Body',
+      elements: [
+        ['1234', '123', '123', '10'],
+        ['12345', '123', '123', '10'],
+        ['123567', '123', '123', '10'],
+      ],
+    },
+  ]);
 
   useEffect(() => {
     async function fetchData() {
@@ -76,8 +95,11 @@ const Museum = () => {
 
   return (
     <>
-      <FormApplet UIBtn={UIBtn} arrColum={arrColum} />
-      <ListApplet />
+      <FormApplet UIBtn={UIBtn} arrColum={arrColum} title="Информация" />
+      <ListApplet
+        arrListColum={arrListColum}
+        title="Ближайшее посещение групп"
+      />
     </>
   );
 };

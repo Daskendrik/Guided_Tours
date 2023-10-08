@@ -8,12 +8,13 @@ const FormApplet = (props) => {
     UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
     arrColum = [
       {
-        Lable: 'Стоимость',
-        Velue: 'Тут много чего будет написано',
+        Lable: 'Test',
+        Velue: 'Test',
         Type: 'textarea',
         id: uuidv4(),
       },
     ],
+    title = 'Test',
   } = props;
   const arrRow = [];
 
@@ -30,7 +31,7 @@ const FormApplet = (props) => {
     <>
       <div className={styles.form_applet}>
         <div className={styles.header}>
-          <div className={styles.title}>Информация</div>
+          <div className={styles.title}>{title}</div>
           <div className={styles.button}>
             {UIBtn.map((btn) => {
               return <StandartBtn key={btn.id} title={btn.title} />;
