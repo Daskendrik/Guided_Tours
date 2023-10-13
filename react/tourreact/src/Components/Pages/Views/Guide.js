@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from 'uuid';
 import FormApplet from '../../FormApplets/FormApplet';
 
 const Guide = (props) => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [isReadOnly, setReadOnly] = useState(true);
   //Формирование и изменение первого апплета
   const [nameInfo, setNameInfo] = useState('Test');
   const [cityInfo, setCityInfo] = useState('Test');
@@ -26,7 +28,7 @@ const Guide = (props) => {
           setAdressInfo(dataIntegration.adressInfo);
           setTelInfo(dataIntegration.telInfo);
           setDocumentInfo(dataIntegration.documentInfo);
-          setCommetInfo(dataIntegration.nameInfo);
+          setCommetInfo(dataIntegration.commetInfo);
         }
       } catch (error) {
         console.log(error);
@@ -34,6 +36,7 @@ const Guide = (props) => {
       console.log('finish');
     }
     fetchData();
+    setIsLoading(false);
   }, []);
   data = [
     {
@@ -48,9 +51,36 @@ const Guide = (props) => {
       Type: 'text',
       id: uuidv4(),
     },
+    {
+      Lable: 'Адрес',
+      Velue: adressInfo,
+      Type: 'textare',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Телефон',
+      Velue: telInfo,
+      Type: 'tel',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Паспорт',
+      Velue: documentInfo,
+      Type: 'text',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Комментарий',
+      Velue: commetInfo,
+      Type: 'textarea',
+      id: uuidv4(),
+    },
   ];
   //Конец первого апплета
 
+  if (isLoading) {
+    return <>Loading...</>;
+  }
   return (
     <>
       <FormApplet title="Информация" data={data} />
