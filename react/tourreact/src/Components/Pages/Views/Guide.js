@@ -5,6 +5,7 @@ import FormApplet from '../../FormApplets/FormApplet';
 const Guide = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isReadOnly, setReadOnly] = useState(true);
+
   //Формирование и изменение первого апплета
   const [nameInfo, setNameInfo] = useState('Test');
   const [cityInfo, setCityInfo] = useState('Test');
@@ -83,7 +84,7 @@ const Guide = (props) => {
   }
   return (
     <>
-      <FormApplet title="Информация" data={data} />
+      <FormApplet title="Информация" data={data} isReadOnly={isReadOnly} />
     </>
   );
 };
