@@ -1,11 +1,11 @@
 import './App.css';
-import Restaurant from './Components/Pages/Restaurant';
+import Guide from './Components/Pages/Views/Guide';
 
 function App() {
   return (
     <div className="App">
       <h3>Home</h3>
-      <Restaurant />
+      <Guide />
     </div>
   );
 }

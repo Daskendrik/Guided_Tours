@@ -6,7 +6,7 @@ import StandartBtn from '../Buttons/StandartBtn';
 const FormApplet = (props) => {
   const {
     UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
-    arrColum = [
+    data = [
       {
         Lable: 'Test',
         Velue: 'Test',
@@ -25,7 +25,7 @@ const FormApplet = (props) => {
     }
   }
 
-  createArrayOfRow(arrColum);
+  createArrayOfRow(data);
 
   return (
     <>
