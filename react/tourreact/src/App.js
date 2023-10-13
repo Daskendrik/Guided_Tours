@@ -1,5 +1,5 @@
 import './App.css';
-import Guide from './Components/Pages/Guide';
+import Guide from './Components/Pages/Views/Guide';
 
 function App() {
   return (

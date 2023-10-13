@@ -7,6 +7,8 @@ import { useState } from 'react';
 
 const Museum = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isReadOnly, setReadOnly] = useState(true);
+
   const [arrColum, setArrColum] = useState([
     {
       Lable: 'Название',
