@@ -4,7 +4,7 @@ import Guide from './Components/Pages/Views/Guide';
 function App() {
   return (
     <div className="App">
-      <h3>Home</h3>
+      <h3>Пока что без меню, когда нить тут оно будет</h3>
       <Guide />
     </div>
   );

@@ -15,6 +15,7 @@ const FormApplet = (props) => {
       },
     ],
     title = 'Test',
+    isReadOnly = 'true',
   } = props;
   const arrRow = [];
 
@@ -53,7 +54,11 @@ const FormApplet = (props) => {
                                 {col.Lable}
                               </div>
                               <div className={styles.form_td_div_value}>
-                                <FormColum type={col.Type} velue={col.Velue} />
+                                <FormColum
+                                  readonly={isReadOnly}
+                                  type={col.Type}
+                                  velue={col.Velue}
+                                />
                               </div>
                             </div>
                           </td>
