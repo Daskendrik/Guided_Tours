@@ -5,6 +5,7 @@
   text-align: center;
   background-color: brown;
   width: 100%;
+  border-top: 2px solid black;
 }
 
 .footer div {
