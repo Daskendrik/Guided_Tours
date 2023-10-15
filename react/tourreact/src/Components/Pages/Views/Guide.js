@@ -49,18 +49,6 @@ const Guide = (props) => {
       id: uuidv4(),
     },
     {
-      Lable: 'Город',
-      Velue: cityInfo,
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Адрес',
-      Velue: adressInfo,
-      Type: 'textare',
-      id: uuidv4(),
-    },
-    {
       Lable: 'Телефон',
       Velue: telInfo,
       Type: 'tel',
