@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import FormApplet from '../../FormApplets/FormApplet';
+import ListApplet from '../../ListApplets/ListApplet';
 
 const Guide = (props) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isReadOnly, setReadOnly] = useState(true);
+
   //Формирование и изменение первого апплета
   const [nameInfo, setNameInfo] = useState('Test');
   const [cityInfo, setCityInfo] = useState('Test');
@@ -12,7 +14,8 @@ const Guide = (props) => {
   const [telInfo, setTelInfo] = useState('Test');
   const [documentInfo, setDocumentInfo] = useState('Test');
   const [commetInfo, setCommetInfo] = useState('Test');
-  let data = [];
+  let dataMain = [];
+  let dataList = [];
 
   useEffect(() => {
     async function fetchData() {
@@ -38,23 +41,11 @@ const Guide = (props) => {
     fetchData();
     setIsLoading(false);
   }, []);
-  data = [
+  dataMain = [
     {
       Lable: 'ФИО',
       Velue: nameInfo,
       Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Город',
-      Velue: cityInfo,
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Адрес',
-      Velue: adressInfo,
-      Type: 'textare',
       id: uuidv4(),
     },
     {
@@ -77,13 +68,36 @@ const Guide = (props) => {
     },
   ];
   //Конец первого апплета
+  dataList = [
+    {
+      element: 'Header',
+      nameColumn: [
+        { title: 'Номер тура', id: 'number' },
+        { title: 'Название тура', id: 'name' },
+        { title: 'Дата проведения', id: 'date' },
+      ],
+    },
+    {
+      element: 'Body',
+      elements: [
+        ['1234', '123', '123'],
+        ['12345', '123', '123'],
+        ['123567', '123', '123'],
+      ],
+    },
+  ];
 
   if (isLoading) {
     return <>Loading...</>;
   }
   return (
     <>
-      <FormApplet title="Информация" data={data} />
+      <FormApplet
+        title="Информация о гиде"
+        data={dataMain}
+        isReadOnly={isReadOnly}
+      />
+      <ListApplet title="Ближайшие туры и экскурсии" arrListColum={dataList} />
     </>
   );
 };

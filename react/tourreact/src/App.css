@@ -7,4 +7,9 @@
 .App {
   text-align: center;
   margin: 10px;
+  height: 100%;
+}
+
+body {
+  height: 100%;
 }
