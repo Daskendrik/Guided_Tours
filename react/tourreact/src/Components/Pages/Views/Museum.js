@@ -8,11 +8,11 @@ const Museum = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isReadOnly, setReadOnly] = useState(true);
 
-  //Формирование и изменение первого апплета
   const [nameInfo, setNameInfo] = useState('Test');
   const [telInfo, setTelInfo] = useState('Test');
-  const [documentInfo, setDocumentInfo] = useState('Test');
+  const [cityInfo, setCityInfo] = useState('Test');
   const [commetInfo, setCommetInfo] = useState('Test');
+  const [adtessInfo, setAdtessInfo] = useState('Test');
   let dataMain = [];
   let dataList = [];
 
@@ -27,7 +27,8 @@ const Museum = () => {
         if (!!dataIntegration) {
           setNameInfo(dataIntegration.nameInfo);
           setTelInfo(dataIntegration.telInfo);
-          setDocumentInfo(dataIntegration.documentInfo);
+          setCityInfo(dataIntegration.cityInfo);
+          setAdtessInfo(dataIntegration.adtessInfo);
           setCommetInfo(dataIntegration.commetInfo);
         }
       } catch (error) {
@@ -40,7 +41,7 @@ const Museum = () => {
   }, []);
   dataMain = [
     {
-      Lable: 'ФИО',
+      Lable: 'Название',
       Velue: nameInfo,
       Type: 'text',
       id: uuidv4(),
@@ -52,8 +53,14 @@ const Museum = () => {
       id: uuidv4(),
     },
     {
-      Lable: 'Паспорт',
-      Velue: documentInfo,
+      Lable: 'Город',
+      Velue: cityInfo,
+      Type: 'text',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Адрес',
+      Velue: adtessInfo,
       Type: 'text',
       id: uuidv4(),
     },
@@ -64,7 +71,7 @@ const Museum = () => {
       id: uuidv4(),
     },
   ];
-  //Конец первого апплета
+
   dataList = [
     {
       element: 'Header',
