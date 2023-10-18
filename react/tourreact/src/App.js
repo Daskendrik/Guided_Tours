@@ -1,18 +1,20 @@
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Footer from './Components/Additional/Footer';
-import ListOfBus from './Components/Pages/Lists/ListOfBus';
-import ListOfCompanyBus from './Components/Pages/Lists/ListOfCompanyBus';
-import ListOfGuide from './Components/Pages/Lists/ListOfGuide';
-import ListOfMuseum from './Components/Pages/Lists/ListOfMuseum';
-import ListOfTour from './Components/Pages/Lists/ListOfTour';
-import ListOfRestorant from './Components/Pages/Lists/ListOfRestorant';
+
+import Layout from './Components/Additional/Layout';
+import Calendar from './Components/Additional/Calendar';
 
 function App() {
   return (
     <div className="App">
-      <h3>Пока что без меню, когда нить тут оно будет</h3>
-      <ListOfRestorant />
-      <Footer />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Calendar />} />
+            <Route path="*" element={<h3>Такого пункта неть</h3>} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
