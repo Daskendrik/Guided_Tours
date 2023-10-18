@@ -9,6 +9,7 @@ const MainFormAppletGuide = () => {
   const [documentInfo, setDocumentInfo] = useState('Test');
   const [commetInfo, setCommetInfo] = useState('Test');
   let data = {};
+  let dataArr = [];
   useEffect(() => {
     async function fetchData() {
       try {

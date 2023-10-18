@@ -1,77 +1,20 @@
 import { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { UIBtn } from '../../Data/museums';
-import FormApplet from '../FormApplets/FormApplet';
-import ListApplet from '../ListApplets/ListApplet';
+import FormApplet from '../../FormApplets/FormApplet';
+import ListApplet from '../../ListApplets/ListApplet';
 import { useState } from 'react';
 
 const Museum = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isReadOnly, setReadOnly] = useState(true);
 
-  const [arrColum, setArrColum] = useState([
-    {
-      Lable: 'Название',
-      Velue: 'Заглушка',
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Город',
-      Velue: 'Москва',
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Адрес',
-      Velue: 'Москва, Коломенское',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Телефон',
-      Velue: '89264932179',
-      Type: 'tel',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Стоимость',
-      Velue: 'Тут много чего будет написано',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Выходной',
-      Velue: 'СБ,ВСК',
-      Type: 'text',
-      id: uuidv4(),
-    },
-    {
-      Lable: 'Коментарий',
-      Velue: 'Тут много чего будет написано',
-      Type: 'textarea',
-      id: uuidv4(),
-    },
-  ]);
-  const [arrListColum, setListColum] = useState([
-    {
-      element: 'Header',
-      nameColumn: [
-        { title: 'Номер тура', id: 'number' },
-        { title: 'Название тура', id: 'name' },
-        { title: 'Дата посещения', id: 'date' },
-        { title: 'Размер группы', id: 'members' },
-      ],
-    },
-    {
-      element: 'Body',
-      elements: [
-        ['1234', '123', '123', '10'],
-        ['12345', '123', '123', '10'],
-        ['123567', '123', '123', '10'],
-      ],
-    },
-  ]);
+  const [nameInfo, setNameInfo] = useState('Test');
+  const [telInfo, setTelInfo] = useState('Test');
+  const [cityInfo, setCityInfo] = useState('Test');
+  const [commetInfo, setCommetInfo] = useState('Test');
+  const [adtessInfo, setAdtessInfo] = useState('Test');
+  let dataMain = [];
+  let dataList = [];
 
   useEffect(() => {
     async function fetchData() {
@@ -79,17 +22,74 @@ const Museum = () => {
         const res = await fetch(
           'https://my-json-server.typicode.com/Daskendrik/demo_data/db'
         );
-        const museum = await res.json();
-        console.log(museum);
-        setArrColum(museum.museums[0].Colums);
+        const dataIntegration = await res.json();
+        console.log(dataIntegration);
+        if (!!dataIntegration) {
+          setNameInfo(dataIntegration.nameInfo);
+          setTelInfo(dataIntegration.telInfo);
+          setCityInfo(dataIntegration.cityInfo);
+          setAdtessInfo(dataIntegration.adtessInfo);
+          setCommetInfo(dataIntegration.commetInfo);
+        }
       } catch (error) {
         console.log(error);
       }
       console.log('finish');
-      setIsLoading(false);
     }
     fetchData();
+    setIsLoading(false);
   }, []);
+  dataMain = [
+    {
+      Lable: 'Название',
+      Velue: nameInfo,
+      Type: 'text',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Телефон',
+      Velue: telInfo,
+      Type: 'tel',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Город',
+      Velue: cityInfo,
+      Type: 'text',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Адрес',
+      Velue: adtessInfo,
+      Type: 'text',
+      id: uuidv4(),
+    },
+    {
+      Lable: 'Комментарий',
+      Velue: commetInfo,
+      Type: 'textarea',
+      id: uuidv4(),
+    },
+  ];
+
+  dataList = [
+    {
+      element: 'Header',
+      nameColumn: [
+        { title: 'Номер тура', id: 'number' },
+        { title: 'Название тура', id: 'name' },
+        { title: 'Дата проведения', id: 'date' },
+      ],
+    },
+    {
+      element: 'Body',
+      elements: [
+        ['1234', '123', '123'],
+        ['12345', '123', '123'],
+        ['123567', '123', '123'],
+      ],
+    },
+  ];
 
   if (isLoading) {
     return <>Loading...</>;
@@ -97,11 +97,8 @@ const Museum = () => {
 
   return (
     <>
-      <FormApplet UIBtn={UIBtn} data={arrColum} title="Информация" />
-      <ListApplet
-        arrListColum={arrListColum}
-        title="Ближайшее посещение групп"
-      />
+      <FormApplet data={dataMain} title="Информация" />
+      <ListApplet arrListColum={dataList} title="Ближайшее посещение групп" />
     </>
   );
 };
