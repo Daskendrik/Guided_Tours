@@ -5,7 +5,7 @@ import StandartBtn from '../Buttons/StandartBtn';
 
 const FormApplet = (props) => {
   const {
-    UIBtn = [{ title: 'Кнопка', function: '', id: uuidv4() }],
+    buttons = [{ title: 'Кнопка', function: '', id: uuidv4() }],
     data = [
       {
         Lable: 'Test',
@@ -34,8 +34,10 @@ const FormApplet = (props) => {
         <div className={styles.header}>
           <div className={styles.title}>{title}</div>
           <div className={styles.button}>
-            {UIBtn.map((btn) => {
-              return <StandartBtn key={btn.id} title={btn.title} />;
+            {buttons.map((btn) => {
+              return (
+                <StandartBtn key={btn.id} title={btn.title} func={btn.func} />
+              );
             })}
           </div>
         </div>

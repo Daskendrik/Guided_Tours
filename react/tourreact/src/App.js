@@ -1,12 +1,12 @@
 import './App.css';
 import Footer from './Components/Additional/Footer';
-import Museum from './Components/Pages/Views/Museum';
+import Bus from './Components/Pages/Views/Bus';
 
 function App() {
   return (
     <div className="App">
       <h3>Пока что без меню, когда нить тут оно будет</h3>
-      <Museum />
+      <Bus />
       <Footer />
     </div>
   );
