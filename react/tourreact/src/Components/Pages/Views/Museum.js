@@ -113,7 +113,12 @@ const Museum = () => {
 
   return (
     <>
-      <FormApplet data={dataMain} title="Информация" buttons={buttons} />
+      <FormApplet
+        data={dataMain}
+        title="Информация"
+        buttons={buttons}
+        isReadOnly={isReadOnly}
+      />
       <ListApplet arrListColum={dataList} title="Ближайшее посещение групп" />
     </>
   );

@@ -16,6 +16,7 @@ const Guide = (props) => {
   const [commetInfo, setCommetInfo] = useState('Test');
   let dataMain = [];
   let dataList = [];
+  let buttons = [];
 
   useEffect(() => {
     async function fetchData() {
@@ -87,6 +88,22 @@ const Guide = (props) => {
     },
   ];
 
+  buttons = [
+    {
+      id: 'change',
+      title: 'Изменить',
+      func: function handleSetReadOnly() {
+        setReadOnly(false);
+      },
+    },
+    {
+      id: 'set',
+      title: 'Сохранить',
+      func: function handleSetReadOnly() {
+        setReadOnly(true);
+      },
+    },
+  ];
   if (isLoading) {
     return <>Loading...</>;
   }
@@ -96,6 +113,7 @@ const Guide = (props) => {
         title="Информация о гиде"
         data={dataMain}
         isReadOnly={isReadOnly}
+        buttons={buttons}
       />
       <ListApplet title="Ближайшие туры и экскурсии" arrListColum={dataList} />
     </>
