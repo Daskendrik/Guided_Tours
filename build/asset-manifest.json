@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/guided_tours/static/css/main.4374cd7a.css",
+    "main.js": "/guided_tours/static/js/main.f4dbc71d.js",
+    "index.html": "/guided_tours/index.html",
+    "main.4374cd7a.css.map": "/guided_tours/static/css/main.4374cd7a.css.map",
+    "main.f4dbc71d.js.map": "/guided_tours/static/js/main.f4dbc71d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4374cd7a.css",
+    "static/js/main.f4dbc71d.js"
+  ]
+}
