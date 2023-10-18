@@ -15,6 +15,7 @@ const Museum = () => {
   const [adtessInfo, setAdtessInfo] = useState('Test');
   let dataMain = [];
   let dataList = [];
+  let buttons = [];
 
   useEffect(() => {
     async function fetchData() {
@@ -90,14 +91,29 @@ const Museum = () => {
       ],
     },
   ];
-
+  buttons = [
+    {
+      id: 'change',
+      title: 'Изменить',
+      func: function handleSetReadOnly() {
+        setReadOnly(false);
+      },
+    },
+    {
+      id: 'set',
+      title: 'Сохранить',
+      func: function handleSetReadOnly() {
+        setReadOnly(true);
+      },
+    },
+  ];
   if (isLoading) {
     return <>Loading...</>;
   }
 
   return (
     <>
-      <FormApplet data={dataMain} title="Информация" />
+      <FormApplet data={dataMain} title="Информация" buttons={buttons} />
       <ListApplet arrListColum={dataList} title="Ближайшее посещение групп" />
     </>
   );
