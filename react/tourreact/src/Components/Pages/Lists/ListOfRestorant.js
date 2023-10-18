@@ -1,6 +1,6 @@
 import ListApplet from '../../ListApplets/ListApplet';
 
-const ListOfMuseum = () => {
+const LustOfRestorant = () => {
   let dataList = [];
   dataList = [
     {
@@ -25,7 +25,7 @@ const ListOfMuseum = () => {
       ],
     },
   ];
-  return <ListApplet title="Список всех музеев" arrListColum={dataList} />;
+  return <ListApplet title="Список всех ресторанов" arrListColum={dataList} />;
 };
 
-export default ListOfMuseum;
+export default LustOfRestorant;
