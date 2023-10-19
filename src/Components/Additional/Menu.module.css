@@ -5,7 +5,8 @@
   text-align: center;
   background-color: brown;
   width: 100%;
-  height: 6vh;
+  height: clamp(50px, 6vh, 55px);
+  color: white;
 }
 
 .block {
@@ -28,7 +29,7 @@
 }
 
 .calendar:hover {
-  background-color: aliceblue;
+  background-color: rgb(250, 35, 35);
   cursor: pointer;
 }
 
@@ -41,7 +42,7 @@ a {
   padding: 2%;
   font-size: 20px;
   text-decoration: none;
-  color: black;
+  color: white;
 }
 
 a:hover {

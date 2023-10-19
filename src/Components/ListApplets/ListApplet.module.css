@@ -51,7 +51,9 @@
 }
 
 .list_applet_table table thead {
-  background-color: aliceblue;
+  background-color: rgb(236, 170, 129, 0.4);
+  font-size: 20px;
+  text-decoration: solid;
 }
 
 .list_applet_table table tbody tr:hover {
