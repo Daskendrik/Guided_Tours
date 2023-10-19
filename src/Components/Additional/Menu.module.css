@@ -29,7 +29,6 @@
 }
 
 .calendar:hover {
-  background-color: rgb(250, 35, 35);
   cursor: pointer;
 }
 
