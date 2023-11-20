@@ -1,0 +1,17 @@
+const express = require('express');
+const path = require('path');
+// создаем объект приложения
+const app = express();
+app.use(express.static(__dirname + '/build')); //добавлено, чтобы приложение понимало в какой директиве работает
+//адреса в индексе должны быть /static/css/main.a31be556.css
+const PORT = 3000;
+// определяем обработчик для маршрута "/"
+app.get('/', function (req, res) {
+  // отправляем ответ
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
+});
+// начинаем прослушивать подключения на 3000 порту
+app.listen(PORT, () => {
+  console.log(__dirname);
+  console.log(`Server start, port ${PORT}...`);
+}); //запускаем серве
