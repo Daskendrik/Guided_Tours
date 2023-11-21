@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-router.get('/bus', (req, res) => {
+router.get('/getAllbus', (req, res) => {
   res.status(200).json({
     list: [
       ['1234', '123', '123'],

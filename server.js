@@ -1,9 +1,14 @@
 const express = require('express');
 const path = require('path');
+
+const busesRoutes = require('./routes/buses');
 // создаем объект приложения
 const app = express();
 app.use(express.static(__dirname + '/build')); //добавлено, чтобы приложение понимало в какой директиве работает
 //адреса в индексе должны быть /static/css/main.a31be556.css
+
+//localhost:3000/api/buses/getAllbus
+app.use('/api/buses', busesRoutes);
 const PORT = 3000;
 // определяем обработчик для маршрута "/"
 app.get('/', function (req, res) {
