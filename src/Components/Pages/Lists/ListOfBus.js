@@ -1,8 +1,9 @@
+import { useEffect, useState } from 'react';
 import ListApplet from '../../ListApplets/ListApplet';
 
 const ListOfBus = () => {
-  let dataList = [];
-  dataList = [
+  const [isLoading, setIsLoading] = useState(true);
+  const [dataList, setDataList] = useState([
     {
       element: 'Header',
       nameColumn: [
@@ -13,18 +14,37 @@ const ListOfBus = () => {
     },
     {
       element: 'Body',
-      elements: [
-        ['1234', '123', '123'],
-        ['12345', '123', '123'],
-        ['123567', '123', '123'],
-        ['123567', '123', '123'],
-        ['123567', '123', '123'],
-        ['123567', '123', '123'],
-        ['123567', '123', '123'],
-        ['123567', '123', '123'],
-      ],
+      elements: [['Loading...', 'Loading...', 'Loading...']],
     },
-  ];
+  ]);
+
+  console.log('123');
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('http://localhost:3000/api/buses/getAllbus');
+        const dataIntegration = await res.json();
+        console.log(dataIntegration);
+        if (!!dataIntegration) {
+          setDataList(dataIntegration.list);
+          console.log(dataIntegration.list);
+        } else {
+          return <>Ошибка...</>;
+        }
+      } catch (error) {
+        console.log(error);
+        alert('Ошибка, отвалился бек');
+      }
+      console.log('finish');
+    }
+    fetchData();
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return <>Loading...</>;
+  }
+
   return <ListApplet title="Список всех ТС" arrListColum={dataList} />;
 };
 

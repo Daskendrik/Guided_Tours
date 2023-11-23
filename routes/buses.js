@@ -5,9 +5,18 @@ const router = express.Router();
 router.get('/getAllbus', (req, res) => {
   res.status(200).json({
     list: [
-      ['1234', '123', '123'],
-      ['12345', '123', '123'],
-      ['123567', '123', '123'],
+      {
+        element: 'Header',
+        nameColumn: [
+          { title: 'Номер ТС', id: 'numTC' },
+          { title: 'Фирма', id: 'firm' },
+          { title: 'Телефон фирмы', id: 'firmTel' },
+        ],
+      },
+      {
+        element: 'Body',
+        elements: [['1234', '123', '123']],
+      },
     ],
   });
 });

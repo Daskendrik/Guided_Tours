@@ -8,12 +8,11 @@ app.use(express.static(__dirname + '/build')); //добавлено, чтобы 
 //адреса в индексе должны быть /static/css/main.a31be556.css
 
 //Обработка запросов с вью всех ТС
-
 app.use('/api/buses', busesRoutes); //localhost:3000/api/buses/ :getAllbus
 
 const PORT = 3000;
 // определяем обработчик для маршрута "/"
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   // отправляем ответ
   res.sendFile(path.resolve(__dirname, 'build', 'index.html'));
 });
