@@ -10,7 +10,7 @@ app.use(express.static(__dirname + '/build')); //добавлено, чтобы 
 //Обработка запросов с вью всех ТС
 app.use('/api/buses', busesRoutes); //localhost:3000/api/buses/ :getAllbus
 
-const PORT = 3000;
+const PORT = process.env.PORT || 5000;
 // определяем обработчик для маршрута "/"
 app.get('*', function (req, res) {
   // отправляем ответ
