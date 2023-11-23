@@ -22,7 +22,7 @@ const ListOfBus = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('http://localhost:3000/api/buses/getAllbus');
+        const res = await fetch('http://localhost:3001/api/buses/getAllbus');
         const dataIntegration = await res.json();
         console.log(dataIntegration);
         if (!!dataIntegration) {
