@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
 import ListApplet from '../../ListApplets/ListApplet';
+import ErrorServer from '../../Additional/ErrorServer';
 
 const ListOfBus = () => {
+  const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [dataList, setDataList] = useState([
     {
@@ -33,7 +35,7 @@ const ListOfBus = () => {
         }
       } catch (error) {
         console.log(error);
-        alert('Ошибка, отвалился бек');
+        setTextError(error.message);
       }
       console.log('finish');
     }
@@ -41,6 +43,9 @@ const ListOfBus = () => {
     setIsLoading(false);
   }, []);
 
+  if (textError) {
+    return <ErrorServer textError={textError} />;
+  }
   if (isLoading) {
     return <>Loading...</>;
   }
