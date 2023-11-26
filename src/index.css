@@ -19,3 +19,12 @@ body {
 .error b {
   color: red;
 }
+
+.load {
+  background-color: rgb(163, 248, 158);
+  width: 50%;
+  margin: 100px;
+  padding: 10px;
+  font-size: 20px;
+  border: 1px solid rgb(8, 3, 3);
+}

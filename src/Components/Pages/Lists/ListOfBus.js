@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import ListApplet from '../../ListApplets/ListApplet';
 import ErrorServer from '../../Additional/ErrorServer';
+import Loading from '../../Additional/Loading';
 
 const ListOfBus = () => {
   const [textError, setTextError] = useState('');
@@ -38,16 +39,17 @@ const ListOfBus = () => {
         setTextError(error.message);
       }
       console.log('finish');
+      setIsLoading(false);
     }
     fetchData();
-    setIsLoading(false);
   }, []);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
+  console.log(isLoading);
   if (isLoading) {
-    return <>Loading...</>;
+    return <Loading />;
   }
 
   return <ListApplet title="Список всех ТС" arrListColum={dataList} />;
