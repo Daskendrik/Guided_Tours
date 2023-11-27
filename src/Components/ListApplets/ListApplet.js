@@ -1,7 +1,10 @@
 import StandartBtn from '../Buttons/StandartBtn';
 import styles from './ListApplet.module.css';
+import { v4 as uuidv4 } from 'uuid';
+
 const ListApplet = (props) => {
   const {
+    buttons = [{ title: 'Кнопка', function: '', id: uuidv4() }],
     arrListColum = [
       {
         element: 'Header',
@@ -30,7 +33,11 @@ const ListApplet = (props) => {
         <div className={styles.header}>
           <div className={styles.title}>{title}</div>
           <div className={styles.button}>
-            <StandartBtn title="Test" />
+            {buttons.map((btn) => {
+              return (
+                <StandartBtn key={btn.id} title={btn.title} func={btn.func} />
+              );
+            })}
           </div>
         </div>
         <div className={styles.list_applet_table}>

@@ -2,26 +2,54 @@ import { useEffect, useState } from 'react';
 import ListApplet from '../../ListApplets/ListApplet';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
+import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const ListOfBus = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const [dataList, setDataList] = useState([
+  const [dataList, setDataList] = useState([]);
+  const buttons = [
     {
-      element: 'Header',
-      nameColumn: [
-        { title: 'Номер ТС', id: 'numTC' },
-        { title: 'Фирма', id: 'firm' },
-        { title: 'Телефон фирмы', id: 'firmTel' },
-      ],
+      title: 'Создать новую запись',
+      func: function handleCreateTC() {
+        CreateTC();
+      },
+      id: uuidv4(),
     },
     {
-      element: 'Body',
-      elements: [['Loading...', 'Loading...', 'Loading...']],
+      title: 'Удалить запись',
+      func: function handleCreateTC() {
+        DeleteTC();
+      },
+      id: uuidv4(),
     },
-  ]);
+  ];
 
-  console.log('123');
+  const CreateTC = () => {
+    const data = { login: 'Dasha', data: '01/01/2023' };
+    axios
+      .get('http://localhost:3001/api/buses/createBus', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
+  const DeleteTC = () => {
+    const data = { id: 'asdsad' };
+    axios
+      .get('http://localhost:3001/api/buses/deleteBus', {
+        method: 'POST',
+        body: JSON.stringify(data),
+      })
+      .then((res) => {
+        console.log(res.data);
+      });
+  };
+
   useEffect(() => {
     async function fetchData() {
       try {
@@ -29,10 +57,8 @@ const ListOfBus = () => {
         const dataIntegration = await res.json();
         console.log(dataIntegration);
         if (!!dataIntegration) {
-          setDataList(dataIntegration.list);
-          console.log(dataIntegration.list);
-        } else {
-          return <>Ошибка...</>;
+          setDataList(dataIntegration.req);
+          console.log(dataIntegration.req);
         }
       } catch (error) {
         console.log(error);
@@ -52,7 +78,13 @@ const ListOfBus = () => {
     return <Loading />;
   }
 
-  return <ListApplet title="Список всех ТС" arrListColum={dataList} />;
+  return (
+    <ListApplet
+      title="Список всех ТС"
+      arrListColum={dataList}
+      buttons={buttons}
+    />
+  );
 };
 
 export default ListOfBus;
