@@ -24,6 +24,7 @@ const ListApplet = (props) => {
       },
     ],
     title = 'Test',
+    changeTarget = handleSetTargetRow,
   } = props;
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
@@ -59,7 +60,7 @@ const ListApplet = (props) => {
               <tbody>
                 {body.elements.map((row, index) => {
                   return (
-                    <tr key={row[0]} id={row[0]} onClick={handleSetTargetRow}>
+                    <tr key={row[0]} id={row[0]} onClick={changeTarget}>
                       {row.map((col, index) => {
                         return <td key={index}>{col}</td>;
                       })}

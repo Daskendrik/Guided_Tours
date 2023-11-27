@@ -9,6 +9,7 @@ const ListOfBus = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [dataList, setDataList] = useState([]);
+  const [targetRow, setTargetRow] = useState('');
   const buttons = [
     {
       title: 'Создать новую запись',
@@ -39,15 +40,20 @@ const ListOfBus = () => {
   };
 
   const DeleteTC = () => {
-    const data = { id: 'asdsad' };
+    const data = { id: { targetRow } };
     axios
       .get('http://localhost:3001/api/buses/deleteBus', {
         method: 'POST',
-        body: JSON.stringify(data),
+        data: JSON.stringify({ id: { targetRow } }),
       })
       .then((res) => {
         console.log(res.data);
       });
+  };
+
+  const handleSetTargetRow = (e) => {
+    setTargetRow(e.target.parentElement.id);
+    console.log(targetRow);
   };
 
   useEffect(() => {
@@ -83,6 +89,7 @@ const ListOfBus = () => {
       title="Список всех ТС"
       arrListColum={dataList}
       buttons={buttons}
+      changeTarget={handleSetTargetRow}
     />
   );
 };
