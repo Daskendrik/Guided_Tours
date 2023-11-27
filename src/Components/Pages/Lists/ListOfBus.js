@@ -40,11 +40,10 @@ const ListOfBus = () => {
   };
 
   const DeleteTC = () => {
-    const data = { id: { targetRow } };
     axios
       .get('http://localhost:3001/api/buses/deleteBus', {
         method: 'POST',
-        data: JSON.stringify({ id: { targetRow } }),
+        params: { targetRow },
       })
       .then((res) => {
         console.log(res.data);
