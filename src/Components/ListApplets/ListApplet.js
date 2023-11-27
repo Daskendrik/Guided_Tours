@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import StandartBtn from '../Buttons/StandartBtn';
 import styles from './ListApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -26,7 +27,12 @@ const ListApplet = (props) => {
   } = props;
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
-  console.log(body);
+  const [targetRow, setTargetRow] = useState('');
+
+  const handleSetTargetRow = (e) => {
+    setTargetRow(e.target.parentElement.id);
+  };
+
   return (
     <>
       <div className={styles.list_applet}>
@@ -51,9 +57,9 @@ const ListApplet = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {body.elements.map((row) => {
+                {body.elements.map((row, index) => {
                   return (
-                    <tr key={row[0]}>
+                    <tr key={row[0]} id={row[0]} onClick={handleSetTargetRow}>
                       {row.map((col, index) => {
                         return <td key={index}>{col}</td>;
                       })}
