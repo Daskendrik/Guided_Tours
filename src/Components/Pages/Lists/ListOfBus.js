@@ -30,23 +30,29 @@ const ListOfBus = () => {
   const CreateTC = () => {
     const data = { login: 'Dasha', data: '01/01/2023' };
     axios
-      .get('http://localhost:3001/api/buses/createBus', {
-        method: 'POST',
+      .put('http://localhost:3001/api/buses/createBus', {
         body: JSON.stringify(data),
       })
       .then((res) => {
         console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setTextError(error.message);
       });
   };
 
   const DeleteTC = () => {
     axios
-      .get('http://localhost:3001/api/buses/deleteBus', {
-        method: 'POST',
+      .delete('http://localhost:3001/api/buses/deleteBus', {
         params: { targetRow },
       })
       .then((res) => {
         console.log(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        setTextError(error.message);
       });
   };
 
