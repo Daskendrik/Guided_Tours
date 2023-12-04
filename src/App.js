@@ -9,6 +9,7 @@ import ListOfCompanyBus from './Components/Pages/Lists/ListOfCompanyBus';
 import ListOfGuide from './Components/Pages/Lists/ListOfGuide';
 import ListOfRestorant from './Components/Pages/Lists/ListOfRestorant';
 import ListOfTour from './Components/Pages/Lists/ListOfTour';
+import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             <Route path="restorant" element={<ListOfRestorant />} />
             <Route path="tour" element={<ListOfTour />} />
             <Route path="сalendar" element={<Calendar />} />
+            <Route path="type_lov" element={<ListOfTypeLOV />} />
           </Route>
         </Routes>
       </BrowserRouter>

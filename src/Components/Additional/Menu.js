@@ -29,7 +29,9 @@ const Menu = () => {
           <NavLink to="сalendar">Календарь</NavLink>
         </div>
         <div className={styles.block}>
-          <h3>Описание стандартных туров</h3>
+          <div className={styles.link}>
+            <NavLink to="type_lov">Справчонки</NavLink>
+          </div>
         </div>
       </div>
     </>
