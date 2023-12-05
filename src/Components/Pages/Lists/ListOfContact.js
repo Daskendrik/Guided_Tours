@@ -5,36 +5,14 @@ import Loading from '../../Additional/Loading';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 
-const ListOfTypeLOV = () => {
+const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
   const [targetRow, setTargetRow] = useState(''); //выбранная запись
-  const [isEdit, setIsEdit] = useState(false);
   const buttons = [
     {
       title: 'Создать новую запись',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
-      id: uuidv4(),
-    },
-    {
-      title: 'Удалить запись',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
-      id: uuidv4(),
-    },
-    {
-      title: 'Редактировать',
-      func: function handleEdit() {
-        console.log('Заглушка');
-      },
-      id: uuidv4(),
-    },
-    {
-      title: 'Сохранить',
       func: function handleCreateTC() {
         console.log('Заглушка');
       },
@@ -50,7 +28,7 @@ const ListOfTypeLOV = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('http://localhost:3001/api/type_lov/get');
+        const res = await fetch('http://localhost:3001/api/contact/getAll');
         const dataIntegration = await res.json();
         console.log(dataIntegration);
         if (!!dataIntegration) {
@@ -78,7 +56,7 @@ const ListOfTypeLOV = () => {
   return (
     <>
       <ListApplet
-        title="Список всех ТС"
+        title="Контакты"
         arrListColum={dataList}
         buttons={buttons}
         changeTarget={handleSetTargetRow}
@@ -87,4 +65,4 @@ const ListOfTypeLOV = () => {
   );
 };
 
-export default ListOfTypeLOV;
+export default ListOfContact;

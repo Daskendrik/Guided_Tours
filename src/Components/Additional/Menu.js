@@ -32,6 +32,9 @@ const Menu = () => {
           <div className={styles.link}>
             <NavLink to="type_lov">Справчонки</NavLink>
           </div>
+          <div className={styles.link}>
+            <NavLink to="contact">Контакты</NavLink>
+          </div>
         </div>
       </div>
     </>
