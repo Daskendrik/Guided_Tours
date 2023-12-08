@@ -30,7 +30,7 @@ const Menu = () => {
         </div>
         <div className={styles.block}>
           <div className={styles.link}>
-            <NavLink to="type_lov">Справчонки</NavLink>
+            <NavLink to="type_lov">Справочнки</NavLink>
           </div>
           <div className={styles.link}>
             <NavLink to="contact">Контакты</NavLink>

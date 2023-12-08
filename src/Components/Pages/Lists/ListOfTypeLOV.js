@@ -78,7 +78,7 @@ const ListOfTypeLOV = () => {
   return (
     <>
       <ListApplet
-        title="Список всех ТС"
+        title="Справочники"
         arrListColum={dataList}
         buttons={buttons}
         changeTarget={handleSetTargetRow}
