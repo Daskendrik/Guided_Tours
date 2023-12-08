@@ -59,3 +59,7 @@
 .list_applet_table table tbody tr:hover {
   background-color: rgb(243, 210, 120);
 }
+
+td:nth-child(1) {
+  width: 5%;
+}
