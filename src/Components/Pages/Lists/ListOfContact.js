@@ -4,12 +4,14 @@ import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
+import ModalSeach from '../../Additional/ModalSeach';
 
 const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
-  const [targetRow, setTargetRow] = useState(''); //выбранная запись
+  const [targetRow, setTargetRow] = useState('11111'); //выбранная запись
+  const [search, setSearch] = useState('');
   const buttons = [
     {
       title: 'Создать новую запись',
@@ -18,7 +20,19 @@ const ListOfContact = () => {
       },
       id: uuidv4(),
     },
+    {
+      title: 'Найти',
+      func: function handleCreateTC() {
+        findContact();
+      },
+      id: uuidv4(),
+    },
   ];
+
+  const findContact = () => {
+    console.log('тык');
+    window.location.href = '#openModal';
+  };
 
   const handleSetTargetRow = (e) => {
     setTargetRow(e.target.parentElement.id);
@@ -28,7 +42,11 @@ const ListOfContact = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('http://localhost:3001/api/contact/getAll');
+        const url = search
+          ? `http://localhost:3001/api/contact/getAll/${search}`
+          : 'http://localhost:3001/api/contact/getAll';
+        console.log(url);
+        const res = await fetch(url);
         const dataIntegration = await res.json();
         console.log(dataIntegration);
         if (!!dataIntegration) {
@@ -55,6 +73,7 @@ const ListOfContact = () => {
 
   return (
     <>
+      <ModalSeach />
       <ListApplet
         title="Контакты"
         arrListColum={dataList}
