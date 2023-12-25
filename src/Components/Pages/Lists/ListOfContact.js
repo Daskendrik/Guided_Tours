@@ -32,7 +32,18 @@ const ListOfContact = () => {
       },
       id: uuidv4(),
     },
+    {
+      title: 'Очистить поиск',
+      func: function handleClearSeach() {
+        clearSeach();
+      },
+      id: uuidv4(),
+    },
   ];
+
+  const clearSeach = () => {
+    setSearch('');
+  };
 
   const findContact = () => {
     console.log('тык');
