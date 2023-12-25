@@ -3,11 +3,13 @@ import StandartBtn from '../Buttons/StandartBtn';
 const ModalSeach = (props) => {
   const {
     title = 'Поиск',
-    table = 'table',
     arrcol = [
       { id: 'col1', name: 'Фамилия' },
       { id: 'col2', name: 'Телефон' },
     ],
+    seach = () => {
+      console.log('Поиск дефолт');
+    },
   } = props;
   return (
     <>
@@ -28,14 +30,14 @@ const ModalSeach = (props) => {
                       <tr key={element.id}>
                         <td>{element.name}</td>
                         <td>
-                          <input></input>
+                          <input id={element.id}></input>
                         </td>
                       </tr>
                     );
                   })}
                 </tbody>
               </table>
-              <StandartBtn title="Поиск" />
+              <StandartBtn title="Поиск" func={seach} />
             </div>
           </div>
         </div>

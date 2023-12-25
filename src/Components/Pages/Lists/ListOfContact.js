@@ -5,6 +5,7 @@ import Loading from '../../Additional/Loading';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import ModalSeach from '../../Additional/ModalSeach';
+import $ from 'jquery';
 
 const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
@@ -12,6 +13,10 @@ const ListOfContact = () => {
   const [dataList, setDataList] = useState([]); //данные из бд
   const [targetRow, setTargetRow] = useState('11111'); //выбранная запись
   const [search, setSearch] = useState('');
+  const seachFilds = [
+    { id: 'Surname', name: 'Фамилия' },
+    { id: 'Phone', name: 'Телефон' },
+  ];
   const buttons = [
     {
       title: 'Создать новую запись',
@@ -31,12 +36,30 @@ const ListOfContact = () => {
 
   const findContact = () => {
     console.log('тык');
+    $('#Phone').val('');
+    $('#Surname').val('');
     window.location.href = '#openModal';
   };
 
   const handleSetTargetRow = (e) => {
     setTargetRow(e.target.parentElement.id);
     console.log(targetRow);
+  };
+
+  const handleSetSeache = () => {
+    console.log('поиск');
+    const phone = $('#Phone').val();
+    const surname = $('#Surname').val();
+    if (phone && surname) {
+      setSearch(`?phone=${phone}&surname=${surname}`);
+    } else if (phone) {
+      setSearch(`?phone=${phone}`);
+    } else if (surname) {
+      setSearch(`?surname=${surname}`);
+    } else {
+      setSearch('');
+    }
+    window.location.href = '#close';
   };
 
   useEffect(() => {
@@ -61,7 +84,7 @@ const ListOfContact = () => {
       setIsLoading(false);
     }
     fetchData();
-  }, []);
+  }, [search]);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
@@ -73,7 +96,7 @@ const ListOfContact = () => {
 
   return (
     <>
-      <ModalSeach />
+      <ModalSeach arrcol={seachFilds} seach={handleSetSeache} />
       <ListApplet
         title="Контакты"
         arrListColum={dataList}
