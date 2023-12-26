@@ -3,7 +3,6 @@ import ListApplet from '../../ListApplets/ListApplet';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import { v4 as uuidv4 } from 'uuid';
-import axios from 'axios';
 import ModalSeach from '../../Additional/ModalSeach';
 import $ from 'jquery';
 
@@ -11,7 +10,7 @@ const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
-  const [targetRow, setTargetRow] = useState('11111'); //выбранная запись
+  const [targetRow, setTargetRow] = useState('Запись не выбрана'); //выбранная запись
   const [search, setSearch] = useState('');
   const seachFilds = [
     { id: 'Surname', name: 'Фамилия' },
@@ -19,7 +18,7 @@ const ListOfContact = () => {
   ];
   const buttons = [
     {
-      title: 'Создать новую запись',
+      title: 'Создать новый',
       func: function handleCreateTC() {
         console.log('Заглушка');
       },
@@ -27,7 +26,7 @@ const ListOfContact = () => {
     },
     {
       title: 'Найти',
-      func: function handleCreateTC() {
+      func: function handleFindContact() {
         findContact();
       },
       id: uuidv4(),
@@ -46,7 +45,6 @@ const ListOfContact = () => {
   };
 
   const findContact = () => {
-    console.log('тык');
     $('#Phone').val('');
     $('#Surname').val('');
     window.location.href = '#openModal';
@@ -58,7 +56,6 @@ const ListOfContact = () => {
   };
 
   const handleSetSeache = () => {
-    console.log('поиск');
     const phone = $('#Phone').val();
     const surname = $('#Surname').val();
     if (phone && surname) {
@@ -79,19 +76,14 @@ const ListOfContact = () => {
         const url = search
           ? `http://localhost:3001/api/contact/getAll/${search}`
           : 'http://localhost:3001/api/contact/getAll';
-        console.log(url);
         const res = await fetch(url);
         const dataIntegration = await res.json();
-        console.log(dataIntegration);
         if (!!dataIntegration) {
           setDataList(dataIntegration.req);
-          console.log(dataIntegration.req);
         }
       } catch (error) {
-        console.log(error);
         setTextError(error.message);
       }
-      console.log('finish');
       setIsLoading(false);
     }
     fetchData();
@@ -100,14 +92,17 @@ const ListOfContact = () => {
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
-  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }
 
   return (
     <>
-      <ModalSeach arrcol={seachFilds} seach={handleSetSeache} />
+      <ModalSeach
+        arrcol={seachFilds}
+        seach={handleSetSeache}
+        title={'Поиск контакта'}
+      />
       <ListApplet
         title="Контакты"
         arrListColum={dataList}
