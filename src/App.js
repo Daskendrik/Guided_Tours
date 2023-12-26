@@ -31,6 +31,7 @@ function App() {
             <Route path="type_lov" element={<ListOfTypeLOV />} />
             <Route path="contact" element={<ListOfContact />} />
             <Route path="contact/:id" element={<Contact />} />
+            <Route path="contact/new" element={<Contact />} />
           </Route>
         </Routes>
       </BrowserRouter>

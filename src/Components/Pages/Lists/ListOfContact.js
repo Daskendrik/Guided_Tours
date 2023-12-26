@@ -23,6 +23,7 @@ const ListOfContact = () => {
         console.log('Заглушка');
       },
       id: uuidv4(),
+      link: '/contact/new',
     },
     {
       title: 'Найти',

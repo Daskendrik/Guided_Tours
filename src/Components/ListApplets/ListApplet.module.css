@@ -60,6 +60,6 @@
   background-color: rgb(243, 210, 120);
 }
 
-td:nth-child(1) {
+.list_applet_table td:nth-child(1) {
   width: 5%;
 }

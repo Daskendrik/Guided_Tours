@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 const ListApplet = (props) => {
   const {
-    buttons = [{ title: 'Кнопка', function: '', id: uuidv4() }],
+    buttons = [{ title: 'Кнопка', function: '', id: uuidv4(), link: '' }],
     arrListColum = [
       {
         element: 'Header',
@@ -42,7 +42,12 @@ const ListApplet = (props) => {
           <div className={styles.button}>
             {buttons.map((btn) => {
               return (
-                <StandartBtn key={btn.id} title={btn.title} func={btn.func} />
+                <StandartBtn
+                  key={btn.id}
+                  title={btn.title}
+                  func={btn.func}
+                  link={btn.link}
+                />
               );
             })}
           </div>
