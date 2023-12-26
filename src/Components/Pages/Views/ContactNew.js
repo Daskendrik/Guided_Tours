@@ -2,8 +2,8 @@ import { useState } from 'react';
 import FormApplet from '../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
 
-const Contact = () => {
-  const data = [
+const ContactNew = () => {
+  const [data, setData] = useState([
     {
       Lable: 'Фамилия*',
       Velue: '',
@@ -46,7 +46,8 @@ const Contact = () => {
       Type: 'text',
       id: 'work',
     },
-  ];
+  ]);
+  const isReadOnly = false;
   const buttons = [
     {
       title: 'Сохранить',
@@ -63,10 +64,6 @@ const Contact = () => {
       id: uuidv4(),
     },
   ];
-  const [isReadOnly, setIsReadOnly] = useState(true);
-  if (window.location.href.indexOf('new') > -1 && isReadOnly === true) {
-    setIsReadOnly(false);
-  }
   return (
     <>
       <FormApplet
@@ -79,4 +76,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default ContactNew;
