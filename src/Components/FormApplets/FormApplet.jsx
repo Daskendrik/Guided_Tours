@@ -9,23 +9,26 @@ const FormApplet = (props) => {
     data = [
       {
         Lable: 'Test',
-        Velue: 'Test',
+        Value: 'Test',
         Type: 'textarea',
         id: uuidv4(),
       },
     ],
     title = 'Test',
     isReadOnly = true,
+    changeData,
   } = props;
   const arrRow = [];
 
   function createArrayOfRow(arr) {
+    console.log(arr);
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
       arrRow.push(chunk);
     }
+    console.log(arrRow);
   }
-
+  console.log(data);
   createArrayOfRow(data);
 
   return (
@@ -46,6 +49,7 @@ const FormApplet = (props) => {
             <table>
               <tbody>
                 {arrRow.map((row, index) => {
+                  console.log(row);
                   return (
                     <tr key={index}>
                       {row.map((col) => {
@@ -59,8 +63,9 @@ const FormApplet = (props) => {
                                 <FormColum
                                   readonly={isReadOnly}
                                   type={col.Type}
-                                  velue={col.Velue}
+                                  value={col.Value}
                                   id={col.id}
+                                  change={changeData}
                                 />
                               </div>
                             </div>

@@ -3,48 +3,59 @@ import FormApplet from '../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
 
 const ContactNew = () => {
+  const changeData = (id, text) => {
+    let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+    console.log(newdate);
+    setData(newdate);
+  };
   const [data, setData] = useState([
     {
       Lable: 'Фамилия*',
-      Velue: '',
+      Value: '',
       Type: 'text',
       id: 'lastName',
     },
     {
       Lable: 'Имя*',
-      Velue: '',
+      Value: '',
       Type: 'text',
       id: 'firstName',
     },
     {
       Lable: 'Отчество',
-      Velue: '',
+      Value: '',
       Type: 'text',
       id: 'patronymic',
     },
     {
       Lable: 'Телефон',
-      Velue: '',
+      Value: '',
       Type: 'tel',
       id: 'tel',
     },
     {
       Lable: 'Тип контакта*',
-      Velue: '',
+      Value: '',
       Type: 'text',
       id: 'type',
     },
     {
       Lable: 'Почта',
-      Velue: '',
+      Value: '',
       Type: 'email',
       id: 'email',
     },
     {
       Lable: 'Компания',
-      Velue: '',
+      Value: '',
       Type: 'text',
       id: 'work',
+    },
+    {
+      Lable: 'Комментарий',
+      Value: '',
+      Type: 'textarea',
+      id: 'comment',
     },
   ]);
   const isReadOnly = false;
@@ -57,7 +68,7 @@ const ContactNew = () => {
       id: uuidv4(),
     },
     {
-      title: 'Редактировать',
+      title: 'Отмена',
       func: function handleCreateTC() {
         console.log('Заглушка');
       },
@@ -71,6 +82,7 @@ const ContactNew = () => {
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
+        changeData={changeData}
       />
     </>
   );
