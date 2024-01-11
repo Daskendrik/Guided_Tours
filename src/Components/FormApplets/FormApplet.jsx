@@ -21,14 +21,11 @@ const FormApplet = (props) => {
   const arrRow = [];
 
   function createArrayOfRow(arr) {
-    console.log(arr);
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
       arrRow.push(chunk);
     }
-    console.log(arrRow);
   }
-  console.log(data);
   createArrayOfRow(data);
 
   return (
@@ -49,7 +46,6 @@ const FormApplet = (props) => {
             <table>
               <tbody>
                 {arrRow.map((row, index) => {
-                  console.log(row);
                   return (
                     <tr key={index}>
                       {row.map((col) => {

@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import FormApplet from '../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 const ContactNew = () => {
   const changeData = (id, text) => {
     let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
-    console.log(newdate);
     setData(newdate);
   };
   const [data, setData] = useState([
@@ -13,19 +13,19 @@ const ContactNew = () => {
       Lable: 'Фамилия*',
       Value: '',
       Type: 'text',
-      id: 'lastName',
+      id: 'last_name',
     },
     {
       Lable: 'Имя*',
       Value: '',
       Type: 'text',
-      id: 'firstName',
+      id: 'first_Name',
     },
     {
       Lable: 'Отчество',
       Value: '',
       Type: 'text',
-      id: 'patronymic',
+      id: 'middle_name',
     },
     {
       Lable: 'Телефон',
@@ -37,19 +37,13 @@ const ContactNew = () => {
       Lable: 'Тип контакта*',
       Value: '',
       Type: 'text',
-      id: 'type',
+      id: 'type_code',
     },
     {
       Lable: 'Почта',
       Value: '',
       Type: 'email',
       id: 'email',
-    },
-    {
-      Lable: 'Компания',
-      Value: '',
-      Type: 'text',
-      id: 'work',
     },
     {
       Lable: 'Комментарий',
@@ -64,6 +58,7 @@ const ContactNew = () => {
       title: 'Сохранить',
       func: function handleCreateTC() {
         console.log('Заглушка');
+        safeData();
       },
       id: uuidv4(),
     },
@@ -75,6 +70,18 @@ const ContactNew = () => {
       id: uuidv4(),
     },
   ];
+
+  const safeData = async () => {
+    console.log('tick');
+    axios
+      .post('http://localhost:3001/api/contact/create', data)
+      .then((res) => {
+        console.log('Контакт сохранен');
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
   return (
     <>
       <FormApplet
