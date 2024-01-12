@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormApplet from '../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
@@ -8,7 +8,21 @@ const ContactNew = () => {
     let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
   };
+
+  const changeID = (text) => {
+    let newdate = data.map((x) => (x.id === 'id' ? { ...x, Value: text } : x));
+    setNewId(text);
+    setData(newdate);
+  };
+
+  const [newId, setNewId] = useState('000');
   const [data, setData] = useState([
+    {
+      Lable: 'Id',
+      Value: '',
+      Type: 'text',
+      id: 'id',
+    },
     {
       Lable: 'Фамилия*',
       Value: '',
@@ -19,7 +33,7 @@ const ContactNew = () => {
       Lable: 'Имя*',
       Value: '',
       Type: 'text',
-      id: 'first_Name',
+      id: 'first_name',
     },
     {
       Lable: 'Отчество',
@@ -70,6 +84,23 @@ const ContactNew = () => {
       id: uuidv4(),
     },
   ];
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('http://localhost:3001/api/contact/getLast');
+        const dataIntegration = await res.json();
+        console.log(dataIntegration);
+        if (!!dataIntegration) {
+          const text = dataIntegration.req + 1;
+          changeID(text);
+        }
+      } catch (error) {
+        // setTextError(error.message);
+      }
+      // setIsLoading(false);
+    }
+    fetchData();
+  }, []);
 
   const safeData = async () => {
     console.log('tick');
@@ -85,7 +116,7 @@ const ContactNew = () => {
   return (
     <>
       <FormApplet
-        title="Контакт"
+        title={`Новый контакт №${newId}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
