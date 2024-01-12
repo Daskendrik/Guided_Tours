@@ -100,6 +100,7 @@ const ContactNew = () => {
       // setIsLoading(false);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const safeData = async () => {
