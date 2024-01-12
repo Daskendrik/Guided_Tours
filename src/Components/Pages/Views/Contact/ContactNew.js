@@ -82,10 +82,8 @@ const ContactNew = () => {
     },
     {
       title: 'Отмена',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
       id: uuidv4(),
+      link: '/contact',
     },
   ];
   useEffect(() => {
