@@ -11,8 +11,8 @@ import ListOfRestorant from './Components/Pages/Lists/ListOfRestorant';
 import ListOfTour from './Components/Pages/Lists/ListOfTour';
 import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
 import ListOfContact from './Components/Pages/Lists/ListOfContact';
-import Contact from './Components/Pages/Views/Contact';
-import ContactNew from './Components/Pages/Views/ContactNew';
+import Contact from './Components/Pages/Views/Contact/Contact';
+import ContactNew from './Components/Pages/Views/Contact/ContactNew';
 
 function App() {
   return (
