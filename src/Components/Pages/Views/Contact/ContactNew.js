@@ -76,7 +76,7 @@ const ContactNew = () => {
       title: 'Сохранить',
       func: function handleCreateTC() {
         console.log('Заглушка');
-        safeData();
+        saveData();
       },
       id: uuidv4(),
     },
@@ -105,7 +105,7 @@ const ContactNew = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const safeData = async () => {
+  const saveData = async () => {
     console.log('tick');
     axios
       .post('http://localhost:3001/api/contact/create', data)

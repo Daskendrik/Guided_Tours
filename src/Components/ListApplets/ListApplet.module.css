@@ -63,3 +63,7 @@
 .list_applet_table td:nth-child(1) {
   width: 5%;
 }
+
+.active_row {
+  background-color: rgb(0, 0, 0);
+}

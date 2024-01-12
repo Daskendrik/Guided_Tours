@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import ListApplet from '../../ListApplets/ListApplet';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
-import { v4 as uuidv4 } from 'uuid';
+import ModalDelete from '../../Additional/ModalDelete';
 import ModalSeach from '../../Additional/ModalSeach';
 import $ from 'jquery';
+import axios from 'axios';
+import { v4 as uuidv4 } from 'uuid';
 
 const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
@@ -39,6 +41,13 @@ const ListOfContact = () => {
       },
       id: uuidv4(),
     },
+    {
+      title: 'Удалить',
+      func: function handleDeleteContact() {
+        deleteContact();
+      },
+      id: uuidv4(),
+    },
   ];
 
   const clearSeach = () => {
@@ -48,12 +57,29 @@ const ListOfContact = () => {
   const findContact = () => {
     $('#Phone').val('');
     $('#Surname').val('');
-    window.location.href = '#openModal';
+    window.location.href = '#openModalSeach';
+  };
+
+  const deleteContact = () => {
+    window.location.href = '#openModalDelete';
+    console.log('УДаление');
+  };
+
+  const handleDeleteRow = async () => {
+    axios
+      .post('http://localhost:3001/api/contact/delete', { targetRow })
+      .then((res) => {
+        console.log('Контакт удален ');
+      })
+      .catch((error) => {
+        setTextError(error.message);
+      });
+    window.location.href = '#close';
+    setTargetRow('');
   };
 
   const handleSetTargetRow = (e) => {
     setTargetRow(e.target.parentElement.id);
-    console.log(targetRow);
   };
 
   const handleSetSeache = () => {
@@ -99,6 +125,7 @@ const ListOfContact = () => {
 
   return (
     <>
+      <ModalDelete id={targetRow} component="контакт" func={handleDeleteRow} />
       <ModalSeach
         arrcol={seachFilds}
         seach={handleSetSeache}
