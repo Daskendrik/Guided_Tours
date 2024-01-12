@@ -2,8 +2,12 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import FormApplet from '../../../FormApplets/FormApplet';
+import ErrorServer from '../../../Additional/ErrorServer';
+import Loading from '../../../Additional/Loading';
 
 const ContactNew = () => {
+  const [textError, setTextError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const changeData = (id, text) => {
     let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
@@ -95,9 +99,9 @@ const ContactNew = () => {
           changeID(text);
         }
       } catch (error) {
-        // setTextError(error.message);
+        setTextError(error.message);
       }
-      // setIsLoading(false);
+      setIsLoading(false);
     }
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -111,9 +115,17 @@ const ContactNew = () => {
         console.log('Контакт сохранен');
       })
       .catch((error) => {
-        console.log(error);
+        setTextError(error.message);
       });
   };
+
+  if (textError) {
+    return <ErrorServer textError={textError} />;
+  }
+  console.log(isLoading);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <FormApplet
