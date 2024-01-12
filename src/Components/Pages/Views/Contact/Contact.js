@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import FormApplet from '../../FormApplets/FormApplet';
+import FormApplet from '../../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
 
 const Contact = () => {
