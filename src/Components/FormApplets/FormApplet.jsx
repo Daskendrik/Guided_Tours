@@ -36,7 +36,12 @@ const FormApplet = (props) => {
           <div className={styles.button}>
             {buttons.map((btn) => {
               return (
-                <StandartBtn key={btn.id} title={btn.title} func={btn.func} />
+                <StandartBtn
+                  key={btn.id}
+                  title={btn.title}
+                  func={btn.func}
+                  link={btn.link}
+                />
               );
             })}
           </div>
