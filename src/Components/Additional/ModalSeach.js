@@ -13,7 +13,7 @@ const ModalSeach = (props) => {
   } = props;
   return (
     <>
-      <div id="openModal" className="modal">
+      <div id="openModalSeach" className="modal">
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
