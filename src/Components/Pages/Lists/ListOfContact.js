@@ -76,6 +76,18 @@ const ListOfContact = () => {
       });
     window.location.href = '#close';
     setTargetRow('');
+    axios
+      .get('http://localhost:3001/api/contact/getAll')
+      .then((res) => {
+        console.log(res.data.req);
+        const dataIntegration = res.data.req;
+        if (!!dataIntegration) {
+          setDataList(dataIntegration);
+        }
+      })
+      .catch((error) => {
+        setTextError(error.message);
+      });
   };
 
   const handleSetTargetRow = (e) => {
@@ -103,6 +115,7 @@ const ListOfContact = () => {
         const url = search
           ? `http://localhost:3001/api/contact/getAll/${search}`
           : 'http://localhost:3001/api/contact/getAll';
+        console.log(targetRow);
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
