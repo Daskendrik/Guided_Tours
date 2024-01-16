@@ -20,3 +20,7 @@ body {
   border-radius: 20px;
   padding: 8px;
 }
+
+.active_row {
+  background-color: rgba(211, 176, 176, 0.493);
+}

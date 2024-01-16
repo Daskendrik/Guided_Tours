@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import StandartBtn from '../Buttons/StandartBtn';
 import styles from './ListApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -24,15 +23,12 @@ const ListApplet = (props) => {
       },
     ],
     title = 'Test',
-    changeTarget = handleSetTargetRow,
+    changeTarget,
+    targetRow,
   } = props;
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
-  const [targetRow, setTargetRow] = useState('');
-
-  const handleSetTargetRow = (e) => {
-    setTargetRow(e.target.parentElement.id);
-  };
+  console.log(targetRow);
 
   return (
     <>
@@ -67,7 +63,17 @@ const ListApplet = (props) => {
                   return (
                     <tr key={row[0]} id={row[0]} onClick={changeTarget}>
                       {row.map((col, index) => {
-                        return <td key={index}>{col}</td>;
+                        console.log(row[0]);
+                        return (
+                          <td
+                            key={index}
+                            className={
+                              +targetRow === row[0] ? 'active_row' : ''
+                            }
+                          >
+                            {col}
+                          </td>
+                        );
                       })}
                     </tr>
                   );

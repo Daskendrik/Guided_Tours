@@ -136,6 +136,7 @@ const ListOfContact = () => {
         arrListColum={dataList}
         buttons={buttons}
         changeTarget={handleSetTargetRow}
+        targetRow={targetRow}
       />
     </>
   );
