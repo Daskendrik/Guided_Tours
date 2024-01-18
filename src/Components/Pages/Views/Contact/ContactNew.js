@@ -54,7 +54,7 @@ const ContactNew = () => {
     {
       Lable: 'Тип контакта*',
       Value: '',
-      Type: 'text',
+      Type: 'select',
       id: 'type_code',
     },
     {

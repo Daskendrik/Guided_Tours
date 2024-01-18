@@ -32,6 +32,13 @@ const FormColum = (props) => {
           onChange={(e) => change(id, e.target.value)}
         ></input>
       );
+    case 'select':
+      return (
+        <select name="select" onChange={(e) => change(id, e.target.value)}>
+          <option value="test1">test1</option>
+          <option value="test2">test2</option>
+        </select>
+      );
     default:
       return (
         <input

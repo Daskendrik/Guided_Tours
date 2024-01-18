@@ -1,9 +1,13 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import FormApplet from '../../FormApplets/FormApplet';
+import axios from 'axios';
+import FormApplet from '../../../FormApplets/FormApplet';
+import ErrorServer from '../../../Additional/ErrorServer';
+import Loading from '../../../Additional/Loading';
 
-const PatternNew = () => {
+const ContactNew = () => {
+  const [textError, setTextError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const changeData = (id, text) => {
     let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
@@ -16,7 +20,6 @@ const PatternNew = () => {
   };
 
   const [newId, setNewId] = useState('000');
-  //Общие данные
   const [data, setData] = useState([
     {
       Lable: 'Id',
@@ -73,22 +76,20 @@ const PatternNew = () => {
       title: 'Сохранить',
       func: function handleCreateTC() {
         console.log('Заглушка');
-        safeData();
+        saveData();
       },
       id: uuidv4(),
     },
     {
       title: 'Отмена',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
       id: uuidv4(),
+      link: '/contact',
     },
   ];
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch('http://localhost:3001/api/contact/getLast'); //Куда стучимся при открытии
+        const res = await fetch('http://localhost:3001/api/contact/getLast'); //тут менять адрес
         const dataIntegration = await res.json();
         console.log(dataIntegration);
         if (!!dataIntegration) {
@@ -96,28 +97,37 @@ const PatternNew = () => {
           changeID(text);
         }
       } catch (error) {
-        // setTextError(error.message);
+        setTextError(error.message);
       }
-      // setIsLoading(false);
+      setIsLoading(false);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const safeData = async () => {
+  const saveData = async () => {
     console.log('tick');
     axios
-      .post('http://localhost:3001/api/contact/create', data) //Куда стучимся при создании
+      .post('http://localhost:3001/api/contact/create', data) ////тут менять адрес
       .then((res) => {
         console.log('Контакт сохранен');
       })
       .catch((error) => {
-        console.log(error);
+        setTextError(error.message);
       });
   };
+
+  if (textError) {
+    return <ErrorServer textError={textError} />;
+  }
+  console.log(isLoading);
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <FormApplet
-        title={`Новый контакт №${newId}`}
+        title={`Новый контакт №${newId}`} //тут менять имя
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
@@ -127,4 +137,4 @@ const PatternNew = () => {
   );
 };
 
-export default PatternNew;
+export default ContactNew;
