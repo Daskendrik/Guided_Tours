@@ -7,10 +7,10 @@ const FormColum = (props) => {
     readonly,
     id = uuidv4(),
     change,
-    arrSelect,
-    changeSelect,
+    arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
   console.log(arrSelect);
+  // if (id === 'id') return;
   switch (type) {
     case 'textarea':
       return (
@@ -42,12 +42,17 @@ const FormColum = (props) => {
         ></input>
       );
     case 'select':
+      console.log(arrSelect);
       return (
         <select name="select" onChange={(e) => change(id, e.target.value)}>
           {arrSelect.map((el) => {
             return (
               <option key={el.id} value={el.code}>
-                {el.name}
+                {el.name.replace(/\\u[\dA-F]{4}/gi, function (match) {
+                  return String.fromCharCode(
+                    parseInt(match.replace(/\\u/g, ''), 16)
+                  );
+                })}
               </option>
             );
           })}
