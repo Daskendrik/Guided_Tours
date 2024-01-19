@@ -112,7 +112,7 @@ const ContactNew = () => {
         const datalov = await res_lov.json();
         console.log(datalov);
         if (!!datalov) {
-          console.log(datalov);
+          console.log(datalov.req);
           setArrSelect(datalov.req);
           changeData('type_code', '', datalov.req);
         }

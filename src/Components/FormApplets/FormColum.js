@@ -44,8 +44,13 @@ const FormColum = (props) => {
     case 'select':
       return (
         <select name="select" onChange={(e) => change(id, e.target.value)}>
-          <option value="test1">test1</option>
-          <option value="test2">test2</option>
+          {arrSelect.map((el) => {
+            return (
+              <option key={el.id} value={el.code}>
+                {el.name}
+              </option>
+            );
+          })}
         </select>
       );
     default:
