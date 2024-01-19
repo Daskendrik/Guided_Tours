@@ -54,6 +54,10 @@ const FormApplet = (props) => {
                   return (
                     <tr key={index}>
                       {row.map((col) => {
+                        let arrSelect = [];
+                        if (col.hasOwnProperty('arrSelect')) {
+                          arrSelect = col.arrSelect;
+                        }
                         return (
                           <td key={col.id}>
                             <div className={styles.colume_div}>
@@ -67,6 +71,7 @@ const FormApplet = (props) => {
                                   value={col.Value}
                                   id={col.id}
                                   change={changeData}
+                                  arrSelect={arrSelect}
                                 />
                               </div>
                             </div>

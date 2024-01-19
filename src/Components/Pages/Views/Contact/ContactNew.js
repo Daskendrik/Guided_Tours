@@ -8,8 +8,16 @@ import Loading from '../../../Additional/Loading';
 const ContactNew = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const changeData = (id, text) => {
-    let newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+  const changeData = (id, text, arrSelect) => {
+    let newdate;
+    if (text) {
+      newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+    } else if (arrSelect) {
+      newdate = data.map((x) =>
+        x.id === id ? { ...x, arrSelect: arrSelect } : x
+      );
+    }
+
     setData(newdate);
   };
 
@@ -19,6 +27,7 @@ const ContactNew = () => {
     setData(newdate);
   };
 
+  const [arrSelect, setArrSelect] = useState('000');
   const [newId, setNewId] = useState('000');
   const [data, setData] = useState([
     {
@@ -56,6 +65,7 @@ const ContactNew = () => {
       Value: '',
       Type: 'select',
       id: 'type_code',
+      arrSelect: arrSelect,
     },
     {
       Lable: 'Почта',
@@ -91,10 +101,20 @@ const ContactNew = () => {
       try {
         const res = await fetch('http://localhost:3001/api/contact/getLast');
         const dataIntegration = await res.json();
-        console.log(dataIntegration);
         if (!!dataIntegration) {
           const text = dataIntegration.req + 1;
           changeID(text);
+        }
+        const search = '?lov=CONTACT';
+        const res_lov = await fetch(
+          `http://localhost:3001/api/type_lov/getlov/${search}`
+        );
+        const datalov = await res_lov.json();
+        console.log(datalov);
+        if (!!datalov) {
+          console.log(datalov);
+          setArrSelect(datalov.req);
+          changeData('type_code', '', datalov.req);
         }
       } catch (error) {
         setTextError(error.message);
@@ -106,7 +126,6 @@ const ContactNew = () => {
   }, []);
 
   const saveData = async () => {
-    console.log('tick');
     axios
       .post('http://localhost:3001/api/contact/create', data)
       .then((res) => {
@@ -120,7 +139,6 @@ const ContactNew = () => {
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
-  console.log(isLoading);
   if (isLoading) {
     return <Loading />;
   }

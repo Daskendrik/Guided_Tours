@@ -1,7 +1,16 @@
 import { v4 as uuidv4 } from 'uuid';
 
 const FormColum = (props) => {
-  const { type, value, readonly, id = uuidv4(), change } = props;
+  const {
+    type,
+    value,
+    readonly,
+    id = uuidv4(),
+    change,
+    arrSelect,
+    changeSelect,
+  } = props;
+  console.log(arrSelect);
   switch (type) {
     case 'textarea':
       return (
