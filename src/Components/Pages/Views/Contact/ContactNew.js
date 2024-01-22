@@ -4,11 +4,12 @@ import axios from 'axios';
 import FormApplet from '../../../FormApplets/FormApplet';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
+import ModalSave from '../../../ModalWin/ModalSave';
 
 const ContactNew = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-
+  const isReadOnly = false;
   const [newId, setNewId] = useState('000');
   const [data, setData] = useState([
     {
@@ -61,7 +62,6 @@ const ContactNew = () => {
       id: 'comment',
     },
   ]);
-  const isReadOnly = false;
   const buttons = [
     {
       title: 'Сохранить',
@@ -98,11 +98,13 @@ const ContactNew = () => {
       .post('http://localhost:3001/api/contact/create', data)
       .then((res) => {
         console.log('Контакт сохранен');
+        window.location.href = '#openModalSave';
       })
       .catch((error) => {
         setTextError(error.message);
       });
   };
+  const goBtn = ['/contact'];
 
   useEffect(() => {
     async function fetchData() {
@@ -130,9 +132,9 @@ const ContactNew = () => {
   if (isLoading) {
     return <Loading />;
   }
-  console.log(data);
   return (
     <>
+      <ModalSave text={`Контакт №${newId} успешно сохранен`} goBtn={goBtn} />
       <FormApplet
         title={`Новый контакт №${newId}`}
         data={data}
