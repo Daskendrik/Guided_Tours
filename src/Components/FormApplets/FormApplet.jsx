@@ -17,7 +17,6 @@ const FormApplet = (props) => {
     title = 'Test',
     isReadOnly = true,
     changeData,
-    arrSelect,
   } = props;
   const arrRow = [];
 

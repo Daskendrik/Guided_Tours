@@ -77,13 +77,14 @@ const ContactNew = () => {
       link: '/contact',
     },
   ];
+
   const changeData = (id, text) => {
     let newdate;
     newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
   };
 
-  const changeID = (text, lov) => {
+  const changeDataFromInegration = (text, lov) => {
     let newdate = data.map((x) => (x.id === 'id' ? { ...x, Value: text } : x));
     newdate = newdate.map((x) =>
       x.id === 'type_code' ? { ...x, arrSelect: lov } : x
@@ -91,25 +92,6 @@ const ContactNew = () => {
     setNewId(text);
     setData(newdate);
   };
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const res = await fetch('http://localhost:3001/api/contact/getLast');
-        const dataIntegration = await res.json();
-        console.log(dataIntegration);
-        if (!!dataIntegration) {
-          const text = dataIntegration.req[0] + 1;
-          const lov = dataIntegration.req[1];
-          changeID(text, lov);
-        }
-      } catch (error) {
-        setTextError(error.message);
-      }
-      setIsLoading(false);
-    }
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const saveData = async () => {
     axios
@@ -121,6 +103,26 @@ const ContactNew = () => {
         setTextError(error.message);
       });
   };
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch('http://localhost:3001/api/contact/getLast');
+        const dataIntegration = await res.json();
+        console.log(dataIntegration);
+        if (!!dataIntegration) {
+          const text = dataIntegration.req[0] + 1;
+          const lov = dataIntegration.req[1];
+          changeDataFromInegration(text, lov);
+        }
+      } catch (error) {
+        setTextError(error.message);
+      }
+      setIsLoading(false);
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
