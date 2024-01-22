@@ -9,7 +9,6 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
-  console.log(arrSelect);
   // if (id === 'id') return;
   switch (type) {
     case 'textarea':
@@ -48,11 +47,7 @@ const FormColum = (props) => {
           {arrSelect.map((el) => {
             return (
               <option key={el.id} value={el.code}>
-                {el.name.replace(/\\u[\dA-F]{4}/gi, function (match) {
-                  return String.fromCharCode(
-                    parseInt(match.replace(/\\u/g, ''), 16)
-                  );
-                })}
+                {el.name}
               </option>
             );
           })}

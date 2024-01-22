@@ -8,28 +8,7 @@ import Loading from '../../../Additional/Loading';
 const ContactNew = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-  const changeData = (id, text) => {
-    let newdate;
-    if (text) {
-      newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
-    } else if (arrSelect) {
-      newdate = data.map((x) =>
-        x.id === id ? { ...x, arrSelect: arrSelect } : x
-      );
-    }
 
-    setData(newdate);
-  };
-
-  const changeID = (text) => {
-    let newdate = data.map((x) => (x.id === 'id' ? { ...x, Value: text } : x));
-    setNewId(text);
-    setData(newdate);
-  };
-
-  const [arrSelect, setArrSelect] = useState([
-    { id: 1, code: '12', name: '23' },
-  ]);
   const [newId, setNewId] = useState('000');
   const [data, setData] = useState([
     {
@@ -67,6 +46,7 @@ const ContactNew = () => {
       Value: '',
       Type: 'select',
       id: 'type_code',
+      arrSelect: [],
     },
     {
       Lable: 'Почта',
@@ -97,26 +77,31 @@ const ContactNew = () => {
       link: '/contact',
     },
   ];
+  const changeData = (id, text) => {
+    let newdate;
+    newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+    setData(newdate);
+  };
+
+  const changeID = (text, lov) => {
+    let newdate = data.map((x) => (x.id === 'id' ? { ...x, Value: text } : x));
+    newdate = newdate.map((x) =>
+      x.id === 'type_code' ? { ...x, arrSelect: lov } : x
+    );
+    setNewId(text);
+    setData(newdate);
+  };
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch('http://localhost:3001/api/contact/getLast');
         const dataIntegration = await res.json();
+        console.log(dataIntegration);
         if (!!dataIntegration) {
-          const text = dataIntegration.req + 1;
-          changeID(text);
+          const text = dataIntegration.req[0] + 1;
+          const lov = dataIntegration.req[1];
+          changeID(text, lov);
         }
-        // const search = '?lov=CONTACT';
-        // const res_lov = await fetch(
-        //   `http://localhost:3001/api/type_lov/getlov/${search}`
-        // );
-        // const datalov = await res_lov.json();
-        // console.log(datalov);
-        // if (!!datalov) {
-        //   console.log(datalov);
-        //   setArrSelect(datalov.req);
-        //   changeData('type_code', '', datalov.req);
-        // }
       } catch (error) {
         setTextError(error.message);
       }
@@ -143,6 +128,7 @@ const ContactNew = () => {
   if (isLoading) {
     return <Loading />;
   }
+  console.log(data);
   return (
     <>
       <FormApplet

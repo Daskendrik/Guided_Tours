@@ -17,6 +17,7 @@ const FormApplet = (props) => {
     title = 'Test',
     isReadOnly = true,
     changeData,
+    arrSelect,
   } = props;
   const arrRow = [];
 
@@ -58,6 +59,7 @@ const FormApplet = (props) => {
                         if (col.hasOwnProperty('arrSelect')) {
                           arrSelect = col.arrSelect;
                         }
+                        console.log(arrSelect);
                         return (
                           <td key={col.id}>
                             <div className={styles.colume_div}>
