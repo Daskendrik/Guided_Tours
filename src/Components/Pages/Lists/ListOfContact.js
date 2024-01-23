@@ -70,24 +70,24 @@ const ListOfContact = () => {
       .post('http://localhost:3001/api/contact/delete', { targetRow })
       .then((res) => {
         console.log('Контакт удален ');
+        setTargetRow('');
+        axios
+          .get('http://localhost:3001/api/contact/getAll')
+          .then((res) => {
+            console.log(res.data.req);
+            const dataIntegration = res.data.req;
+            if (!!dataIntegration) {
+              setDataList(dataIntegration);
+            }
+          })
+          .catch((error) => {
+            setTextError(error.message);
+          });
       })
       .catch((error) => {
         setTextError(error.message);
       });
     window.location.href = '#close';
-    setTargetRow('');
-    axios
-      .get('http://localhost:3001/api/contact/getAll')
-      .then((res) => {
-        console.log(res.data.req);
-        const dataIntegration = res.data.req;
-        if (!!dataIntegration) {
-          setDataList(dataIntegration);
-        }
-      })
-      .catch((error) => {
-        setTextError(error.message);
-      });
   };
 
   const handleSetTargetRow = (e) => {
