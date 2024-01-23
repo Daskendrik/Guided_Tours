@@ -14,6 +14,7 @@ const ListOfContact = () => {
   const [dataList, setDataList] = useState([]); //данные из бд
   const [targetRow, setTargetRow] = useState('Запись не выбрана'); //выбранная запись
   const [search, setSearch] = useState('');
+  const [targetFio, setTargetFio] = useState('');
   const seachFilds = [
     { id: 'Surname', name: 'Фамилия' },
     { id: 'Phone', name: 'Телефон' },
@@ -91,7 +92,12 @@ const ListOfContact = () => {
   };
 
   const handleSetTargetRow = (e) => {
-    setTargetRow(e.target.parentElement.id);
+    const newId = e.target.parentElement.id;
+    setTargetRow(newId);
+    const selectItem = dataList
+      .find((data) => data.element === 'Body')
+      .elements.find((elem) => elem[0] === +newId)[1];
+    setTargetFio(selectItem);
   };
 
   const handleSetSeache = () => {
@@ -138,7 +144,11 @@ const ListOfContact = () => {
 
   return (
     <>
-      <ModalDelete id={targetRow} component="контакт" func={handleDeleteRow} />
+      <ModalDelete
+        name={targetFio}
+        component="контакт"
+        func={handleDeleteRow}
+      />
       <ModalSeach
         arrcol={seachFilds}
         seach={handleSetSeache}

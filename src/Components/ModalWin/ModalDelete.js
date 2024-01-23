@@ -5,7 +5,6 @@ const ModalDelete = (props) => {
   const {
     title = 'Удаление',
     component = 'Констакт',
-    id = '000',
     name = 'ТестУдалить',
     func = () => {
       console.log('удаление');
@@ -25,7 +24,7 @@ const ModalDelete = (props) => {
             </div>
             <div className={styles.modal_body}>
               <p>
-                Вы уверены, что надо удалить {component}:<br></br> ФИО = {name}
+                Вы уверены, что надо удалить {component}:<br></br> {name}
               </p>
               <div className={styles.buttons}>
                 <StandartBtn title="Да" func={func} />
