@@ -22,7 +22,7 @@ const ModalError = (props) => {
                 Закрыть
               </a>
             </div>
-            <div className="modal-body">
+            <div className={styles.modal_body}>
               <p>
                 Ошибка при {doing}. <br></br>Повторите позже или обратитесь к
                 администратору. <br></br>Текст ошибки:<br></br>{' '}

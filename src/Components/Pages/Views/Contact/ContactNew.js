@@ -5,12 +5,14 @@ import FormApplet from '../../../FormApplets/FormApplet';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import ModalSave from '../../../ModalWin/ModalSave';
+import ModalError from '../../../ModalWin/ModalError';
 
 const ContactNew = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = false;
   const [newId, setNewId] = useState('000');
+  const [saveErr, setSaveError] = useState('Нет ошибки');
   const [data, setData] = useState([
     {
       Lable: 'Id',
@@ -97,8 +99,14 @@ const ContactNew = () => {
     axios
       .post('http://localhost:3001/api/contact/create', data)
       .then((res) => {
-        console.log('Контакт сохранен');
-        window.location.href = '#openModalSave';
+        if (res.data.status === 'OK') {
+          console.log('Контакт сохранен');
+          window.location.href = '#openModalSave';
+        } else {
+          window.location.href = '#openModalError';
+          setSaveError(res.data.text);
+        }
+        console.log(res);
       })
       .catch((error) => {
         setTextError(error.message);
@@ -106,6 +114,9 @@ const ContactNew = () => {
   };
   const goBtn = ['/contact'];
 
+  const handleCloserr = () => {
+    window.location.href = '#close';
+  };
   useEffect(() => {
     async function fetchData() {
       try {
@@ -135,6 +146,7 @@ const ContactNew = () => {
   return (
     <>
       <ModalSave text={`Контакт №${newId} успешно сохранен`} goBtn={goBtn} />
+      <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
       <FormApplet
         title={`Новый контакт №${newId}`}
         data={data}
