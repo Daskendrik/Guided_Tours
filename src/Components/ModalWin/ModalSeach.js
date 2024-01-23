@@ -1,4 +1,5 @@
 import StandartBtn from '../Buttons/StandartBtn';
+import styles from './Seach.module.css';
 
 const ModalSeach = (props) => {
   const {
@@ -13,16 +14,16 @@ const ModalSeach = (props) => {
   } = props;
   return (
     <>
-      <div id="openModalSeach" className="modal">
-        <div className="modal-dialog">
-          <div className="modal-content">
-            <div className="modal-header">
-              <h3 className="modal-title">{title}</h3>
-              <a href="#close" title="Close" className="close">
+      <div id="openModalSeach" className={styles.modal}>
+        <div className={styles.modal_dialog}>
+          <div className={styles.modal_content}>
+            <div className={styles.modal_header}>
+              <h3 className={styles.modal_title}>{title}</h3>
+              <a href="#close" title="Close" className={styles.close}>
                 Закрыть
               </a>
             </div>
-            <div className="modal-body">
+            <div className={styles.modal_body}>
               <table>
                 <tbody>
                   {arrcol.map((element) => {
@@ -37,7 +38,9 @@ const ModalSeach = (props) => {
                   })}
                 </tbody>
               </table>
-              <StandartBtn title="Поиск" func={seach} />
+              <div className={styles.buttons}>
+                <StandartBtn title="Поиск" func={seach} />
+              </div>
             </div>
           </div>
         </div>
