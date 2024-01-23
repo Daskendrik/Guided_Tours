@@ -112,7 +112,7 @@ const ContactNew = () => {
         setTextError(error.message);
       });
   };
-  const goBtn = ['/contact'];
+  const goBtn = ['/contact', `/contact/${newId}`];
 
   const handleCloserr = () => {
     window.location.href = '#close';

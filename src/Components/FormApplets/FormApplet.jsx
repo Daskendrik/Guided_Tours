@@ -19,7 +19,6 @@ const FormApplet = (props) => {
     changeData,
   } = props;
   const arrRow = [];
-
   function createArrayOfRow(arr) {
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
@@ -58,7 +57,6 @@ const FormApplet = (props) => {
                         if (col.hasOwnProperty('arrSelect')) {
                           arrSelect = col.arrSelect;
                         }
-                        console.log(arrSelect);
                         return (
                           <td key={col.id}>
                             <div className={styles.colume_div}>

@@ -19,7 +19,7 @@ const ModalSave = (props) => {
               <h4>{text}</h4>
               <div className={styles.buttons}>
                 <StandartBtn title="Вернуться на список" link={goBtn[0]} />
-                <StandartBtn title="Перейти в Карточку" />
+                <StandartBtn title="Перейти в Карточку" link={goBtn[1]} />
               </div>
             </div>
           </div>

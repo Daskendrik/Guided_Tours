@@ -1,76 +1,66 @@
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import FormApplet from '../../../FormApplets/FormApplet';
-// import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
+import ErrorServer from '../../../Additional/ErrorServer';
+import Loading from '../../../Additional/Loading';
+import { useParams } from 'react-router-dom';
 
 const Contact = () => {
-  // const [data, setData] = useState([
-  //   {
-  //     Lable: 'Фамилия*',
-  //     Velue: '',
-  //     Type: 'text',
-  //     id: 'lastName',
-  //   },
-  //   {
-  //     Lable: 'Имя*',
-  //     Velue: '',
-  //     Type: 'text',
-  //     id: 'firstName',
-  //   },
-  //   {
-  //     Lable: 'Отчество',
-  //     Velue: '',
-  //     Type: 'text',
-  //     id: 'patronymic',
-  //   },
-  //   {
-  //     Lable: 'Телефон',
-  //     Velue: '',
-  //     Type: 'tel',
-  //     id: 'tel',
-  //   },
-  //   {
-  //     Lable: 'Тип контакта*',
-  //     Velue: '',
-  //     Type: 'text',
-  //     id: 'type',
-  //   },
-  //   {
-  //     Lable: 'Почта',
-  //     Velue: '',
-  //     Type: 'email',
-  //     id: 'email',
-  //   },
-  //   {
-  //     Lable: 'Компания',
-  //     Velue: '',
-  //     Type: 'text',
-  //     id: 'work',
-  //   },
-  // ]);
-  // const [isReadOnly, setIsReadOnly] = useState(true);
-  // const buttons = [
-  //   {
-  //     title: 'Сохранить',
-  //     func: function handleCreateTC() {
-  //       console.log('Заглушка');
-  //     },
-  //     id: uuidv4(),
-  //   },
-  //   {
-  //     title: 'Редактировать',
-  //     func: function handleCreateTC() {
-  //       console.log('Заглушка');
-  //     },
-  //     id: uuidv4(),
-  //   },
-  // ];
+  const params = useParams();
+  const id = params.id;
+  const [textError, setTextError] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const isReadOnly = true;
+  const buttons = [
+    {
+      title: 'Редактировать',
+      func: function handleCreateTC() {
+        console.log('Заглушка редактировать');
+      },
+      id: uuidv4(),
+    },
+    {
+      title: 'Удалить',
+      id: uuidv4(),
+      func: function handleCreateTC() {
+        console.log('Заглушка удалить');
+      },
+    },
+  ];
+  const [data, setData] = useState([]); //данные из бд
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const seach = `?ID=${id}`;
+        const url = `http://localhost:3001/api/contact/getById/${seach}`;
+
+        const res = await fetch(url);
+        const dataIntegration = await res.json();
+        if (!!dataIntegration) {
+          setData(dataIntegration.req);
+        }
+      } catch (error) {
+        setTextError(error.message);
+      }
+      setIsLoading(false);
+    }
+    fetchData();
+  }, [id]);
+
+  if (textError) {
+    return <ErrorServer textError={textError} />;
+  }
+  if (isLoading) {
+    return <Loading />;
+  }
   return (
     <>
       <FormApplet
-      // title="Контакт"
-      // data={data}
-      // buttons={buttons}
-      // isReadOnly={isReadOnly}
+        title="Контакт"
+        data={data}
+        buttons={buttons}
+        isReadOnly={isReadOnly}
       />
     </>
   );

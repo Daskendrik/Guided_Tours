@@ -67,3 +67,7 @@
 .active_row {
   background-color: rgb(0, 0, 0);
 }
+
+.go_in {
+  color: blue;
+}

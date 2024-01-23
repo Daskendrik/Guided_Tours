@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import StandartBtn from '../Buttons/StandartBtn';
 import styles from './ListApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
@@ -64,16 +65,34 @@ const ListApplet = (props) => {
                     <tr key={row[0]} id={row[0]} onClick={changeTarget}>
                       {row.map((col, index) => {
                         console.log(row[0]);
-                        return (
-                          <td
-                            key={index}
-                            className={
-                              +targetRow === row[0] ? 'active_row' : ''
-                            }
-                          >
-                            {col}
-                          </td>
-                        );
+                        if (index === 1) {
+                          return (
+                            <td
+                              key={index}
+                              className={
+                                +targetRow === row[0] ? 'active_row' : ''
+                              }
+                            >
+                              <Link
+                                className={styles.go_in}
+                                to={row[0].toString()}
+                              >
+                                {col}
+                              </Link>
+                            </td>
+                          );
+                        } else {
+                          return (
+                            <td
+                              key={index}
+                              className={
+                                +targetRow === row[0] ? 'active_row' : ''
+                              }
+                            >
+                              {col}
+                            </td>
+                          );
+                        }
                       })}
                     </tr>
                   );

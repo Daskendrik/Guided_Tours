@@ -94,10 +94,12 @@ const ListOfContact = () => {
   const handleSetTargetRow = (e) => {
     const newId = e.target.parentElement.id;
     setTargetRow(newId);
-    const selectItem = dataList
-      .find((data) => data.element === 'Body')
-      .elements.find((elem) => elem[0] === +newId)[1];
-    setTargetFio(selectItem);
+    if (!!newId) {
+      let selectItem = dataList
+        .find((data) => data.element === 'Body')
+        .elements.find((elem) => elem[0] === +newId)[1];
+      setTargetFio(selectItem);
+    }
   };
 
   const handleSetSeache = () => {
