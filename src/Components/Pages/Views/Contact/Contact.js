@@ -4,6 +4,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import { useParams } from 'react-router-dom';
+import axios from 'axios';
+import ModalDelete from '../../../ModalWin/ModalDelete';
 
 const Contact = () => {
   const params = useParams();
@@ -23,11 +25,29 @@ const Contact = () => {
       title: 'Удалить',
       id: uuidv4(),
       func: function handleCreateTC() {
-        console.log('Заглушка удалить');
+        deleteContact();
       },
     },
   ];
   const [data, setData] = useState([]); //данные из бд
+
+  const deleteContact = () => {
+    window.location.href = '#openModalDelete';
+    console.log('УДаление');
+  };
+
+  const handleDeleteRow = async () => {
+    const targetRow = id;
+    axios
+      .post('http://localhost:3001/api/contact/delete', { targetRow })
+      .then((res) => {
+        console.log('Контакт удален ');
+        window.location.href = '/contact';
+      })
+      .catch((error) => {
+        setTextError(error.message);
+      });
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -56,6 +76,11 @@ const Contact = () => {
   }
   return (
     <>
+      <ModalDelete
+        name="текущий контакт"
+        component="контакт"
+        func={handleDeleteRow}
+      />
       <FormApplet
         title="Контакт"
         data={data}

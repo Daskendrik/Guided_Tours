@@ -135,6 +135,7 @@ const ListOfContact = () => {
       setIsLoading(false);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
   if (textError) {
