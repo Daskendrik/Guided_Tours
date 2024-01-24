@@ -82,7 +82,7 @@ const Contact = () => {
         func={handleDeleteRow}
       />
       <FormApplet
-        title="Контакт"
+        title={`Контакт N${id}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
