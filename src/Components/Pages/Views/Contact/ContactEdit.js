@@ -12,6 +12,7 @@ const ContactEdit = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = false;
+
   const buttons = [
     {
       title: 'Сохранить',
@@ -21,9 +22,7 @@ const ContactEdit = () => {
     {
       title: 'Отмена',
       id: uuidv4(),
-      func: function handleCreateTC() {
-        console.log('Отмена');
-      },
+      link: `/contact`,
     },
   ];
   const [data, setData] = useState([]); //данные из бд
@@ -43,6 +42,7 @@ const ContactEdit = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
+          console.log(dataIntegration);
           setData(dataIntegration.req);
         }
       } catch (error) {
