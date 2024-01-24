@@ -20,6 +20,7 @@ const Contact = () => {
         console.log('Заглушка редактировать');
       },
       id: uuidv4(),
+      link: `/contact/edit/${id}`,
     },
     {
       title: 'Удалить',

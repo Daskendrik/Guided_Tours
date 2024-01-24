@@ -13,6 +13,7 @@ import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
 import ListOfContact from './Components/Pages/Lists/ListOfContact';
 import Contact from './Components/Pages/Views/Contact/Contact';
 import ContactNew from './Components/Pages/Views/Contact/ContactNew';
+import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="contact" element={<ListOfContact />} />
             <Route path="contact/:id" element={<Contact />} />
             <Route path="contact/new" element={<ContactNew />} />
+            <Route path="contact/edit/:id" element={<ContactEdit />} />
           </Route>
         </Routes>
       </BrowserRouter>
