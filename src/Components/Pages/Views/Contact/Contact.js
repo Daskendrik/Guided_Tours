@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
-import FormApplet from '../../../FormApplets/FormApplet';
 import { v4 as uuidv4 } from 'uuid';
-import ErrorServer from '../../../Additional/ErrorServer';
-import Loading from '../../../Additional/Loading';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import ModalDelete from '../../../ModalWin/ModalDelete';
+import FormApplet from '../../../FormApplets/FormApplet';
+import ErrorServer from '../../../Additional/ErrorServer';
+import Loading from '../../../Additional/Loading';
 
 const Contact = () => {
   const params = useParams();

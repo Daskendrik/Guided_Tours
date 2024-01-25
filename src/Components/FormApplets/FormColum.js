@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import styles from './FormColumn.module.css';
 
 const FormColum = (props) => {
   const {
@@ -17,6 +18,7 @@ const FormColum = (props) => {
           defaultValue={value}
           readOnly={readonly}
           id={id}
+          className={readonly ? styles.read_only : ''}
           onChange={(e) => change(id, e.target.value)}
         ></textarea>
       );
@@ -26,6 +28,7 @@ const FormColum = (props) => {
           defaultValue={value}
           type="tel"
           readOnly={readonly}
+          className={readonly ? styles.read_only : ''}
           id={id}
           onChange={(e) => change(id, e.target.value)}
         ></input>
@@ -36,6 +39,7 @@ const FormColum = (props) => {
           defaultValue={value}
           type="email"
           readOnly={readonly}
+          className={readonly ? styles.read_only : ''}
           id={id}
           onChange={(e) => change(id, e.target.value)}
         ></input>
@@ -43,7 +47,11 @@ const FormColum = (props) => {
     case 'select':
       console.log(arrSelect);
       return (
-        <select name="select" onChange={(e) => change(id, e.target.value)}>
+        <select
+          name="select"
+          className={readonly ? styles.read_only : ''}
+          onChange={(e) => change(id, e.target.value)}
+        >
           {arrSelect.map((el) => {
             return (
               <option key={el.id} value={el.code}>
@@ -60,6 +68,7 @@ const FormColum = (props) => {
           readOnly={readonly}
           id={id}
           onChange={(e) => change(id, e.target.value)}
+          className={readonly ? styles.read_only : ''}
         ></input>
       );
   }
