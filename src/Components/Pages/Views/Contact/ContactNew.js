@@ -67,7 +67,7 @@ const ContactNew = () => {
   const buttons = [
     {
       title: 'Сохранить',
-      func: function handleCreateTC() {
+      func: function handleSaveData() {
         console.log('Заглушка');
         saveData();
       },

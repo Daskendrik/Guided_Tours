@@ -5,6 +5,8 @@ import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import ModalError from '../../../ModalWin/ModalError';
+import ModalSave from '../../../ModalWin/ModalSave';
 
 const ContactEdit = () => {
   const params = useParams();
@@ -12,12 +14,17 @@ const ContactEdit = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = false;
+  const [saveErr, setSaveError] = useState('Нет ошибки');
+  const goBtn = ['/contact', `/contact/${id}`];
 
   const buttons = [
     {
       title: 'Сохранить',
       //   link: `/contact/#id=${id}`,
       id: uuidv4(),
+      func: function handleSaveData() {
+        saveData();
+      },
     },
     {
       title: 'Отмена',
@@ -31,6 +38,29 @@ const ContactEdit = () => {
     let newdate;
     newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
+  };
+
+  const handleCloserr = () => {
+    window.location.href = '#close';
+  };
+
+  const saveData = async () => {
+    data.push({ id: 'id', Value: id });
+    axios
+      .post('http://localhost:3001/api/contact/update', data)
+      .then((res) => {
+        if (res.data.status === 'OK') {
+          console.log('Контакт сохранен');
+          window.location.href = '#openModalSave';
+        } else {
+          window.location.href = '#openModalError';
+          setSaveError(res.data.text);
+        }
+        console.log(res);
+      })
+      .catch((error) => {
+        setTextError(error.message);
+      });
   };
 
   useEffect(() => {
@@ -61,6 +91,8 @@ const ContactEdit = () => {
   }
   return (
     <>
+      <ModalSave text={`Контакт №${id} успешно сохранен`} goBtn={goBtn} />
+      <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
       <FormApplet
         title={`Контакт N${id}`}
         data={data}
