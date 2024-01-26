@@ -91,7 +91,7 @@ const New = () => {
   };
 
   const changeDataFromInegration = (text, lov) => {
-    //выгрузка лова и
+    //выгрузка лова и айдишника
     let newdate = data.map((x) => (x.id === 'id' ? { ...x, Value: text } : x));
     newdate = newdate.map((x) =>
       x.id === 'type_code' ? { ...x, arrSelect: lov } : x
