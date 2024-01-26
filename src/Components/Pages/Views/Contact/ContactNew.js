@@ -146,7 +146,7 @@ const ContactNew = () => {
   return (
     <>
       <ModalSave text={`Контакт №${newId} успешно сохранен`} goBtn={goBtn} />
-      <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
+      <ModalError func={handleCloserr} doing="сохранении" err={saveErr} />
       <FormApplet
         title={`Новый контакт №${newId}`}
         data={data}

@@ -10,17 +10,16 @@ import ModalSave from '../../../ModalWin/ModalSave';
 
 const ContactEdit = () => {
   const params = useParams();
-  const id = params.id;
+  const targetRow = params.id;
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = false;
   const [saveErr, setSaveError] = useState('Нет ошибки');
-  const goBtn = ['/contact', `/contact/${id}`];
+  const goBtn = ['/contact', `/contact/${targetRow}`];
 
   const buttons = [
     {
       title: 'Сохранить',
-      //   link: `/contact/#id=${id}`,
       id: uuidv4(),
       func: function handleSaveData() {
         saveData();
@@ -45,7 +44,7 @@ const ContactEdit = () => {
   };
 
   const saveData = async () => {
-    data.push({ id: 'id', Value: id });
+    data.push({ id: 'id', Value: targetRow });
     axios
       .post('http://localhost:3001/api/contact/update', data)
       .then((res) => {
@@ -66,7 +65,7 @@ const ContactEdit = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const seach = `?ID=${id}`;
+        const seach = `?ID=${targetRow}`;
         const url = `http://localhost:3001/api/contact/getById/${seach}`;
 
         const res = await fetch(url);
@@ -81,7 +80,7 @@ const ContactEdit = () => {
       setIsLoading(false);
     }
     fetchData();
-  }, [id]);
+  }, [targetRow]);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
@@ -91,10 +90,13 @@ const ContactEdit = () => {
   }
   return (
     <>
-      <ModalSave text={`Контакт №${id} успешно сохранен`} goBtn={goBtn} />
+      <ModalSave
+        text={`Контакт №${targetRow} успешно сохранен`}
+        goBtn={goBtn}
+      />
       <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
       <FormApplet
-        title={`Контакт N${id}`}
+        title={`Контакт N${targetRow}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}

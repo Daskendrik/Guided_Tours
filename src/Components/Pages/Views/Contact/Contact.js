@@ -9,7 +9,7 @@ import Loading from '../../../Additional/Loading';
 
 const Contact = () => {
   const params = useParams();
-  const id = params.id;
+  const targetRow = params.id;
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = true;
@@ -20,7 +20,7 @@ const Contact = () => {
         console.log('Заглушка редактировать');
       },
       id: uuidv4(),
-      link: `/contact/edit/${id}`,
+      link: `/contact/edit/${targetRow}`,
     },
     {
       title: 'Удалить',
@@ -38,7 +38,6 @@ const Contact = () => {
   };
 
   const handleDeleteRow = async () => {
-    const targetRow = id;
     axios
       .post('http://localhost:3001/api/contact/delete', { targetRow })
       .then((res) => {
@@ -53,7 +52,7 @@ const Contact = () => {
   useEffect(() => {
     async function fetchData() {
       try {
-        const seach = `?ID=${id}`;
+        const seach = `?ID=${targetRow}`;
         const url = `http://localhost:3001/api/contact/getById/${seach}`;
 
         const res = await fetch(url);
@@ -67,7 +66,7 @@ const Contact = () => {
       setIsLoading(false);
     }
     fetchData();
-  }, [id]);
+  }, [targetRow]);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
@@ -83,7 +82,7 @@ const Contact = () => {
         func={handleDeleteRow}
       />
       <FormApplet
-        title={`Контакт N${id}`}
+        title={`Контакт N${targetRow}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
