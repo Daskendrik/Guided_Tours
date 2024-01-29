@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
+import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 import StandartBtn from '../Buttons/StandartBtn';
 import ListOfButtonsPage from '../Buttons/ListOfButtonsPage';
 import styles from './ListApplet.module.css';
-import { v4 as uuidv4 } from 'uuid';
-import { useState } from 'react';
 
 const ListApplet = (props) => {
   const {
