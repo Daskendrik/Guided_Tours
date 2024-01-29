@@ -10,7 +10,6 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
-  // if (id === 'id') return;
   switch (type) {
     case 'textarea':
       return (
@@ -45,7 +44,6 @@ const FormColum = (props) => {
         ></input>
       );
     case 'select':
-      console.log(arrSelect);
       return (
         <select
           name="select"

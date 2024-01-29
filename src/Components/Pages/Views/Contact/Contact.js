@@ -68,6 +68,8 @@ const Contact = () => {
     fetchData();
   }, [targetRow]);
 
+  console.log(data)
+
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
