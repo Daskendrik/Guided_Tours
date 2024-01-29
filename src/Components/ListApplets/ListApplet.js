@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import StandartBtn from '../Buttons/StandartBtn';
+import ListOfButtonsPage from '../Buttons/ListOfButtonsPage';
 import styles from './ListApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
+import { useState } from 'react';
 
 const ListApplet = (props) => {
   const {
@@ -26,9 +28,31 @@ const ListApplet = (props) => {
     title = 'Test',
     changeTarget,
     targetRow,
+    blockSize = 5,
   } = props;
+  const [page, setPage] = useState(0);
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
+
+  let blockDatas = [];
+  for (let i = 0; i < body.elements.length; i += blockSize) {
+    const block = body.elements.slice(i, i + blockSize);
+    blockDatas.push(block);
+  }
+
+  const goNextPage = () => {
+    if (page < blockDatas.length) {
+      let a = page;
+      setPage(a + 1);
+    }
+  };
+
+  const goBackPage = () => {
+    if (page > 0) {
+      let a = page;
+      setPage(a - 1);
+    }
+  };
 
   return (
     <>
@@ -49,7 +73,7 @@ const ListApplet = (props) => {
           </div>
         </div>
         <div className={styles.list_applet_table}>
-          <form>
+          <div>
             <table>
               <thead>
                 <tr>
@@ -59,7 +83,7 @@ const ListApplet = (props) => {
                 </tr>
               </thead>
               <tbody>
-                {body.elements.map((row, index) => {
+                {blockDatas[page].map((row, index) => {
                   return (
                     <tr key={row[0]} id={row[0]} onClick={changeTarget}>
                       {row.map((col, index) => {
@@ -97,7 +121,14 @@ const ListApplet = (props) => {
                 })}
               </tbody>
             </table>
-          </form>
+          </div>
+          <div>
+            <ListOfButtonsPage
+              pageNext={goNextPage}
+              pageBack={goBackPage}
+              page={page + 1}
+            />
+          </div>
         </div>
       </div>
     </>

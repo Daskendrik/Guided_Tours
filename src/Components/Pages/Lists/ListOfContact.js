@@ -7,7 +7,6 @@ import ModalDelete from '../../ModalWin/ModalDelete';
 import $ from 'jquery';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import ListOfButtonsPage from '../../Buttons/ListOfButtonsPage';
 
 const ListOfContact = () => {
   const [textError, setTextError] = useState(''); //ошибка
@@ -20,10 +19,8 @@ const ListOfContact = () => {
     { id: 'Surname', name: 'Фамилия' },
     { id: 'Phone', name: 'Телефон' },
   ];
-  const [page, setPage] = useState(1);
   const numOfRows = 10;
   console.log(dataList);
-  const targetRows = [];
   const buttons = [
     {
       title: 'Создать новый',
@@ -182,7 +179,6 @@ const ListOfContact = () => {
         changeTarget={handleSetTargetRow}
         targetRow={targetRow}
       />
-      <ListOfButtonsPage />
     </>
   );
 };

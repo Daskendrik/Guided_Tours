@@ -17,12 +17,14 @@
 }
 
 .list_applet_table {
-  display: flex;
+  display: block;
   align-items: center;
   justify-content: center;
   border-bottom: 2px solid red;
   border-right: 2px solid red;
   border-left: 2px solid red;
+  border-top: 5px solid red;
+  padding: 10px;
 }
 
 .title {

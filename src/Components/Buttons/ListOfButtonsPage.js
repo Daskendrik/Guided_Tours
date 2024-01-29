@@ -1,9 +1,21 @@
+import StandartBtn from './StandartBtn';
+import styles from './ListOfButtonsPage.module.css';
+
 const ListOfButtonsPage = (props) => {
-  const { target, forward, back } = props;
+  const {
+    page = 1,
+    pageNext = () => {
+      console.log('тык');
+    },
+    pageBack = () => {
+      console.log('тык');
+    },
+  } = props;
   return (
-    <div>
-      <button>Вперед</button>
-      <button>Назад</button>
+    <div className={styles.list_of_btn}>
+      <StandartBtn title="<- Назад" func={pageBack} />
+      <div className={styles.text}>{page}</div>
+      <StandartBtn title="Вперед -> " func={pageNext} />
     </div>
   );
 };

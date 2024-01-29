@@ -1,0 +1,11 @@
+.list_of_btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  font-size: 24px;
+  padding: 10px;
+  text-decoration: underline;
+}
