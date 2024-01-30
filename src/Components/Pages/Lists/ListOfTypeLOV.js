@@ -7,33 +7,32 @@ import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import ModalSeach from '../../ModalWin/ModalSeach';
 import ModalDelete from '../../ModalWin/ModalDelete';
+import FormApplet from '../../FormApplets/FormApplet';
 
 const ListOfTypeLOV = () => {
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
-  const [targetRow, setTargetRow] = useState('Запись не выбрана'); //выбранная запись
+  const [targetRow, setTargetRow] = useState(''); //выбранная запись
   const [search, setSearch] = useState('');
   const [targetFio, setTargetFio] = useState('');
   const seachFilds = [
     { id: 'LOV_type', name: 'Тип лова' },
     { id: 'name', name: 'Отображаемое значение' },
   ];
+  const [data, setData] = useState([]);
   const numOfRows = 10;
   const component = 'type_lov';
   const buttons = [
     {
       title: 'Создать новый',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
       id: uuidv4(),
       link: `/${component}/new`,
     },
     {
       title: 'Найти',
-      func: function handleFindContact() {
-        findContact();
+      func: function handleFindLOV() {
+        findLOV();
       },
       id: uuidv4(),
     },
@@ -46,8 +45,8 @@ const ListOfTypeLOV = () => {
     },
     {
       title: 'Удалить',
-      func: function handleDeleteContact() {
-        deleteContact();
+      func: function handleDeleteLOV() {
+        deleteLOV();
       },
       id: uuidv4(),
     },
@@ -57,15 +56,26 @@ const ListOfTypeLOV = () => {
     setSearch('');
   };
 
-  const findContact = () => {
+  const findLOV = () => {
     $('#Phone').val('');
     $('#Surname').val('');
     window.location.href = '#openModalSeach';
   };
 
-  const deleteContact = () => {
+  const deleteLOV = () => {
     window.location.href = '#openModalDelete';
     console.log('УДаление');
+  };
+
+  const getTargetLov = () => {
+    axios
+      .get(`http://localhost:3001/api/${component}/getById`, { targetRow })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        setTextError(error.message);
+      });
   };
 
   const handleDeleteRow = async () => {
@@ -96,6 +106,7 @@ const ListOfTypeLOV = () => {
   const handleSetTargetRow = (e) => {
     const newId = e.target.parentElement.id;
     setTargetRow(newId);
+    getTargetLov();
     if (!!newId) {
       let selectItem = dataList
         .find((data) => data.element === 'Body')
@@ -128,20 +139,13 @@ const ListOfTypeLOV = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
-          console.log(dataIntegration.req[1].elements);
-          let test = [];
-          for (
-            let i = 0;
-            i < dataIntegration.req[1].elements.length;
-            i += numOfRows
-          ) {
-            const chunk = dataIntegration.req[1].elements.slice(
-              i,
-              i + numOfRows
-            );
-            test.push(chunk);
-          }
-          console.log(test);
+          const firstRow = dataIntegration.req.find(
+            (data) => data.element === 'firstRow'
+          ).elements;
+          const firstRowId = firstRow.find((data) => data.id === 'id'); // без доп констант не работает
+          const ID = firstRowId.Value;
+          setTargetRow(ID);
+          setData(firstRow);
           setDataList(dataIntegration.req);
         }
       } catch (error) {
@@ -153,6 +157,8 @@ const ListOfTypeLOV = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search]);
 
+  console.log(data);
+  console.log(targetRow);
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
@@ -162,23 +168,22 @@ const ListOfTypeLOV = () => {
 
   return (
     <>
-      <ModalDelete
-        name={targetFio}
-        component="контакт"
-        func={handleDeleteRow}
-      />
+      <ModalDelete name={targetFio} component="LOV" func={handleDeleteRow} />
       <ModalSeach
         arrcol={seachFilds}
         seach={handleSetSeache}
-        title={'Поиск контакта'}
+        title={'Поиск LOV'}
       />
       <ListApplet
-        title="Контакты"
+        title="Справочник"
         arrListColum={dataList}
         buttons={buttons}
         changeTarget={handleSetTargetRow}
+        numOfRows
+        blockSize={numOfRows}
         targetRow={targetRow}
       />
+      <FormApplet title="Данные записи справочника" data={data} />
     </>
   );
 };

@@ -122,18 +122,6 @@ const ListOfContact = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
-          let test = [];
-          for (
-            let i = 0;
-            i < dataIntegration.req[1].elements.length;
-            i += numOfRows
-          ) {
-            const chunk = dataIntegration.req[1].elements.slice(
-              i,
-              i + numOfRows
-            );
-            test.push(chunk);
-          }
           setDataList(dataIntegration.req);
         }
       } catch (error) {
@@ -170,6 +158,7 @@ const ListOfContact = () => {
         buttons={buttons}
         changeTarget={handleSetTargetRow}
         targetRow={targetRow}
+        blockSize={numOfRows}
       />
     </>
   );
