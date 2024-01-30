@@ -10,6 +10,7 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
+  console.log(type);
   switch (type) {
     case 'textarea':
       return (
@@ -58,6 +59,21 @@ const FormColum = (props) => {
             );
           })}
         </select>
+      );
+    case 'date':
+      return (
+        <input
+          type="date"
+          readOnly={id === 'created' || id === 'update' ? true : readonly}
+          className={
+            readonly || id === 'created' || id === 'update'
+              ? styles.read_only
+              : ''
+          }
+          id={id}
+          onChange={(e) => change(id, e.target.value)}
+          value={value}
+        ></input>
       );
     default:
       return (
