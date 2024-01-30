@@ -49,13 +49,11 @@ const ContactEdit = () => {
       .post('http://localhost:3001/api/contact/update', data)
       .then((res) => {
         if (res.data.status === 'OK') {
-          console.log('Контакт сохранен');
           window.location.href = '#openModalSave';
         } else {
           window.location.href = '#openModalError';
           setSaveError(res.data.text);
         }
-        console.log(res);
       })
       .catch((error) => {
         setTextError(error.message);
@@ -71,7 +69,6 @@ const ContactEdit = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
-          console.log(dataIntegration);
           setData(dataIntegration.req);
         }
       } catch (error) {

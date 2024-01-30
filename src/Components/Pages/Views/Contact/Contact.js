@@ -16,9 +16,6 @@ const Contact = () => {
   const buttons = [
     {
       title: 'Редактировать',
-      func: function handleCreateTC() {
-        console.log('Заглушка редактировать');
-      },
       id: uuidv4(),
       link: `/contact/edit/${targetRow}`,
     },
@@ -34,14 +31,12 @@ const Contact = () => {
 
   const deleteContact = () => {
     window.location.href = '#openModalDelete';
-    console.log('УДаление');
   };
 
   const handleDeleteRow = async () => {
     axios
       .post('http://localhost:3001/api/contact/delete', { targetRow })
       .then((res) => {
-        console.log('Контакт удален ');
         window.location.href = '/contact';
       })
       .catch((error) => {
@@ -67,8 +62,6 @@ const Contact = () => {
     }
     fetchData();
   }, [targetRow]);
-
-  console.log(data)
 
   if (textError) {
     return <ErrorServer textError={textError} />;

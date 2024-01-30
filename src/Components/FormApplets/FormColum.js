@@ -10,7 +10,6 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
-  console.log(type);
   switch (type) {
     case 'textarea':
       return (

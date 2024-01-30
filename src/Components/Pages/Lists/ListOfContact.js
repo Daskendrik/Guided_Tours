@@ -9,6 +9,7 @@ import ModalSeach from '../../ModalWin/ModalSeach';
 import ModalDelete from '../../ModalWin/ModalDelete';
 
 const ListOfContact = () => {
+  const component = 'contact';
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
@@ -20,15 +21,11 @@ const ListOfContact = () => {
     { id: 'Phone', name: 'Телефон' },
   ];
   const numOfRows = 10;
-  console.log(dataList);
   const buttons = [
     {
       title: 'Создать новый',
-      func: function handleCreateTC() {
-        console.log('Заглушка');
-      },
       id: uuidv4(),
-      link: '/contact/new',
+      link: `/${component}/new`,
     },
     {
       title: 'Найти',
@@ -65,19 +62,16 @@ const ListOfContact = () => {
 
   const deleteContact = () => {
     window.location.href = '#openModalDelete';
-    console.log('УДаление');
   };
 
   const handleDeleteRow = async () => {
     axios
-      .post('http://localhost:3001/api/contact/delete', { targetRow })
+      .post(`http://localhost:3001/api/${component}/delete`, { targetRow })
       .then((res) => {
-        console.log('Контакт удален ');
         setTargetRow('');
         axios
-          .get('http://localhost:3001/api/contact/getAll')
+          .get(`http://localhost:3001/api/${component}/getAll`)
           .then((res) => {
-            console.log(res.data.req);
             const dataIntegration = res.data.req;
             if (!!dataIntegration) {
               setDataList(dataIntegration);
@@ -123,12 +117,11 @@ const ListOfContact = () => {
     async function fetchData() {
       try {
         const url = search
-          ? `http://localhost:3001/api/contact/getAll/${search}`
-          : 'http://localhost:3001/api/contact/getAll';
+          ? `http://localhost:3001/api/${component}/getAll/${search}`
+          : `http://localhost:3001/api/${component}/getAll`;
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
-          console.log(dataIntegration.req[1].elements);
           let test = [];
           for (
             let i = 0;
@@ -141,7 +134,6 @@ const ListOfContact = () => {
             );
             test.push(chunk);
           }
-          console.log(test);
           setDataList(dataIntegration.req);
         }
       } catch (error) {
