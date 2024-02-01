@@ -11,10 +11,10 @@ import ModalDelete from '../../ModalWin/ModalDelete';
 const ListOfContact = () => {
   const component = 'contact';
   const [isModDelOpen, setIsModDelOpen] = useState(false);
-  const [textError, setTextError] = useState(''); //ошибка
+  const [textError, setTextError] = useState(); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
-  const [targetRow, setTargetRow] = useState('Запись не выбрана'); //выбранная запись
+  const [targetRow, setTargetRow] = useState(); //выбранная запись
   const [search, setSearch] = useState('');
   const [targetFio, setTargetFio] = useState('');
   const seachFilds = [
@@ -48,6 +48,7 @@ const ListOfContact = () => {
         openDeleteContact();
       },
       id: uuidv4(),
+      disabled: targetRow ? false : true,
     },
   ];
 
@@ -89,7 +90,7 @@ const ListOfContact = () => {
       .catch((error) => {
         setTextError(error.message);
       });
-    window.location.href = '#close';
+    setIsModDelOpen(false);
   };
 
   const handleSetTargetRow = (e) => {

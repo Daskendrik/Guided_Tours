@@ -52,6 +52,7 @@ const ListApplet = (props) => {
                     title={btn.title}
                     func={btn.func}
                     link={btn.link}
+                    disabled={btn.disabled}
                   />
                 );
               })}

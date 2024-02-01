@@ -2,12 +2,18 @@ import { Link } from 'react-router-dom';
 import styles from './StandartBtn.module.css';
 
 const StandartBtn = (props) => {
-  const { id, title, func, link } = props;
+  const { id, title, func, link, disabled = false } = props;
+  console.log(props);
   if (link) {
     return (
       <>
         <Link to={link}>
-          <button className={styles.btn} key={id} onClick={func}>
+          <button
+            className={styles.btn}
+            key={id}
+            onClick={func}
+            disabled={disabled}
+          >
             {title}
           </button>
         </Link>
@@ -15,7 +21,7 @@ const StandartBtn = (props) => {
     );
   }
   return (
-    <button className={styles.btn} key={id} onClick={func}>
+    <button className={styles.btn} key={id} onClick={func} disabled={disabled}>
       {title}
     </button>
   );
