@@ -3,7 +3,6 @@ import styles from './StandartBtn.module.css';
 
 const StandartBtn = (props) => {
   const { id, title, func, link, disabled = false } = props;
-  console.log(props);
   if (link) {
     return (
       <>

@@ -25,6 +25,18 @@ const ContactEdit = () => {
     setFIO(`${last_name} ${first_name} ${middle_name}`);
   };
 
+  // модальное с ошибкой
+  const [isModErrOpen, setIsModErrOpen] = useState(false);
+  const changeModErrOpen = () => {
+    isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
+  };
+
+  //успешное сохранение
+  const [isModSaveOpen, setIsModSaveOpen] = useState(false);
+  const changeModSaveOpen = () => {
+    isModSaveOpen ? setIsModSaveOpen(false) : setIsModSaveOpen(true);
+  };
+
   const buttons = [
     {
       title: 'Сохранить',
@@ -47,19 +59,15 @@ const ContactEdit = () => {
     setData(newdate);
   };
 
-  const handleCloserr = () => {
-    window.location.href = '#close';
-  };
-
   const saveData = async () => {
     data.push({ id: 'id', Value: targetRow });
     axios
       .post('http://localhost:3001/api/contact/update', data)
       .then((res) => {
         if (res.data.status === 'OK') {
-          window.location.href = '#openModalSave';
+          changeModSaveOpen();
         } else {
-          window.location.href = '#openModalError';
+          changeModErrOpen();
           setSaveError(res.data.text);
         }
       })
@@ -89,8 +97,6 @@ const ContactEdit = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetRow]);
 
-  console.log(data);
-
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
@@ -102,8 +108,14 @@ const ContactEdit = () => {
       <ModalSave
         text={`Контакт №${targetRow} успешно сохранен`}
         goBtn={goBtn}
+        open={isModSaveOpen}
       />
-      <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
+      <ModalError
+        func={changeModErrOpen}
+        doing="сохранениe"
+        err={saveErr}
+        open={isModErrOpen}
+      />
       <FormApplet
         title={`Контакт N${targetRow} ${fio}`}
         data={data}

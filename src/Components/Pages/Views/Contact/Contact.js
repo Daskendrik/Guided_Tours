@@ -12,6 +12,7 @@ const Contact = () => {
   const targetRow = params.id;
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isModDelOpen, setIsModDelOpen] = useState(false);
   const isReadOnly = true;
   const [fio, setFIO] = useState('');
 
@@ -21,6 +22,7 @@ const Contact = () => {
     const middle_name = data.filter((a) => a.id === 'middle_name')[0].Value;
     setFIO(`${last_name} ${first_name} ${middle_name}`);
   };
+
   const buttons = [
     {
       title: 'Редактировать',
@@ -31,14 +33,18 @@ const Contact = () => {
       title: 'Удалить',
       id: uuidv4(),
       func: function handleCreateTC() {
-        deleteContact();
+        openDeleteContact();
       },
     },
   ];
   const [data, setData] = useState([]); //данные из бд
 
-  const deleteContact = () => {
-    window.location.href = '#openModalDelete';
+  const openDeleteContact = () => {
+    setIsModDelOpen(true);
+  };
+
+  const closeDeleteContact = () => {
+    setIsModDelOpen(false);
   };
 
   const handleDeleteRow = async () => {
@@ -84,6 +90,8 @@ const Contact = () => {
         name="текущий контакт"
         component="контакт"
         func={handleDeleteRow}
+        funcClose={closeDeleteContact}
+        open={isModDelOpen}
       />
       <FormApplet
         title={`Контакт N${targetRow} ${fio}`}

@@ -13,6 +13,7 @@ const ContactNew = () => {
   const isReadOnly = false;
   const [newId, setNewId] = useState('000');
   const [saveErr, setSaveError] = useState('Нет ошибки');
+
   const [data, setData] = useState([
     {
       Lable: 'Id',
@@ -64,11 +65,22 @@ const ContactNew = () => {
       id: 'comment',
     },
   ]);
+  // модальное с ошибкой
+  const [isModErrOpen, setIsModErrOpen] = useState(false);
+  const changeModErrOpen = () => {
+    isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
+  };
+
+  //успешное сохранение
+  const [isModSaveOpen, setIsModSaveOpen] = useState(false);
+  const changeModSaveOpen = () => {
+    isModSaveOpen ? setIsModSaveOpen(false) : setIsModSaveOpen(true);
+  };
+
   const buttons = [
     {
       title: 'Сохранить',
       func: function handleSaveData() {
-        console.log('Заглушка');
         saveData();
       },
       id: uuidv4(),
@@ -100,29 +112,22 @@ const ContactNew = () => {
       .post('http://localhost:3001/api/contact/create', data)
       .then((res) => {
         if (res.data.status === 'OK') {
-          console.log('Контакт сохранен');
-          window.location.href = '#openModalSave';
+          changeModSaveOpen();
         } else {
-          window.location.href = '#openModalError';
+          changeModErrOpen();
           setSaveError(res.data.text);
         }
-        console.log(res);
       })
       .catch((error) => {
         setTextError(error.message);
       });
   };
   const goBtn = ['/contact', `/contact/${newId}`];
-
-  const handleCloserr = () => {
-    window.location.href = '#close';
-  };
   useEffect(() => {
     async function fetchData() {
       try {
         const res = await fetch('http://localhost:3001/api/contact/getLast');
         const dataIntegration = await res.json();
-        console.log(dataIntegration);
         if (!!dataIntegration) {
           const text = dataIntegration.req[0] + 1;
           const lov = dataIntegration.req[1];
@@ -145,8 +150,17 @@ const ContactNew = () => {
   }
   return (
     <>
-      <ModalSave text={`Контакт №${newId} успешно сохранен`} goBtn={goBtn} />
-      <ModalError func={handleCloserr} doing="сохранении" err={saveErr} />
+      <ModalSave
+        text={`Контакт №${newId} успешно сохранен`}
+        goBtn={goBtn}
+        open={isModSaveOpen}
+      />
+      <ModalError
+        func={changeModErrOpen}
+        doing="сохранениe"
+        err={saveErr}
+        open={isModErrOpen}
+      />
       <FormApplet
         title={`Новый контакт №${newId}`}
         data={data}

@@ -6,13 +6,12 @@ import { useEffect, useRef } from 'react';
 const ModalDelete = (props) => {
   const {
     open = false,
-    title = 'Удаление',
+    funcClose,
     component = 'Констакт',
     name = 'ТестУдалить',
     func = () => {
       console.log('удаление');
     },
-    funcClose,
   } = props;
 
   const modalWin = useRef();
@@ -29,7 +28,7 @@ const ModalDelete = (props) => {
     <>
       <dialog ref={modalWin}>
         <div className={styles.modal_header}>
-          <h3 className={styles.modal_title}>{title}</h3>
+          <h3 className={styles.modal_title}>Удаление записи</h3>
         </div>
         <div className={styles.modal_body}>
           <p>
@@ -41,27 +40,6 @@ const ModalDelete = (props) => {
           </div>
         </div>
       </dialog>
-
-      {/* <div id="openModalDelete" className={styles.modal}>
-        <div className={styles.modal_dialog}>
-          <div className={styles.modal_content}>
-            <div className={styles.modal_header}>
-              <h3 className={styles.modal_title}>{title}</h3>
-              <a href="#close" title="Close" className={styles.close}>
-                Закрыть
-              </a>
-            </div>
-            <div className={styles.modal_body}>
-              <p>
-                Вы уверены, что надо удалить {component}:<br></br> {name}
-              </p>
-              <div className={styles.buttons}>
-                <StandartBtn title="Да" func={func} />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> */}
     </>,
     document.getElementById('modal')
   );
