@@ -13,6 +13,14 @@ const Contact = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const isReadOnly = true;
+  const [fio, setFIO] = useState('');
+
+  const formulFIO = (data) => {
+    const last_name = data.filter((a) => a.id === 'last_name')[0].Value;
+    const first_name = data.filter((a) => a.id === 'first_name')[0].Value;
+    const middle_name = data.filter((a) => a.id === 'middle_name')[0].Value;
+    setFIO(`${last_name} ${first_name} ${middle_name}`);
+  };
   const buttons = [
     {
       title: 'Редактировать',
@@ -54,6 +62,7 @@ const Contact = () => {
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
           setData(dataIntegration.req);
+          formulFIO(dataIntegration.req);
         }
       } catch (error) {
         setTextError(error.message);
@@ -77,7 +86,7 @@ const Contact = () => {
         func={handleDeleteRow}
       />
       <FormApplet
-        title={`Контакт N${targetRow}`}
+        title={`Контакт N${targetRow} ${fio}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}

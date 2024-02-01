@@ -16,6 +16,14 @@ const ContactEdit = () => {
   const isReadOnly = false;
   const [saveErr, setSaveError] = useState('Нет ошибки');
   const goBtn = ['/contact', `/contact/${targetRow}`];
+  const [fio, setFIO] = useState('');
+
+  const formulFIO = (data) => {
+    const last_name = data.filter((a) => a.id === 'last_name')[0].Value;
+    const first_name = data.filter((a) => a.id === 'first_name')[0].Value;
+    const middle_name = data.filter((a) => a.id === 'middle_name')[0].Value;
+    setFIO(`${last_name} ${first_name} ${middle_name}`);
+  };
 
   const buttons = [
     {
@@ -70,6 +78,7 @@ const ContactEdit = () => {
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
           setData(dataIntegration.req);
+          formulFIO(dataIntegration.req);
         }
       } catch (error) {
         setTextError(error.message);
@@ -77,7 +86,10 @@ const ContactEdit = () => {
       setIsLoading(false);
     }
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [targetRow]);
+
+  console.log(data);
 
   if (textError) {
     return <ErrorServer textError={textError} />;
@@ -93,7 +105,7 @@ const ContactEdit = () => {
       />
       <ModalError func={handleCloserr} doing="удаление" err={saveErr} />
       <FormApplet
-        title={`Контакт N${targetRow}`}
+        title={`Контакт N${targetRow} ${fio}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
