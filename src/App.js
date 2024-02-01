@@ -17,28 +17,31 @@ import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<Calendar />} />
-            <Route path="*" element={<h3>Такого пункта неть</h3>} />
-            <Route path="museum" element={<ListOfMuseum />} />
-            <Route path="bus" element={<ListOfBus />} />
-            <Route path="company_bus" element={<ListOfCompanyBus />} />
-            <Route path="guide" element={<ListOfGuide />} />
-            <Route path="restorant" element={<ListOfRestorant />} />
-            <Route path="tour" element={<ListOfTour />} />
-            <Route path="сalendar" element={<Calendar />} />
-            <Route path="type_lov" element={<ListOfTypeLOV />} />
-            <Route path="contact" element={<ListOfContact />} />
-            <Route path="contact/:id" element={<Contact />} />
-            <Route path="contact/new" element={<ContactNew />} />
-            <Route path="contact/edit/:id" element={<ContactEdit />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
-    </div>
+    <>
+      <div id="modal"></div>
+      <div className="App">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Calendar />} />
+              <Route path="*" element={<h3>Такого пункта неть</h3>} />
+              <Route path="museum" element={<ListOfMuseum />} />
+              <Route path="bus" element={<ListOfBus />} />
+              <Route path="company_bus" element={<ListOfCompanyBus />} />
+              <Route path="guide" element={<ListOfGuide />} />
+              <Route path="restorant" element={<ListOfRestorant />} />
+              <Route path="tour" element={<ListOfTour />} />
+              <Route path="сalendar" element={<Calendar />} />
+              <Route path="type_lov" element={<ListOfTypeLOV />} />
+              <Route path="contact" element={<ListOfContact />} />
+              <Route path="contact/:id" element={<Contact />} />
+              <Route path="contact/new" element={<ContactNew />} />
+              <Route path="contact/edit/:id" element={<ContactEdit />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </>
   );
 }
 

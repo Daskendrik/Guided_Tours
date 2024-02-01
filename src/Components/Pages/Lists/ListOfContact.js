@@ -10,6 +10,7 @@ import ModalDelete from '../../ModalWin/ModalDelete';
 
 const ListOfContact = () => {
   const component = 'contact';
+  const [isModDelOpen, setIsModDelOpen] = useState(false);
   const [textError, setTextError] = useState(''); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
@@ -44,7 +45,7 @@ const ListOfContact = () => {
     {
       title: 'Удалить',
       func: function handleDeleteContact() {
-        deleteContact();
+        openDeleteContact();
       },
       id: uuidv4(),
     },
@@ -60,8 +61,12 @@ const ListOfContact = () => {
     window.location.href = '#openModalSeach';
   };
 
-  const deleteContact = () => {
-    window.location.href = '#openModalDelete';
+  const openDeleteContact = () => {
+    setIsModDelOpen(true);
+  };
+
+  const closeDeleteContact = () => {
+    setIsModDelOpen(false);
   };
 
   const handleDeleteRow = async () => {
@@ -145,7 +150,9 @@ const ListOfContact = () => {
       <ModalDelete
         name={targetFio}
         component="контакт"
+        open={isModDelOpen}
         func={handleDeleteRow}
+        funcClose={closeDeleteContact}
       />
       <ModalSeach
         arrcol={seachFilds}
