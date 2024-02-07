@@ -18,7 +18,6 @@ import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';
 function App() {
   return (
     <>
-      <div id="modal"></div>
       <div className="App">
         <BrowserRouter>
           <Routes>

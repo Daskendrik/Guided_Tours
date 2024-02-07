@@ -10,18 +10,35 @@ import ModalDelete from '../../ModalWin/ModalDelete';
 
 const ListOfContact = () => {
   const component = 'contact';
-  const [isModDelOpen, setIsModDelOpen] = useState(false);
+  const numOfRows = 10;
   const [textError, setTextError] = useState(); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
   const [dataList, setDataList] = useState([]); //данные из бд
   const [targetRow, setTargetRow] = useState(); //выбранная запись
   const [search, setSearch] = useState('');
+
+  //настройки модальных окон
+  const [isModDelOpen, setIsModDelOpen] = useState(false);
   const [targetFio, setTargetFio] = useState('');
   const seachFilds = [
     { id: 'Surname', name: 'Фамилия' },
     { id: 'Phone', name: 'Телефон' },
   ];
-  const numOfRows = 10;
+
+  const findContact = () => {
+    $('#Phone').val('');
+    $('#Surname').val('');
+    window.location.href = '#openModalSeach';
+  };
+
+  const changeOpenDelModal = () => {
+    isModDelOpen ? setIsModDelOpen(false) : setIsModDelOpen(true);
+  };
+
+  const handleChangeOpenDelModal = () => {
+    changeOpenDelModal();
+  };
+
   const buttons = [
     {
       title: 'Создать новый',
@@ -45,7 +62,7 @@ const ListOfContact = () => {
     {
       title: 'Удалить',
       func: function handleDeleteContact() {
-        openDeleteContact();
+        changeOpenDelModal();
       },
       id: uuidv4(),
       disabled: targetRow ? false : true,
@@ -54,20 +71,6 @@ const ListOfContact = () => {
 
   const clearSeach = () => {
     setSearch('');
-  };
-
-  const findContact = () => {
-    $('#Phone').val('');
-    $('#Surname').val('');
-    window.location.href = '#openModalSeach';
-  };
-
-  const openDeleteContact = () => {
-    setIsModDelOpen(true);
-  };
-
-  const closeDeleteContact = () => {
-    setIsModDelOpen(false);
   };
 
   const handleDeleteRow = async () => {
@@ -153,7 +156,7 @@ const ListOfContact = () => {
         component="контакт"
         open={isModDelOpen}
         func={handleDeleteRow}
-        funcClose={closeDeleteContact}
+        funcClose={handleChangeOpenDelModal}
       />
       <ModalSeach
         arrcol={seachFilds}
