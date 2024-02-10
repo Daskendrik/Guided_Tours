@@ -4,6 +4,8 @@ import { useState } from 'react';
 import StandartBtn from '../Buttons/StandartBtn';
 import ListOfButtonsPage from '../Buttons/ListOfButtonsPage';
 import styles from './ListApplet.module.css';
+import Table from './Table.tsx';
+import Card from './Card.tsx';
 
 const ListApplet = (props) => {
   const {
@@ -59,55 +61,21 @@ const ListApplet = (props) => {
             </div>
           </div>
           <div className={styles.list_applet_table}>
-            <div>
-              <table>
-                <thead>
-                  <tr>
-                    {header.nameColumn.map((col) => {
-                      return <td key={col.id}>{col.title}</td>;
-                    })}
-                  </tr>
-                </thead>
-                <tbody>
-                  {blockDatas[page].map((row, index) => {
-                    return (
-                      <tr key={row[0]} id={row[0]} onClick={changeTarget}>
-                        {row.map((col, index) => {
-                          if (index === 1) {
-                            return (
-                              <td
-                                key={index}
-                                className={
-                                  +targetRow === row[0] ? 'active_row' : ''
-                                }
-                              >
-                                <Link
-                                  className={styles.go_in}
-                                  to={row[0].toString()}
-                                >
-                                  {col}
-                                </Link>
-                              </td>
-                            );
-                          } else {
-                            return (
-                              <td
-                                key={index}
-                                className={
-                                  +targetRow === row[0] ? 'active_row' : ''
-                                }
-                              >
-                                {col}
-                              </td>
-                            );
-                          }
-                        })}
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
+            {/* <Table
+              header={header}
+              blockDatas={blockDatas}
+              page={page}
+              changeTarget={changeTarget}
+              targetRow={targetRow}
+            /> */}
+            <Card
+              header={header}
+              blockDatas={blockDatas}
+              page={page}
+              changeTarget={changeTarget}
+              targetRow={targetRow}
+            ></Card>
+
             <div>
               <ListOfButtonsPage
                 pageNext={goNextPage}

@@ -1,0 +1,36 @@
+.cards {
+  display: flex;
+  justify-content: center;
+  flex: 50%;
+  flex-wrap: wrap;
+}
+.card {
+  background: rgba(238, 236, 232, 0.24);
+  padding: 1rem;
+  width: 100rem;
+  border-radius: 10px;
+  border: 3px solid red;
+  margin: 10px;
+}
+
+.text_id {
+  text-align: left;
+}
+
+.text_name {
+  text-align: left;
+  font-size: 28px;
+  text-decoration: underline;
+}
+
+.info {
+  display: flex;
+  flex: 50%;
+  flex-wrap: wrap;
+}
+
+.text_any {
+  font-size: 24px;
+  text-align: left;
+  width: 50%;
+}
