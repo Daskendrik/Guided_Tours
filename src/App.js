@@ -10,7 +10,7 @@ import ListOfGuide from './Components/Pages/Lists/ListOfGuide';
 import ListOfRestorant from './Components/Pages/Lists/ListOfRestorant';
 import ListOfTour from './Components/Pages/Lists/ListOfTour';
 import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
-import ListOfContacts from './Components/Pages/Views/Contact/ListOfContacts';
+import ListOfContacts from './Components/Pages/Views/Contact/ListOfContacts.tsx';
 import Contact from './Components/Pages/Views/Contact/Contact';
 import ContactNew from './Components/Pages/Views/Contact/ContactNew';
 import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';

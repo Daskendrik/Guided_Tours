@@ -7,20 +7,22 @@ import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import ModalSeach from '../../../ModalWin/ModalSeach';
 import ModalDelete from '../../../ModalWin/ModalDelete';
+import React from 'react';
+import { Bottons, DataListApplet, SeachFilds } from '../../../Types';
 
 const ListOfContact = () => {
   const component = 'contact';
   const numOfRows = 10;
   const [textError, setTextError] = useState(); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
-  const [dataList, setDataList] = useState([]); //данные из бд
+  const [dataList, setDataList] = useState<DataListApplet>(); //данные из бд
   const [targetRow, setTargetRow] = useState(); //выбранная запись
   const [search, setSearch] = useState('');
 
   //настройки модальных окон
   const [isModDelOpen, setIsModDelOpen] = useState(false);
   const [targetFio, setTargetFio] = useState('');
-  const seachFilds = [
+  const seachFilds: SeachFilds = [
     { id: 'Surname', name: 'Фамилия' },
     { id: 'Phone', name: 'Телефон' },
   ];
@@ -39,7 +41,7 @@ const ListOfContact = () => {
     changeOpenDelModal();
   };
 
-  const buttons = [
+  const buttons: Bottons = [
     {
       title: 'Создать новый',
       id: uuidv4(),
@@ -69,6 +71,7 @@ const ListOfContact = () => {
     },
   ];
 
+  console.log(dataList);
   const clearSeach = () => {
     setSearch('');
   };
@@ -77,7 +80,7 @@ const ListOfContact = () => {
     axios
       .post(`http://localhost:3001/api/${component}/delete`, { targetRow })
       .then((res) => {
-        setTargetRow('');
+        setTargetRow(undefined);
         axios
           .get(`http://localhost:3001/api/${component}/getAll`)
           .then((res) => {
@@ -95,14 +98,13 @@ const ListOfContact = () => {
       });
     setIsModDelOpen(false);
   };
-
   const handleSetTargetRow = (e) => {
     const newId = e.target.parentElement.id;
     setTargetRow(newId);
     if (!!newId) {
       let selectItem = dataList
-        .find((data) => data.element === 'Body')
-        .elements.find((elem) => elem[0] === +newId)[1];
+        ?.find((data) => data.element === 'Body')
+        ?.elements.find((elem) => elem[0] === +newId)[1];
       setTargetFio(selectItem);
     }
   };

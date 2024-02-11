@@ -61,20 +61,20 @@ const ListApplet = (props) => {
             </div>
           </div>
           <div className={styles.list_applet_table}>
-            {/* <Table
+            <Table
               header={header}
               blockDatas={blockDatas}
               page={page}
               changeTarget={changeTarget}
               targetRow={targetRow}
-            /> */}
-            <Card
+            />
+            {/* <Card
               header={header}
               blockDatas={blockDatas}
               page={page}
               changeTarget={changeTarget}
               targetRow={targetRow}
-            ></Card>
+            ></Card> */}
 
             <div>
               <ListOfButtonsPage
