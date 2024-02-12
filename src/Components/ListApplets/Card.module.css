@@ -3,34 +3,42 @@
   justify-content: center;
   flex: 50%;
   flex-wrap: wrap;
+  margin: 0 10rem;
 }
 .card {
   background: rgba(238, 236, 232, 0.24);
   padding: 1rem;
-  width: 100rem;
-  border-radius: 10px;
+  width: 80rem;
+  border-radius: 50px;
   border: 3px solid red;
-  margin: 10px;
+  margin: 1rem;
+  display: flex;
+  flex: 100%;
+  flex-wrap: wrap;
 }
 
 .text_id {
   text-align: left;
+  margin: 0.5rem;
+  flex: 100%;
 }
 
 .text_name {
   text-align: left;
-  font-size: 28px;
+  font-size: 1.8rem;
   text-decoration: underline;
-}
-
-.info {
-  display: flex;
-  flex: 50%;
-  flex-wrap: wrap;
+  margin: 0.5rem;
+  flex: 100%;
 }
 
 .text_any {
-  font-size: 24px;
+  font-size: 1.5rem;
   text-align: left;
-  width: 50%;
+  width: 45%;
+  margin: 0.5rem;
+}
+
+.card:hover {
+  background: rgba(240, 216, 173, 0.486);
+  box-shadow: 10px 5px 5px red;
 }

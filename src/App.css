@@ -22,5 +22,5 @@ body {
 }
 
 .active_row {
-  background-color: rgba(211, 176, 176, 0.493);
+  background-color: rgba(243, 235, 166, 0.493) !important;
 }

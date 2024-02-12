@@ -1,6 +1,5 @@
 //Сущности
 export type Contact = {};
-//Несущности
 export type DataSet = {
   id: string;
   value: string;
@@ -13,11 +12,11 @@ export type SeachFilds = {
   name: string;
 }[];
 
-type Botton = {
+export type Button = {
   title: string;
   id: string;
   link?: string;
   func?: Function;
   disabled?: boolean;
 };
-export type Bottons = Botton[];
+export type Buttons = Button[];

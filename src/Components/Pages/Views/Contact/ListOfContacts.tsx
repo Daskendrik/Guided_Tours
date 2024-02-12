@@ -2,20 +2,20 @@ import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import ListApplet from '../../../ListApplets/ListApplet';
+import ListApplet from '../../../ListApplets/ListApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import ModalSeach from '../../../ModalWin/ModalSeach';
 import ModalDelete from '../../../ModalWin/ModalDelete';
 import React from 'react';
-import { Bottons, DataListApplet, SeachFilds } from '../../../Types';
+import { Buttons, SeachFilds } from '../../../Types';
 
 const ListOfContact = () => {
   const component = 'contact';
-  const numOfRows = 10;
+  const numOfRows = 5;
   const [textError, setTextError] = useState(); //ошибка
   const [isLoading, setIsLoading] = useState(true); //прогрузка данных
-  const [dataList, setDataList] = useState<DataListApplet>(); //данные из бд
+  const [dataList, setDataList] = useState<any[]>(); //данные из бд
   const [targetRow, setTargetRow] = useState(); //выбранная запись
   const [search, setSearch] = useState('');
 
@@ -41,7 +41,7 @@ const ListOfContact = () => {
     changeOpenDelModal();
   };
 
-  const buttons: Bottons = [
+  const buttons: Buttons = [
     {
       title: 'Создать новый',
       id: uuidv4(),
@@ -99,7 +99,9 @@ const ListOfContact = () => {
     setIsModDelOpen(false);
   };
   const handleSetTargetRow = (e) => {
+    console.log(e.target);
     const newId = e.target.parentElement.id;
+    console.log(newId);
     setTargetRow(newId);
     if (!!newId) {
       let selectItem = dataList
