@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import StandartBtn from '../Buttons/StandartBtn';
-import ListOfButtonsPage from '../Buttons/ListOfButtonsPage';
+import StandartBtn from '../Buttons/StandartBtn.js';
+import ListOfButtonsPage from '../Buttons/ListOfButtonsPage.js';
 import styles from './ListApplet.module.css';
 import Table from './Table.tsx';
 import Card from './Card.tsx';
+import React from 'react';
 
 const ListApplet = (props) => {
   const {
@@ -16,11 +17,15 @@ const ListApplet = (props) => {
     targetRow,
     blockSize = 5,
   } = props;
+  const [displayTable, setDisplayTable] = useState(true);
   const [page, setPage] = useState(0);
   const header = arrListColum.find((data) => data.element === 'Header');
   const body = arrListColum.find((data) => data.element === 'Body');
+  const swichDisplay = () => {
+    displayTable ? setDisplayTable(false) : setDisplayTable(true);
+  };
 
-  let blockDatas = [];
+  let blockDatas: string[] = [];
   for (let i = 0; i < body.elements.length; i += blockSize) {
     const block = body.elements.slice(i, i + blockSize);
     blockDatas.push(block);
@@ -47,6 +52,11 @@ const ListApplet = (props) => {
           <div className={styles.header}>
             <div className={styles.title}>{title}</div>
             <div className={styles.button}>
+              <StandartBtn
+                key="swichDisplay"
+                title="Изменить отображение"
+                func={swichDisplay}
+              />
               {buttons.map((btn) => {
                 return (
                   <StandartBtn
@@ -61,20 +71,23 @@ const ListApplet = (props) => {
             </div>
           </div>
           <div className={styles.list_applet_table}>
-            <Table
-              header={header}
-              blockDatas={blockDatas}
-              page={page}
-              changeTarget={changeTarget}
-              targetRow={targetRow}
-            />
-            {/* <Card
-              header={header}
-              blockDatas={blockDatas}
-              page={page}
-              changeTarget={changeTarget}
-              targetRow={targetRow}
-            ></Card> */}
+            {displayTable ? (
+              <Table
+                header={header}
+                blockDatas={blockDatas}
+                page={page}
+                changeTarget={changeTarget}
+                targetRow={targetRow}
+              />
+            ) : (
+              <Card
+                header={header}
+                blockDatas={blockDatas}
+                page={page}
+                changeTarget={changeTarget}
+                targetRow={targetRow}
+              ></Card>
+            )}
 
             <div>
               <ListOfButtonsPage

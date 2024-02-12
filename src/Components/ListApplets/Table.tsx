@@ -26,7 +26,7 @@ const Table = (props) => {
                       className={+targetRow === row[0] ? 'active_row' : ''}
                     >
                       <Link className={styles.go_in} to={row[0].toString()}>
-                        {col}
+                        {col || 'Не указан'}
                       </Link>
                     </td>
                   );
@@ -36,7 +36,7 @@ const Table = (props) => {
                       key={index}
                       className={+targetRow === row[0] ? 'active_row' : ''}
                     >
-                      {col}
+                      {col || 'Не указан'}
                     </td>
                   );
                 }

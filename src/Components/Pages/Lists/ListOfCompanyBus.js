@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ListApplet from '../../ListApplets/ListApplet';
+import ListApplet from '../../ListApplets/ListApplet.tsx';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import { v4 as uuidv4 } from 'uuid';

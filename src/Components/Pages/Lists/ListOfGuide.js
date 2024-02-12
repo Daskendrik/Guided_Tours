@@ -1,5 +1,5 @@
 import React from 'react';
-import ListApplet from '../../ListApplets/ListApplet';
+import ListApplet from '../../ListApplets/ListApplet.tsx';
 
 const ListOfGuide = () => {
   let dataList = [];

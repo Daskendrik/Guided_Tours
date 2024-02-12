@@ -1,4 +1,4 @@
-import ListApplet from '../../ListApplets/ListApplet';
+import ListApplet from '../../ListApplets/ListApplet.tsx';
 
 const ListOfMuseum = () => {
   let dataList = [];

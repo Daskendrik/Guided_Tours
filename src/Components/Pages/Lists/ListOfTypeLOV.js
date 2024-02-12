@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import $ from 'jquery';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import ListApplet from '../../ListApplets/ListApplet';
+import ListApplet from '../../ListApplets/ListApplet.tsx';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import ModalSeach from '../../ModalWin/ModalSeach';
