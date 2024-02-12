@@ -1,7 +1,15 @@
 import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import FormColum from './FormColum';
+import FormColum from './FormColum.tsx';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
+import {
+  Controller,
+  SubmitErrorHandler,
+  SubmitHandler,
+  useForm,
+} from 'react-hook-form';
+import React from 'react';
+import { Contact } from '../Types.ts';
 
 const FormApplet = (props) => {
   const {
@@ -18,15 +26,28 @@ const FormApplet = (props) => {
     isReadOnly = true,
     changeData,
   } = props;
-  const arrRow = [];
+  const formData = { id: 1 };
+  for (let i = 0; i < data.length; i++) {
+    formData[data[i].id] = data[i].Value;
+  }
+  JSON.stringify(formData);
+  console.log(formData);
+  const arrRow: string[] = [];
+  const { register, handleSubmit } = useForm({
+    defaultValues: formData,
+  });
   function createArrayOfRow(arr) {
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
       arrRow.push(chunk);
     }
   }
-  createArrayOfRow(data);
 
+  const onSubmit = () => {
+    console.log(data);
+  };
+  createArrayOfRow(data);
+  console.log(data);
   return (
     <>
       <div className={styles.form_applet}>
@@ -47,8 +68,29 @@ const FormApplet = (props) => {
           </div>
         </div>
         <div className={styles.form_applet_table}>
-          <form>
-            <table>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              {data.map((col, index) => {
+                return (
+                  <div key={index} className={styles.column}>
+                    <label>{col.Lable}</label>
+                    <input type="text" {...register(col.id)} />
+                  </div>
+                );
+              })}
+            </div>
+            <button>Охранить</button>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default FormApplet;
+
+{
+  /* <table>
               <tbody>
                 {arrRow.map((row, index) => {
                   return (
@@ -82,12 +124,5 @@ const FormApplet = (props) => {
                   );
                 })}
               </tbody>
-            </table>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default FormApplet;
+            </table> */
+}

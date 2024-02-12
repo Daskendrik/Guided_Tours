@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import FormApplet from '../../../FormApplets/FormApplet';
+import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import { v4 as uuidv4 } from 'uuid';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';

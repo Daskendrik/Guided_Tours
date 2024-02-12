@@ -1,5 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 import styles from './FormColumn.module.css';
+import React from 'react';
 
 const FormColum = (props) => {
   const {
@@ -10,6 +11,7 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
+  console.log(props);
   switch (type) {
     case 'textarea':
       return (
@@ -51,18 +53,27 @@ const FormColum = (props) => {
           onChange={(e) => change(id, e.target.value)}
         >
           {arrSelect.map((el) => {
+            console.log(el.name);
+            console.log(value);
             return (
-              <option key={el.id} value={el.code}>
+              <option
+                key={el.id}
+                value={el.code}
+                selected={el.name === value ? true : false}
+              >
                 {el.name}
               </option>
             );
           })}
+          <option key={id} value="" selected={value ? false : true}>
+            Не указан
+          </option>
         </select>
       );
-    case 'date':
+    case 'data':
       return (
         <input
-          type="date"
+          type="data"
           readOnly={id === 'created' || id === 'update' ? true : readonly}
           className={
             readonly || id === 'created' || id === 'update'

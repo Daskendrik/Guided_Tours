@@ -7,7 +7,7 @@ import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
 import ModalSeach from '../../ModalWin/ModalSeach';
 import ModalDelete from '../../ModalWin/ModalDelete';
-import FormApplet from '../../FormApplets/FormApplet';
+import FormApplet from '../../FormApplets/FormApplet.tsx';
 
 const ListOfTypeLOV = () => {
   const [textError, setTextError] = useState(''); //ошибка

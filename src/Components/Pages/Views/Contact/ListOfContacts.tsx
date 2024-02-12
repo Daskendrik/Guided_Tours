@@ -71,7 +71,6 @@ const ListOfContact = () => {
     },
   ];
 
-  console.log(dataList);
   const clearSeach = () => {
     setSearch('');
   };

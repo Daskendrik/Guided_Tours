@@ -1,5 +1,16 @@
 //Сущности
-export type Contact = {};
+export type Contact = {
+  id: number;
+  last_name: string;
+  first_name: string;
+  middle_name?: string;
+  tel?: number;
+  email?: string;
+  type_code?: string[];
+  comment?: string;
+  created: string;
+  update: string;
+};
 export type DataSet = {
   id: string;
   value: string;
@@ -20,3 +31,9 @@ export type Button = {
   disabled?: boolean;
 };
 export type Buttons = Button[];
+
+export type FormCol = {
+  id: string | number;
+  Lable: string;
+  [key: string]: string | number;
+};
