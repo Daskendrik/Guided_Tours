@@ -1,5 +1,5 @@
 import { createPortal } from 'react-dom';
-import StandartBtn from '../Buttons/StandartBtn';
+import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './Delete.module.css';
 import { useEffect, useRef } from 'react';
 

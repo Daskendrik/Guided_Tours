@@ -1,4 +1,4 @@
-import StandartBtn from '../Buttons/StandartBtn';
+import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './FormAppletEdit.module.css';
 
 const FormAppletEdit = (props) => {

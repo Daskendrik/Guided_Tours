@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './StandartBtn.module.css';
+import React from 'react';
 
 const StandartBtn = (props) => {
   const { id, title, func, link, disabled = false } = props;

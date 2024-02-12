@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import StandartBtn from '../Buttons/StandartBtn.js';
-import ListOfButtonsPage from '../Buttons/ListOfButtonsPage.js';
+import StandartBtn from '../Buttons/StandartBtn.tsx';
+import ListOfButtonsPage from '../Buttons/ListOfButtonsPage.tsx';
 import styles from './ListApplet.module.css';
 import Table from './Table.tsx';
 import Card from './Card.tsx';
@@ -94,6 +94,7 @@ const ListApplet = (props) => {
                 pageNext={goNextPage}
                 pageBack={goBackPage}
                 page={page + 1}
+                numofPage={blockDatas.length}
               />
             </div>
           </div>

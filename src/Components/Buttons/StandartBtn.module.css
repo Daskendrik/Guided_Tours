@@ -11,3 +11,7 @@
 .btn:hover {
   background: white;
 }
+
+button[disabled] {
+  pointer-events: none;
+}
