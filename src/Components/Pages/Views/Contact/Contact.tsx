@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ModalDelete from '../../../ModalWin/ModalDelete';
+import ModalDelete from '../../../ModalWin/ModalDelete.js';
 import FormApplet from '../../../FormApplets/FormApplet.tsx';
-import ErrorServer from '../../../Additional/ErrorServer';
-import Loading from '../../../Additional/Loading';
+import ErrorServer from '../../../Additional/ErrorServer.js';
+import Loading from '../../../Additional/Loading.js';
+import React from 'react';
 
 const Contact = () => {
   const params = useParams();
@@ -77,6 +78,8 @@ const Contact = () => {
     }
     fetchData();
   }, [targetRow]);
+
+  console.log(data);
 
   if (textError) {
     return <ErrorServer textError={textError} />;

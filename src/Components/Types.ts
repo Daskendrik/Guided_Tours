@@ -1,28 +1,39 @@
 //Сущности
 export type Contact = {
-  id: number;
-  last_name: string;
-  first_name: string;
-  middle_name?: string;
-  tel?: number;
-  email?: string;
+  id: FieldApplet;
+  last_name: FieldApplet;
+  first_name: FieldApplet;
+  middle_name?: FieldApplet;
+  tel?: FieldApplet;
+  email?: FieldApplet;
   type_code?: string[];
-  comment?: string;
-  created: string;
-  update: string;
+  comment?: FieldApplet;
+  created: FieldApplet;
+  update: FieldApplet;
 };
-export type DataSet = {
-  id: string;
-  value: string;
-  type: string;
-  lable: string;
-}[];
 
-export type SeachFilds = {
+//Поля на апплете
+export type FieldApplet = {
+  Lable: string;
+  Value: any;
+  Type: string;
+  id: string;
+  readonly?: boolean;
+  change?: any;
+  arrSelect?: string[];
+};
+
+export type FieldsApplet = FieldApplet[];
+
+//Поля для поиска
+export type SeachFild = {
   id: string;
   name: string;
-}[];
+};
 
+export type SeachFilds = SeachFild[];
+
+//КНопки
 export type Button = {
   title: string;
   id: string;
@@ -31,9 +42,3 @@ export type Button = {
   disabled?: boolean;
 };
 export type Buttons = Button[];
-
-export type FormCol = {
-  id: string | number;
-  Lable: string;
-  [key: string]: string | number;
-};
