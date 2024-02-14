@@ -52,7 +52,6 @@ export type DeleteModal = {
   func: any;
   funcClose: any;
 };
-
 export type SeachModal = {
   title: string;
   arrcol: SeachFilds;
@@ -60,7 +59,6 @@ export type SeachModal = {
   open: boolean;
   funcClose: any;
 };
-
 export type ErrorModal = {
   open: boolean;
   title: string;
@@ -68,4 +66,9 @@ export type ErrorModal = {
   func: any;
   err: string;
   column?: string[];
+};
+export type SaveModal = {
+  text: string;
+  goBtn: string[];
+  open: boolean;
 };
