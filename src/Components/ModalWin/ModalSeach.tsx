@@ -5,38 +5,27 @@ import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './Seach.module.css';
 
 const ModalSeach = (props) => {
-  const {
-    title = 'Поиск',
-    arrcol = [
-      { id: 'col1', name: 'Фамилия' },
-      { id: 'col2', name: 'Телефон' },
-    ],
-    seach = () => {
-      console.log('Поиск дефолт');
-    },
-    open,
-    funcClose,
-  } = props;
+  const { settings } = props;
   const modalWin = useRef<any>();
 
   useEffect(() => {
-    if (open) {
+    if (settings.open) {
       modalWin.current.showModal();
     } else {
       modalWin.current.close();
     }
-  }, [open]);
+  }, [settings.open]);
   return createPortal(
     <>
       <dialog ref={modalWin}>
         <div className={styles.modal_content}>
           <div className={styles.modal_header}>
-            <h3 className={styles.modal_title}>{title}</h3>
+            <h3 className={styles.modal_title}>{settings.title}</h3>
           </div>
           <div className={styles.modal_body}>
             <table>
               <tbody>
-                {arrcol.map((element) => {
+                {settings.arrcol.map((element) => {
                   return (
                     <tr key={element.id}>
                       <td>{element.name}</td>
@@ -49,8 +38,8 @@ const ModalSeach = (props) => {
               </tbody>
             </table>
             <div className={styles.buttons}>
-              <StandartBtn title="Поиск" func={seach} />
-              <StandartBtn title="Отмена" func={funcClose} />
+              <StandartBtn title="Поиск" func={settings.seach} />
+              <StandartBtn title="Отмена" func={settings.funcClose} />
             </div>
           </div>
         </div>

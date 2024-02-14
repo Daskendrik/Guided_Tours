@@ -8,7 +8,7 @@ import Loading from '../../../Additional/Loading';
 import ModalSeach from '../../../ModalWin/ModalSeach.tsx';
 import ModalDelete from '../../../ModalWin/ModalDelete.tsx';
 import React from 'react';
-import { Buttons, DeleteModal, SeachFilds } from '../../../Types';
+import { Buttons, DeleteModal, SeachFilds, SeachModal } from '../../../Types';
 
 const ListOfContact = () => {
   const component = 'contact';
@@ -43,10 +43,28 @@ const ListOfContact = () => {
     isModSeachOpen ? setIsModSeachOpen(false) : setIsModSeachOpen(true);
   };
 
-  const handleChangeOpenSeachModal = () => {
-    changeOpenSeachModal();
+  const settingsModalSeach: SeachModal = {
+    arrcol: seachFilds,
+    title: 'Поиск контакта',
+    open: isModSeachOpen,
+    funcClose: () => {
+      isModSeachOpen ? setIsModSeachOpen(false) : setIsModSeachOpen(true);
+    },
+    seach: () => {
+      const phone = $('#Phone').val();
+      const surname = $('#Surname').val();
+      if (phone && surname) {
+        setSearch(`?phone=${phone}&surname=${surname}`);
+      } else if (phone) {
+        setSearch(`?phone=${phone}`);
+      } else if (surname) {
+        setSearch(`?surname=${surname}`);
+      } else {
+        setSearch('');
+      }
+      setIsModSeachOpen(false);
+    },
   };
-
   const settingsModalDelete: DeleteModal = {
     target: targetFio,
     component: 'контакт',
@@ -125,21 +143,6 @@ const ListOfContact = () => {
     }
   };
 
-  const handleSetSeache = () => {
-    const phone = $('#Phone').val();
-    const surname = $('#Surname').val();
-    if (phone && surname) {
-      setSearch(`?phone=${phone}&surname=${surname}`);
-    } else if (phone) {
-      setSearch(`?phone=${phone}`);
-    } else if (surname) {
-      setSearch(`?surname=${surname}`);
-    } else {
-      setSearch('');
-    }
-    setIsModSeachOpen(false);
-  };
-
   useEffect(() => {
     async function fetchData() {
       try {
@@ -170,13 +173,7 @@ const ListOfContact = () => {
   return (
     <>
       <ModalDelete settings={settingsModalDelete} />
-      <ModalSeach
-        arrcol={seachFilds}
-        seach={handleSetSeache}
-        title={'Поиск контакта'}
-        open={isModSeachOpen}
-        funcClose={handleChangeOpenSeachModal}
-      />
+      <ModalSeach settings={settingsModalSeach} />
       <ListApplet
         title="Контакты"
         arrListColum={dataList}
