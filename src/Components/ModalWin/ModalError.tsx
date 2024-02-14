@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './Error.module.css';
 import { createPortal } from 'react-dom';
+import React from 'react';
 
 const ModalError = (props) => {
   const {
@@ -14,7 +15,7 @@ const ModalError = (props) => {
     err = 'Текст ошибки',
   } = props;
 
-  const modalWin = useRef();
+  const modalWin = useRef<any>();
   useEffect(() => {
     if (open) {
       modalWin.current.showModal();

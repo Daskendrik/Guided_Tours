@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ModalDelete from '../../../ModalWin/ModalDelete.js';
+import ModalDelete from '../../../ModalWin/ModalDelete.tsx';
 import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer.js';
 import Loading from '../../../Additional/Loading.js';

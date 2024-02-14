@@ -4,8 +4,8 @@ import axios from 'axios';
 import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
-import ModalSave from '../../../ModalWin/ModalSave';
-import ModalError from '../../../ModalWin/ModalError';
+import ModalSave from '../../../ModalWin/ModalSave.tsx';
+import ModalError from '../../../ModalWin/ModalError.tsx';
 
 const ContactNew = () => {
   const [textError, setTextError] = useState('');

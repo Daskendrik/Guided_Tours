@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './Save.module.css';
 import { useEffect, useRef } from 'react';
+import React from 'react';
 
 const ModalSave = (props) => {
   const {
@@ -10,7 +11,7 @@ const ModalSave = (props) => {
     goBtn = [],
     open = false,
   } = props;
-  const modalWin = useRef();
+  const modalWin = useRef<any>();
 
   useEffect(() => {
     if (open) {

@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ListApplet from '../../ListApplets/ListApplet.tsx';
 import ErrorServer from '../../Additional/ErrorServer';
 import Loading from '../../Additional/Loading';
-import ModalSeach from '../../ModalWin/ModalSeach';
-import ModalDelete from '../../ModalWin/ModalDelete';
+import ModalSeach from '../../ModalWin/ModalSeach.tsx';
+import ModalDelete from '../../ModalWin/ModalDelete.tsx';
 import FormApplet from '../../FormApplets/FormApplet.tsx';
 
 const ListOfTypeLOV = () => {

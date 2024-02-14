@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from 'uuid';
 import ListApplet from '../../../ListApplets/ListApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
-import ModalSeach from '../../../ModalWin/ModalSeach';
-import ModalDelete from '../../../ModalWin/ModalDelete';
+import ModalSeach from '../../../ModalWin/ModalSeach.tsx';
+import ModalDelete from '../../../ModalWin/ModalDelete.tsx';
 import React from 'react';
 import { Buttons, SeachFilds } from '../../../Types';
 
@@ -27,6 +27,8 @@ const ListOfContact = () => {
     { id: 'Phone', name: 'Телефон' },
   ];
 
+  const [isModSeachOpen, setIsModSeachOpen] = useState(false);
+
   const findContact = () => {
     $('#Phone').val('');
     $('#Surname').val('');
@@ -41,6 +43,14 @@ const ListOfContact = () => {
     changeOpenDelModal();
   };
 
+  const changeOpenSeachModal = () => {
+    isModSeachOpen ? setIsModSeachOpen(false) : setIsModSeachOpen(true);
+  };
+
+  const handleChangeOpenSeachModal = () => {
+    changeOpenSeachModal();
+  };
+
   const buttons: Buttons = [
     {
       title: 'Создать новый',
@@ -50,7 +60,7 @@ const ListOfContact = () => {
     {
       title: 'Найти',
       func: function handleFindContact() {
-        findContact();
+        setIsModSeachOpen(true);
       },
       id: uuidv4(),
     },
@@ -122,7 +132,7 @@ const ListOfContact = () => {
     } else {
       setSearch('');
     }
-    window.location.href = '#close';
+    setIsModSeachOpen(false);
   };
 
   useEffect(() => {
@@ -165,6 +175,8 @@ const ListOfContact = () => {
         arrcol={seachFilds}
         seach={handleSetSeache}
         title={'Поиск контакта'}
+        open={isModSeachOpen}
+        funcClose={handleChangeOpenSeachModal}
       />
       <ListApplet
         title="Контакты"

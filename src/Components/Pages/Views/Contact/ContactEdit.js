@@ -5,8 +5,8 @@ import ErrorServer from '../../../Additional/ErrorServer';
 import Loading from '../../../Additional/Loading';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import ModalError from '../../../ModalWin/ModalError';
-import ModalSave from '../../../ModalWin/ModalSave';
+import ModalError from '../../../ModalWin/ModalError.tsx';
+import ModalSave from '../../../ModalWin/ModalSave.tsx';
 
 const ContactEdit = () => {
   const params = useParams();

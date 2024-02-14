@@ -2,6 +2,7 @@ import { createPortal } from 'react-dom';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
 import styles from './Delete.module.css';
 import { useEffect, useRef } from 'react';
+import React from 'react';
 
 const ModalDelete = (props) => {
   const {
@@ -14,7 +15,7 @@ const ModalDelete = (props) => {
     },
   } = props;
 
-  const modalWin = useRef();
+  const modalWin = useRef<any>();
 
   useEffect(() => {
     if (open) {
