@@ -12,12 +12,13 @@ export type Contact = {
   update: FieldApplet;
 };
 
-//Поля на апплете
+//Стандартные поля
 export type FieldApplet = {
   Lable: string;
   Value: any;
   Type: string;
-  id: string;
+  Id: string;
+  required?: boolean;
   readonly?: boolean;
   change?: any;
   arrSelect?: string[];
