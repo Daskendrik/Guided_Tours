@@ -8,7 +8,7 @@ import Loading from '../../../Additional/Loading';
 import ModalSeach from '../../../ModalWin/ModalSeach.tsx';
 import ModalDelete from '../../../ModalWin/ModalDelete.tsx';
 import React from 'react';
-import { Buttons, SeachFilds } from '../../../Types';
+import { Buttons, DeleteModal, SeachFilds } from '../../../Types';
 
 const ListOfContact = () => {
   const component = 'contact';
@@ -32,15 +32,11 @@ const ListOfContact = () => {
   const findContact = () => {
     $('#Phone').val('');
     $('#Surname').val('');
-    window.location.href = '#openModalSeach';
+    changeOpenSeachModal();
   };
 
   const changeOpenDelModal = () => {
     isModDelOpen ? setIsModDelOpen(false) : setIsModDelOpen(true);
-  };
-
-  const handleChangeOpenDelModal = () => {
-    changeOpenDelModal();
   };
 
   const changeOpenSeachModal = () => {
@@ -49,6 +45,37 @@ const ListOfContact = () => {
 
   const handleChangeOpenSeachModal = () => {
     changeOpenSeachModal();
+  };
+
+  const settingsModalDelete: DeleteModal = {
+    target: targetFio,
+    component: 'контакт',
+    open: isModDelOpen,
+    funcClose: () => {
+      isModDelOpen ? setIsModDelOpen(false) : setIsModDelOpen(true);
+    },
+    func: async () => {
+      axios
+        .post(`http://localhost:3001/api/${component}/delete`, { targetRow })
+        .then((res) => {
+          setTargetRow(undefined);
+          axios
+            .get(`http://localhost:3001/api/${component}/getAll`)
+            .then((res) => {
+              const dataIntegration = res.data.req;
+              if (!!dataIntegration) {
+                setDataList(dataIntegration);
+              }
+            })
+            .catch((error) => {
+              setTextError(error.message);
+            });
+        })
+        .catch((error) => {
+          setTextError(error.message);
+        });
+      setIsModDelOpen(false);
+    },
   };
 
   const buttons: Buttons = [
@@ -60,7 +87,7 @@ const ListOfContact = () => {
     {
       title: 'Найти',
       func: function handleFindContact() {
-        setIsModSeachOpen(true);
+        findContact();
       },
       id: uuidv4(),
     },
@@ -85,28 +112,6 @@ const ListOfContact = () => {
     setSearch('');
   };
 
-  const handleDeleteRow = async () => {
-    axios
-      .post(`http://localhost:3001/api/${component}/delete`, { targetRow })
-      .then((res) => {
-        setTargetRow(undefined);
-        axios
-          .get(`http://localhost:3001/api/${component}/getAll`)
-          .then((res) => {
-            const dataIntegration = res.data.req;
-            if (!!dataIntegration) {
-              setDataList(dataIntegration);
-            }
-          })
-          .catch((error) => {
-            setTextError(error.message);
-          });
-      })
-      .catch((error) => {
-        setTextError(error.message);
-      });
-    setIsModDelOpen(false);
-  };
   const handleSetTargetRow = (e) => {
     console.log(e.target);
     const newId = e.target.parentElement.id;
@@ -164,13 +169,7 @@ const ListOfContact = () => {
 
   return (
     <>
-      <ModalDelete
-        name={targetFio}
-        component="контакт"
-        open={isModDelOpen}
-        func={handleDeleteRow}
-        funcClose={handleChangeOpenDelModal}
-      />
+      <ModalDelete settings={settingsModalDelete} />
       <ModalSeach
         arrcol={seachFilds}
         seach={handleSetSeache}

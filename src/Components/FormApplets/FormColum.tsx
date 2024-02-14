@@ -89,10 +89,10 @@ const FormColum = (props) => {
       return (
         <input
           defaultValue={value}
-          readOnly={readonly}
+          readOnly={readonly || id === 'id'}
           id={id}
           onChange={(e) => change(id, e.target.value)}
-          className={readonly ? styles.read_only : ''}
+          className={readonly || id === 'id' ? styles.read_only : ''}
         ></input>
       );
   }

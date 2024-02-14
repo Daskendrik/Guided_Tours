@@ -5,25 +5,16 @@ import { useEffect, useRef } from 'react';
 import React from 'react';
 
 const ModalDelete = (props) => {
-  const {
-    open = false,
-    funcClose,
-    component = 'Констакт',
-    name = 'ТестУдалить',
-    func = () => {
-      console.log('удаление');
-    },
-  } = props;
-
+  const { settings } = props;
   const modalWin = useRef<any>();
 
   useEffect(() => {
-    if (open) {
+    if (settings.open) {
       modalWin.current.showModal();
     } else {
       modalWin.current.close();
     }
-  }, [open]);
+  }, [settings.open]);
 
   return createPortal(
     <>
@@ -33,11 +24,12 @@ const ModalDelete = (props) => {
         </div>
         <div className={styles.modal_body}>
           <p>
-            Вы уверены, что надо удалить {component}:<br></br> {name}
+            Вы уверены, что надо удалить {settings.component}:<br></br>{' '}
+            {settings.target}
           </p>
           <div className={styles.buttons}>
-            <StandartBtn title="Да" func={func} />
-            <StandartBtn title="Нет" func={funcClose} />
+            <StandartBtn title="Да" func={settings.func} />
+            <StandartBtn title="Нет" func={settings.funcClose} />
           </div>
         </div>
       </dialog>

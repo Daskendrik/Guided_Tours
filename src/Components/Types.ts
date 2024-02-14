@@ -43,3 +43,20 @@ export type Button = {
   disabled?: boolean;
 };
 export type Buttons = Button[];
+
+//Модальные окна
+export type DeleteModal = {
+  target: string;
+  component: string;
+  open: boolean;
+  func: any;
+  funcClose: any;
+};
+
+export type SeachModal = {
+  title: string;
+  arrcol: SeachFilds;
+  seach: any;
+  open: boolean;
+  funcClose: any;
+};

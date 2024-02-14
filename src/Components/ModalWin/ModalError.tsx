@@ -6,6 +6,7 @@ import React from 'react';
 
 const ModalError = (props) => {
   const {
+    settings,
     open = false,
     title = 'Ошибка',
     doing = 'Констакт',
