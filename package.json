@@ -39,10 +39,6 @@
       "react-app/jest"
     ]
   },
-  "compilerOptions": {
-    "jsx": "react",
-    "baseUrl": "./src/js"
-  },
   "browserslist": {
     "production": [
       ">0.2%",

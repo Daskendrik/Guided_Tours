@@ -60,3 +60,12 @@ export type SeachModal = {
   open: boolean;
   funcClose: any;
 };
+
+export type ErrorModal = {
+  open: boolean;
+  title: string;
+  doing: string;
+  func: any;
+  err: string;
+  column?: string[];
+};
