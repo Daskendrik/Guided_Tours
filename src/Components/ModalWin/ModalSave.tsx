@@ -5,33 +5,28 @@ import { useEffect, useRef } from 'react';
 import React from 'react';
 
 const ModalSave = (props) => {
-  const {
-    title = 'Сохранение',
-    text = 'Сохранен',
-    goBtn = [],
-    open = false,
-  } = props;
+  const { settings } = props;
   const modalWin = useRef<any>();
 
   useEffect(() => {
-    if (open) {
+    if (settings.open) {
       modalWin.current.showModal();
     } else {
       modalWin.current.close();
     }
-  }, [open]);
+  }, [settings.open]);
 
   return createPortal(
     <>
       <dialog ref={modalWin}>
         <div className={styles.modal_header}>
-          <h3 className={styles.modal_title}>{title}</h3>
+          <h3 className={styles.modal_title}>{settings.title}</h3>
         </div>
         <div className={styles.modal_body}>
-          <h4>{text}</h4>
+          <h4>{settings.text}</h4>
           <div className={styles.buttons}>
-            <StandartBtn title="Вернуться на список" link={goBtn[0]} />
-            <StandartBtn title="Перейти в Карточку" link={goBtn[1]} />
+            <StandartBtn title="Вернуться на список" link={settings.goBtn[0]} />
+            <StandartBtn title="Перейти в Карточку" link={settings.goBtn[1]} />
           </div>
         </div>
       </dialog>

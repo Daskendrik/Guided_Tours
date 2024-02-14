@@ -61,7 +61,6 @@ export type SeachModal = {
 };
 export type ErrorModal = {
   open: boolean;
-  title: string;
   doing: string;
   func: any;
   err: string;
