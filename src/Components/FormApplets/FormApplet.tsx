@@ -2,14 +2,8 @@ import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
 import FormColum from './FormColum.tsx';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
-import {
-  Controller,
-  SubmitErrorHandler,
-  SubmitHandler,
-  useForm,
-} from 'react-hook-form';
 import React from 'react';
-import { Contact } from '../Types.ts';
+import { FieldsApplet } from '../Types.ts';
 
 const FormApplet = (props) => {
   const {
@@ -32,10 +26,7 @@ const FormApplet = (props) => {
   }
   JSON.stringify(formData);
   console.log(formData);
-  const arrRow: string[] = [];
-  const { register, handleSubmit } = useForm({
-    defaultValues: formData,
-  });
+  const arrRow: FieldsApplet[] = [];
   function createArrayOfRow(arr) {
     for (let i = 0; i < arr.length; i += 3) {
       const chunk = arr.slice(i, i + 3);
@@ -43,9 +34,6 @@ const FormApplet = (props) => {
     }
   }
 
-  const onSubmit = () => {
-    console.log(data);
-  };
   createArrayOfRow(data);
   console.log(data);
   return (
@@ -68,31 +56,11 @@ const FormApplet = (props) => {
           </div>
         </div>
         <div className={styles.form_applet_table}>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              {data.map((col, index) => {
-                return (
-                  <div key={index} className={styles.column}>
-                    <label>{col.Lable}</label>
-                    <input type="text" {...register(col.id)} />
-                  </div>
-                );
-              })}
-            </div>
-            <button>Охранить</button>
-          </form>
-        </div>
-      </div>
-    </>
-  );
-};
-
-export default FormApplet;
-
-{
-  /* <table>
+          <form>
+            <table>
               <tbody>
                 {arrRow.map((row, index) => {
+                  console.log(row);
                   return (
                     <tr key={index}>
                       {row.map((col) => {
@@ -124,5 +92,12 @@ export default FormApplet;
                   );
                 })}
               </tbody>
-            </table> */
-}
+            </table>
+          </form>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default FormApplet;

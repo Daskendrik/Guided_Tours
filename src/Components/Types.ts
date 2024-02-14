@@ -17,7 +17,7 @@ export type FieldApplet = {
   Lable: string;
   Value: any;
   Type: string;
-  Id: string;
+  id: string;
   required?: boolean;
   readonly?: boolean;
   change?: any;
