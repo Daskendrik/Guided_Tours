@@ -51,21 +51,19 @@ const FormColum = (props) => {
           name="select"
           className={readonly ? styles.read_only : ''}
           onChange={(e) => change(id, e.target.value)}
+          disabled={readonly}
+          defaultValue={value ? value : ''}
         >
           {arrSelect.map((el) => {
             console.log(el.name);
             console.log(value);
             return (
-              <option
-                key={el.id}
-                value={el.code}
-                selected={el.name === value ? true : false}
-              >
+              <option key={el.id} value={el.code}>
                 {el.name}
               </option>
             );
           })}
-          <option key={id} value="" selected={value ? false : true}>
+          <option key={''} value="">
             Не указан
           </option>
         </select>

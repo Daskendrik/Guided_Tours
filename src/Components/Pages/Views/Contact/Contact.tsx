@@ -7,6 +7,7 @@ import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer.js';
 import Loading from '../../../Additional/Loading.js';
 import React from 'react';
+import { DeleteModal } from '../../../Types.ts';
 
 const Contact = () => {
   const params = useParams();
@@ -42,6 +43,25 @@ const Contact = () => {
 
   const openDeleteContact = () => {
     setIsModDelOpen(true);
+  };
+
+  const settingsModalDelete: DeleteModal = {
+    target: fio,
+    component: 'контакт',
+    open: isModDelOpen,
+    funcClose: () => {
+      isModDelOpen ? setIsModDelOpen(false) : setIsModDelOpen(true);
+    },
+    func: async () => {
+      axios
+        .post('http://localhost:3001/api/contact/delete', { targetRow })
+        .then((res) => {
+          window.location.href = '/contact';
+        })
+        .catch((error) => {
+          setTextError(error.message);
+        });
+    },
   };
 
   const closeDeleteContact = () => {
@@ -89,13 +109,7 @@ const Contact = () => {
   }
   return (
     <>
-      <ModalDelete
-        name="текущий контакт"
-        component="контакт"
-        func={handleDeleteRow}
-        funcClose={closeDeleteContact}
-        open={isModDelOpen}
-      />
+      <ModalDelete settings={settingsModalDelete} />
       <FormApplet
         title={`Контакт N${targetRow} ${fio}`}
         data={data}
