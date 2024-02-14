@@ -5,40 +5,31 @@ import { createPortal } from 'react-dom';
 import React from 'react';
 
 const ModalError = (props) => {
-  const {
-    settings,
-    open = false,
-    title = 'Ошибка',
-    doing = 'Констакт',
-    func = () => {
-      console.log('удаление');
-    },
-    err = 'Текст ошибки',
-  } = props;
+  const { settings } = props;
 
   const modalWin = useRef<any>();
   useEffect(() => {
-    if (open) {
+    if (settings.open) {
       modalWin.current.showModal();
     } else {
       modalWin.current.close();
     }
-  }, [open]);
+  }, [settings.open]);
 
   return createPortal(
     <>
       <dialog ref={modalWin}>
         <div className={styles.modal_header}>
-          <h3 className={styles.modal_title}>{title}</h3>
+          <h3 className={styles.modal_title}>{settings.title}</h3>
         </div>
         <div className={styles.modal_body}>
           <p>
-            Ошибка при {doing}. <br></br>Повторите позже или обратитесь к
-            администратору. <br></br>Текст ошибки:<br></br>{' '}
-            <span className={styles.err_text}>{err}</span>
+            Ошибка при {settings.doing}. <br></br>Повторите позже или обратитесь
+            к администратору. <br></br>Текст ошибки:<br></br>{' '}
+            <span className={styles.err_text}>{settings.err}</span>
           </p>
           <div className={styles.buttons}>
-            <StandartBtn title="Ок" func={func} />
+            <StandartBtn title="Ок" func={settings.func} />
           </div>
         </div>
       </dialog>

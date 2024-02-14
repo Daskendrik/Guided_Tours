@@ -64,21 +64,6 @@ const Contact = () => {
     },
   };
 
-  const closeDeleteContact = () => {
-    setIsModDelOpen(false);
-  };
-
-  const handleDeleteRow = async () => {
-    axios
-      .post('http://localhost:3001/api/contact/delete', { targetRow })
-      .then((res) => {
-        window.location.href = '/contact';
-      })
-      .catch((error) => {
-        setTextError(error.message);
-      });
-  };
-
   useEffect(() => {
     async function fetchData() {
       try {
