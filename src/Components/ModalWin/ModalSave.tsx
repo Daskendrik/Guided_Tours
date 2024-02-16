@@ -26,7 +26,7 @@ const ModalSave = (props) => {
           <h4>{settings.text}</h4>
           <div className={styles.buttons}>
             <StandartBtn title="Вернуться на список" link={settings.goBtn[0]} />
-            <StandartBtn title="Перейти в Карточку" link={settings.goBtn[1]} />
+            <StandartBtn title="Закрыть" func={settings.funcClose} />
           </div>
         </div>
       </dialog>

@@ -33,7 +33,9 @@ const Contact = () => {
     doing: 'сохранениe',
     open: isModErrOpen,
     err: saveErr,
-    func: () => {},
+    funcClose: () => {
+      isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
+    },
   };
 
   const changeModSaveOpen = () => {
@@ -63,7 +65,11 @@ const Contact = () => {
       title: 'Сохранить',
       id: uuidv4(),
       func: async () => {
-        data.push({ id: 'id', Value: targetRow });
+        console.log(data);
+        if (data.filter((el) => el.id === 'id').length === 0) {
+          data.push({ id: 'id', Value: targetRow });
+        }
+
         axios
           .post('http://localhost:3001/api/contact/update', data)
           .then((res) => {
@@ -92,9 +98,13 @@ const Contact = () => {
 
   const [isModSaveOpen, setIsModSaveOpen] = useState(false);
   const settingsModalSave: SaveModal = {
-    goBtn: ['/contact', `/contact/${targetRow}`],
+    goBtn: ['/contact'],
     open: isModSaveOpen,
     text: `Контакт №${targetRow} успешно сохранен`,
+    funcClose: () => {
+      setIsReadOnly(true);
+      changeModSaveOpen();
+    },
   };
 
   const openDeleteContact = () => {
@@ -128,6 +138,7 @@ const Contact = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
+          console.log(dataIntegration);
           setData(dataIntegration.req);
           formulFIO(dataIntegration.req);
         }

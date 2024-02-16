@@ -62,12 +62,14 @@ export type SeachModal = {
 export type ErrorModal = {
   open: boolean;
   doing: string;
-  func: any;
+  func?: any;
   err: string;
   column?: string[];
+  funcClose: any;
 };
 export type SaveModal = {
   text: string;
   goBtn: string[];
   open: boolean;
+  funcClose: any;
 };
