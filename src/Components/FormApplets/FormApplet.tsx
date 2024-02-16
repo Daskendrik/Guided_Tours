@@ -25,7 +25,6 @@ const FormApplet = (props) => {
     formData[data[i].id] = data[i].Value;
   }
   JSON.stringify(formData);
-  console.log(formData);
   const arrRow: FieldsApplet[] = [];
   function createArrayOfRow(arr) {
     for (let i = 0; i < arr.length; i += 3) {
@@ -35,7 +34,6 @@ const FormApplet = (props) => {
   }
 
   createArrayOfRow(data);
-  console.log(data);
   return (
     <>
       <div className={styles.form_applet}>
@@ -60,7 +58,6 @@ const FormApplet = (props) => {
             <table>
               <tbody>
                 {arrRow.map((row, index) => {
-                  console.log(row);
                   return (
                     <tr key={index}>
                       {row.map((col) => {

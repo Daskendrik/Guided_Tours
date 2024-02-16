@@ -46,6 +46,7 @@ const Contact = () => {
 
   const changeData = (id, text) => {
     let newdate;
+    console.log(data);
     newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
     setData(newdate);
   };

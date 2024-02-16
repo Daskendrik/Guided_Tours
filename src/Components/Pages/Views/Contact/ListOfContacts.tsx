@@ -131,9 +131,7 @@ const ListOfContact = () => {
   };
 
   const handleSetTargetRow = (e) => {
-    console.log(e.target);
     const newId = e.target.parentElement.id;
-    console.log(newId);
     setTargetRow(newId);
     if (!!newId) {
       let selectItem = dataList

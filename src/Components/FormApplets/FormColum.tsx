@@ -11,7 +11,6 @@ const FormColum = (props) => {
     change,
     arrSelect = [{ id: 1, code: '12', name: '23' }],
   } = props;
-  console.log(props);
   switch (type) {
     case 'textarea':
       return (
@@ -48,17 +47,16 @@ const FormColum = (props) => {
     case 'select':
       return (
         <select
-          name="select"
           className={readonly ? styles.read_only : ''}
           onChange={(e) => change(id, e.target.value)}
           disabled={readonly}
-          defaultValue={value ? value : ''}
+          value={
+            value ? arrSelect.filter((el) => el.name === value)[0]?.code : ''
+          }
         >
           {arrSelect.map((el) => {
-            console.log(el.name);
-            console.log(value);
             return (
-              <option key={el.id} value={el.code}>
+              <option key={el.id} value={el.code} id={el.code}>
                 {el.name}
               </option>
             );
