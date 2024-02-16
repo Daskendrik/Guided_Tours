@@ -29,7 +29,7 @@ const ModalError = (props) => {
             <span className={styles.err_text}>{settings.err}</span>
           </p>
           <div className={styles.buttons}>
-            <StandartBtn title="Ок" func={settings.func} />
+            <StandartBtn title="Ок" func={settings.funcClose} />
           </div>
         </div>
       </dialog>
