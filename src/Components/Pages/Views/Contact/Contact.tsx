@@ -7,7 +7,9 @@ import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer.js';
 import Loading from '../../../Additional/Loading.js';
 import React from 'react';
-import { DeleteModal } from '../../../Types.ts';
+import { Buttons, DeleteModal, ErrorModal, SaveModal } from '../../../Types.ts';
+import ModalSave from '../../../ModalWin/ModalSave.tsx';
+import ModalError from '../../../ModalWin/ModalError.tsx';
 
 const Contact = () => {
   const params = useParams();
@@ -15,8 +17,10 @@ const Contact = () => {
   const [textError, setTextError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [isModDelOpen, setIsModDelOpen] = useState(false);
-  const isReadOnly = true;
+  const [isReadOnly, setIsReadOnly] = useState(true);
   const [fio, setFIO] = useState('');
+  const [saveErr, setSaveError] = useState('Нет ошибки');
+  const [isModErrOpen, setIsModErrOpen] = useState(false);
 
   const formulFIO = (data) => {
     const last_name = data.filter((a) => a.id === 'last_name')[0].Value;
@@ -25,11 +29,55 @@ const Contact = () => {
     setFIO(`${last_name} ${first_name} ${middle_name}`);
   };
 
-  const buttons = [
+  const settingsModalError: ErrorModal = {
+    doing: 'сохранениe',
+    open: isModErrOpen,
+    err: saveErr,
+    func: () => {},
+  };
+
+  const changeModSaveOpen = () => {
+    isModSaveOpen ? setIsModSaveOpen(false) : setIsModSaveOpen(true);
+  };
+
+  const changeModErrOpen = () => {
+    isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
+  };
+
+  const changeData = (id, text) => {
+    let newdate;
+    newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+    setData(newdate);
+  };
+  const buttons: Buttons = [
     {
       title: 'Редактировать',
       id: uuidv4(),
-      link: `/contact/edit/${targetRow}`,
+      func: () => {
+        setIsReadOnly(false);
+      },
+      disabled: !isReadOnly,
+    },
+    {
+      title: 'Сохранить',
+      id: uuidv4(),
+      func: async () => {
+        data.push({ id: 'id', Value: targetRow });
+        axios
+          .post('http://localhost:3001/api/contact/update', data)
+          .then((res) => {
+            if (res.data.status === 'OK') {
+              changeModSaveOpen();
+            } else {
+              setSaveError(res.data.text);
+              changeModErrOpen();
+            }
+          })
+          .catch((error) => {
+            setTextError(error.message);
+          });
+      },
+      disabled: isReadOnly,
     },
     {
       title: 'Удалить',
@@ -41,10 +89,16 @@ const Contact = () => {
   ];
   const [data, setData] = useState([]); //данные из бд
 
+  const [isModSaveOpen, setIsModSaveOpen] = useState(false);
+  const settingsModalSave: SaveModal = {
+    goBtn: ['/contact', `/contact/${targetRow}`],
+    open: isModSaveOpen,
+    text: `Контакт №${targetRow} успешно сохранен`,
+  };
+
   const openDeleteContact = () => {
     setIsModDelOpen(true);
   };
-
   const settingsModalDelete: DeleteModal = {
     target: fio,
     component: 'контакт',
@@ -84,8 +138,6 @@ const Contact = () => {
     fetchData();
   }, [targetRow]);
 
-  console.log(data);
-
   if (textError) {
     return <ErrorServer textError={textError} />;
   }
@@ -94,12 +146,15 @@ const Contact = () => {
   }
   return (
     <>
+      <ModalSave settings={settingsModalSave} />
       <ModalDelete settings={settingsModalDelete} />
+      <ModalError settings={settingsModalError} />
       <FormApplet
         title={`Контакт N${targetRow} ${fio}`}
         data={data}
         buttons={buttons}
         isReadOnly={isReadOnly}
+        changeData={changeData}
       />
     </>
   );
