@@ -22,6 +22,7 @@ export type FieldApplet = {
   readonly?: boolean;
   change?: any;
   arrSelect?: string[];
+  codeSelect?: string;
 };
 
 export type FieldsApplet = FieldApplet[];

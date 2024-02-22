@@ -136,7 +136,8 @@ const ListOfContact = () => {
     if (!!newId) {
       let selectItem = dataList
         ?.find((data) => data.element === 'Body')
-        ?.elements.find((elem) => elem[0] === +newId)[1];
+        ?.elements.find((elem) => elem.id === +newId).full_name;
+      console.log(selectItem);
       setTargetFio(selectItem);
     }
   };

@@ -12,7 +12,7 @@ import ListOfTour from './Components/Pages/Lists/ListOfTour';
 import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
 import ListOfContacts from './Components/Pages/Views/Contact/ListOfContacts.tsx';
 import Contact from './Components/Pages/Views/Contact/Contact.tsx';
-import ContactNew from './Components/Pages/Views/Contact/ContactNew';
+import ContactNew from './Components/Pages/Views/Contact/ContactNew.tsx';
 import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';
 
 function App() {

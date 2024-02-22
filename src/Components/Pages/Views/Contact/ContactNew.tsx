@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import axios from 'axios';
 import FormApplet from '../../../FormApplets/FormApplet.tsx';
-import ErrorServer from '../../../Additional/ErrorServer';
-import Loading from '../../../Additional/Loading';
+import ErrorServer from '../../../Additional/ErrorServer.js';
+import Loading from '../../../Additional/Loading.js';
 import ModalSave from '../../../ModalWin/ModalSave.tsx';
 import ModalError from '../../../ModalWin/ModalError.tsx';
+import React from 'react';
+import { ErrorModal, SaveModal } from '../../../Types.ts';
 
 const ContactNew = () => {
   const [textError, setTextError] = useState('');
@@ -13,6 +15,7 @@ const ContactNew = () => {
   const isReadOnly = false;
   const [newId, setNewId] = useState('000');
   const [saveErr, setSaveError] = useState('Нет ошибки');
+  const [isModErrOpen, setIsModErrOpen] = useState(false);
 
   const [data, setData] = useState([
     {
@@ -66,7 +69,15 @@ const ContactNew = () => {
     },
   ]);
   // модальное с ошибкой
-  const [isModErrOpen, setIsModErrOpen] = useState(false);
+  const settingsModalError: ErrorModal = {
+    doing: 'сохранениe',
+    open: isModErrOpen,
+    err: saveErr,
+    funcClose: () => {
+      isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
+    },
+  };
+
   const changeModErrOpen = () => {
     isModErrOpen ? setIsModErrOpen(false) : setIsModErrOpen(true);
   };
@@ -75,6 +86,14 @@ const ContactNew = () => {
   const [isModSaveOpen, setIsModSaveOpen] = useState(false);
   const changeModSaveOpen = () => {
     isModSaveOpen ? setIsModSaveOpen(false) : setIsModSaveOpen(true);
+  };
+  const settingsModalSave: SaveModal = {
+    goBtn: ['/contact'],
+    open: isModSaveOpen,
+    text: `Контакт №${newId} успешно сохранен`,
+    funcClose: () => {
+      changeModSaveOpen();
+    },
   };
 
   const buttons = [
@@ -150,17 +169,8 @@ const ContactNew = () => {
   }
   return (
     <>
-      <ModalSave
-        text={`Контакт №${newId} успешно сохранен`}
-        goBtn={goBtn}
-        open={isModSaveOpen}
-      />
-      <ModalError
-        func={changeModErrOpen}
-        doing="сохранениe"
-        err={saveErr}
-        open={isModErrOpen}
-      />
+      <ModalSave settings={settingsModalSave} />
+      <ModalError settings={settingsModalError} />
       <FormApplet
         title={`Новый контакт №${newId}`}
         data={data}
