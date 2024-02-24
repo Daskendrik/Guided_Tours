@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid';
 import FormColum from './FormColum.tsx';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
 import React from 'react';
-import { FieldsApplet } from '../Types.ts';
+import { FieldsApplet } from '../../Tools/Types.ts';
 
 const FormApplet = (props) => {
   const {

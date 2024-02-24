@@ -7,7 +7,12 @@ import FormApplet from '../../../FormApplets/FormApplet.tsx';
 import ErrorServer from '../../../Additional/ErrorServer.js';
 import Loading from '../../../Additional/Loading.js';
 import React from 'react';
-import { Buttons, DeleteModal, ErrorModal, SaveModal } from '../../../Types.ts';
+import {
+  Buttons,
+  DeleteModal,
+  ErrorModal,
+  SaveModal,
+} from '../../../../Tools/Types.ts';
 import ModalSave from '../../../ModalWin/ModalSave.tsx';
 import ModalError from '../../../ModalWin/ModalError.tsx';
 
