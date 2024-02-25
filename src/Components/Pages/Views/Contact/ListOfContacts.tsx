@@ -8,7 +8,12 @@ import Loading from '../../../Additional/Loading';
 import ModalSeach from '../../../ModalWin/ModalSeach.tsx';
 import ModalDelete from '../../../ModalWin/ModalDelete.tsx';
 import React from 'react';
-import { Buttons, DeleteModal, SeachFilds, SeachModal } from '../../../Types';
+import {
+  Buttons,
+  DeleteModal,
+  SeachFilds,
+  SeachModal,
+} from '../../../../Tools/Types.ts';
 
 const ListOfContact = () => {
   const component = 'contact';

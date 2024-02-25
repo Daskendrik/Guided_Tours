@@ -52,11 +52,11 @@ const ListApplet = (props) => {
           <div className={styles.header}>
             <div className={styles.title}>{title}</div>
             <div className={styles.button}>
-              <StandartBtn
+              {/* <StandartBtn
                 key="swichDisplay"
                 title="Изменить отображение"
                 func={swichDisplay}
-              />
+              /> */}
               {buttons.map((btn) => {
                 return (
                   <StandartBtn

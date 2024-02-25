@@ -20,14 +20,27 @@ const Table = (props) => {
           return (
             <tr key={row.id} id={row.id} onClick={changeTarget}>
               {header.elements.map((col, index) => {
-                return (
-                  <td
-                    key={index}
-                    className={+targetRow === row.id ? 'active_row' : ''}
-                  >
-                    {row[col.id]}
-                  </td>
-                );
+                if (index === 1) {
+                  return (
+                    <td
+                      key={index}
+                      className={+targetRow === row.id ? 'active_row' : ''}
+                    >
+                      <Link className={styles.go_in} to={row.id.toString()}>
+                        {row[col.id]}
+                      </Link>
+                    </td>
+                  );
+                } else {
+                  return (
+                    <td
+                      key={index}
+                      className={+targetRow === row.id ? 'active_row' : ''}
+                    >
+                      {row[col.id]}
+                    </td>
+                  );
+                }
               })}
             </tr>
           );
