@@ -37,7 +37,7 @@ const Table = (props) => {
                       key={index}
                       className={+targetRow === row.id ? 'active_row' : ''}
                     >
-                      {row[col.id]}
+                      {row[col.id] || 'Не указан'}
                     </td>
                   );
                 }

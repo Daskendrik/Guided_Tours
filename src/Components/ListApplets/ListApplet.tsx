@@ -125,7 +125,7 @@ const ListApplet = (props) => {
               <table>
                 <thead>
                   <tr>
-                    {header.nameColumn.map((col) => {
+                    {header.elements.map((col) => {
                       return <td key={col.id}>{col.title}</td>;
                     })}
                   </tr>

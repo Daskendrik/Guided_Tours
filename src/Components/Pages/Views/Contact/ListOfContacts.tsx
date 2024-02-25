@@ -156,6 +156,7 @@ const ListOfContact = () => {
         const res = await fetch(url);
         const dataIntegration = await res.json();
         if (!!dataIntegration) {
+          console.log(dataIntegration.req);
           setDataList(dataIntegration.req);
         }
       } catch (error) {
