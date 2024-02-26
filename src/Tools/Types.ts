@@ -1,15 +1,15 @@
 //Сущности
 export type IContact = {
-  id: FieldApplet;
-  last_name: FieldApplet;
-  first_name: FieldApplet;
-  middle_name?: FieldApplet;
-  tel?: FieldApplet;
-  email?: FieldApplet;
+  id: string;
+  last_name: string;
+  first_name: string;
+  middle_name?: string;
+  tel?: number;
+  email?: string;
   type_code?: string[];
-  comment?: FieldApplet;
-  created: FieldApplet;
-  update: FieldApplet;
+  comment?: string;
+  created: string;
+  update: string;
 };
 
 //Стандартные поля
