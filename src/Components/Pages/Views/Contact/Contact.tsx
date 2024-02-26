@@ -28,9 +28,9 @@ const Contact = () => {
   const [isModErrOpen, setIsModErrOpen] = useState(false);
 
   const formulFIO = (data) => {
-    const last_name = data.filter((a) => a.id === 'last_name')[0].Value;
-    const first_name = data.filter((a) => a.id === 'first_name')[0].Value;
-    const middle_name = data.filter((a) => a.id === 'middle_name')[0].Value;
+    const last_name = data.filter((a) => a.id === 'last_name')[0].value;
+    const first_name = data.filter((a) => a.id === 'first_name')[0].value;
+    const middle_name = data.filter((a) => a.id === 'middle_name')[0].value;
     setFIO(`${last_name} ${first_name} ${middle_name}`);
   };
 
