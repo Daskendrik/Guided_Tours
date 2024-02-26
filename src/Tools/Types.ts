@@ -1,5 +1,5 @@
 //Сущности
-export type Contact = {
+export type IContact = {
   id: FieldApplet;
   last_name: FieldApplet;
   first_name: FieldApplet;
@@ -14,9 +14,9 @@ export type Contact = {
 
 //Стандартные поля
 export type FieldApplet = {
-  Lable: string;
-  Value: any;
-  Type: string;
+  lable: string;
+  value: any;
+  type: string;
   id: string;
   required?: boolean;
   readonly?: boolean;

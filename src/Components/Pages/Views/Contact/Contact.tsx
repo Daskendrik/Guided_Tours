@@ -53,8 +53,7 @@ const Contact = () => {
 
   const changeData = (id, text) => {
     let newdate;
-    console.log(data);
-    newdate = data.map((x) => (x.id === id ? { ...x, Value: text } : x));
+    newdate = data.map((x) => (x.id === id ? { ...x, value: text } : x));
     setData(newdate);
   };
   const buttons: Buttons = [
@@ -72,7 +71,7 @@ const Contact = () => {
       func: async () => {
         console.log(data);
         if (data.filter((el) => el.id === 'id').length === 0) {
-          data.push({ id: 'id', Value: targetRow });
+          data.push({ id: 'id', value: targetRow });
         }
 
         axios

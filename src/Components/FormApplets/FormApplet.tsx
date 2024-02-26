@@ -1,9 +1,10 @@
 import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
-import FormColum from './FormColum.tsx';
-import StandartBtn from '../Buttons/StandartBtn.tsx';
+
 import React from 'react';
 import { FieldsApplet } from '../../Tools/Types.ts';
+import StandartBtn from '../Buttons/StandartBtn.tsx';
+import FormColum from './FormColum.tsx';
 
 const FormApplet = (props) => {
   const {
@@ -69,13 +70,13 @@ const FormApplet = (props) => {
                           <td key={col.id}>
                             <div className={styles.colume_div}>
                               <div className={styles.form_td_div_lable}>
-                                {col.Lable}
+                                {col.lable}
                               </div>
                               <div className={styles.form_td_div_value}>
                                 <FormColum
                                   readonly={isReadOnly}
-                                  type={col.Type}
-                                  value={col.Value}
+                                  type={col.type}
+                                  value={col.value}
                                   id={col.id}
                                   change={changeData}
                                   arrSelect={arrSelect}
