@@ -13,7 +13,6 @@ import ListOfTypeLOV from './Components/Pages/Lists/ListOfTypeLOV';
 import ListOfContacts from './Components/Pages/Views/Contact/ListOfContacts.tsx';
 import Contact from './Components/Pages/Views/Contact/Contact.tsx';
 import ContactNew from './Components/Pages/Views/Contact/ContactNew.tsx';
-import ContactEdit from './Components/Pages/Views/Contact/ContactEdit';
 
 function App() {
   return (
@@ -35,7 +34,6 @@ function App() {
               <Route path="contact" element={<ListOfContacts />} />
               <Route path="contact/:id" element={<Contact />} />
               <Route path="contact/new" element={<ContactNew />} />
-              <Route path="contact/edit/:id" element={<ContactEdit />} />
             </Route>
           </Routes>
         </BrowserRouter>
