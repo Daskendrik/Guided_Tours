@@ -13,7 +13,7 @@ import {
   DeleteModal,
   SeachFilds,
   SeachModal,
-} from '../../../../Tools/Types.ts';
+} from '../../../../Types/Types.ts';
 
 const ListOfContact = () => {
   const component = 'contact';

@@ -2,7 +2,7 @@ import styles from './FormApplet.module.css';
 import { v4 as uuidv4 } from 'uuid';
 
 import React from 'react';
-import { FieldsApplet } from '../../Tools/Types.ts';
+import { FieldsApplet } from '../../Types/Types.ts';
 import StandartBtn from '../Buttons/StandartBtn.tsx';
 import FormColum from './FormColum.tsx';
 

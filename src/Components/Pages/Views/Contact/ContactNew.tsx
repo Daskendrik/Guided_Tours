@@ -7,7 +7,7 @@ import Loading from '../../../Additional/Loading.js';
 import ModalSave from '../../../ModalWin/ModalSave.tsx';
 import ModalError from '../../../ModalWin/ModalError.tsx';
 import React from 'react';
-import { ErrorModal, SaveModal } from '../../../../Tools/Types.ts';
+import { ErrorModal, SaveModal } from '../../../../Types/Types.ts';
 
 const ContactNew = () => {
   const [textError, setTextError] = useState('');

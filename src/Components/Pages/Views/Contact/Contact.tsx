@@ -12,7 +12,7 @@ import {
   DeleteModal,
   ErrorModal,
   SaveModal,
-} from '../../../../Tools/Types.ts';
+} from '../../../../Types/Types.ts';
 import ModalSave from '../../../ModalWin/ModalSave.tsx';
 import ModalError from '../../../ModalWin/ModalError.tsx';
 
